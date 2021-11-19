@@ -1,0 +1,16 @@
+.auth {
+    min-height: calc(100vh - 60px);
+
+    .box {
+        max-width: 920px;
+        width: 100%;
+
+        form {
+            width: 100%;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+}

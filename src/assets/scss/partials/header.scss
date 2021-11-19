@@ -1,0 +1,131 @@
+.header {
+    height: 80px;
+    position: relative;
+    z-index: 2;
+
+    .nav-bar {
+        flex-grow: 2;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+
+    .menu-small {
+        .icon-menu {
+            width: 27px;
+            height: 15.27px;
+            position: relative;
+
+            div {
+                width: 100%;
+                height: 2.75px;
+                background-color: $BLUE;
+                position: absolute;
+
+                &:nth-child(1) {
+                    top: 0;
+                }
+
+                &:nth-child(2) {
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                &:nth-child(3) {
+                    bottom: 0;
+                }
+            }
+        }
+    }
+
+    .menu {
+        flex-grow: 2;
+        display: none;
+
+        ul {
+            li {
+                text-transform: uppercase;
+                font-weight: bold;
+                cursor: pointer;
+                color: $BLACK;
+
+                a {
+                    color: $BLACK;
+                    &:hover {
+                        color: $BLUE;
+                    }
+                    &.active {
+                        color: $BLUE;
+                    }
+                }
+
+                &:not(:last-child) {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+
+    .actions {
+        ul {
+            li {
+                height: 24px;
+
+                img {
+                    height: 100%;
+                }
+
+                &:first-child {
+                    &::after {
+                        content: "";
+                        display: inline-block;
+                        width: 1px;
+                        height: 100%;
+                        background: $BORDER2;
+                        margin-left: 20px;
+                    }
+                }
+
+                &:last-child {
+                    display: none;
+
+                }
+            }
+        }
+
+        button {
+            display: none;
+        }
+    }
+}
+
+@include rp('min', 630px) {
+    .header {
+        .nav-bar {
+            flex-direction: row;
+        }
+
+        .menu-small {
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        .actions {
+            button {
+                display: block;
+            }
+
+            ul {
+                li {
+                    &:last-child {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}

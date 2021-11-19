@@ -1,0 +1,12 @@
+@import 'reset.scss';
+
+@import 'partials/_spacing';
+@import 'partials/_color.scss';
+@import 'partials/_utilities.scss';
+@import 'partials/common.scss';
+@import 'partials/header.scss';
+@import 'partials/footer.scss';
+
+@import 'modules/auth.scss';
+@import 'modules/home.scss';
+@import 'modules/notFound.scss';

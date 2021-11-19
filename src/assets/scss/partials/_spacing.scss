@@ -1,0 +1,193 @@
+/*spacing*/
+@mixin respond($breakpoint) {
+  @if $breakpoint==sm {
+    @media only screen and (min-width: 46.875em) {
+      @content;
+    } //750px
+  }
+  @if $breakpoint==md {
+    @media only screen and (min-width: 62em) {
+      @content;
+    } //992px
+  }
+  @if $breakpoint==lg {
+    @media only screen and (min-width: 75em) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint==xl {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800px
+  }
+}
+@mixin rp($type, $breakpoint: 375px) {
+  @if $type == "max" {
+    @media (max-width : $breakpoint - 1px) {
+      @content
+    }
+  }
+  @if $type == "min" {
+    @media (min-width : $breakpoint) {
+      @content
+    }
+  }
+}
+@mixin rp-min-max($from: 0, $to: 0) {
+  @if $to > $from {
+    @media screen and (min-width : $from) and (max-width : $to - 1px) {
+      @content
+    }
+  }
+}
+@for $i from 0 through 70 {
+  .lh-#{$i} {
+    line-height: #{$i}px !important;
+  }
+  .ls-#{$i} {
+    letter-spacing: #{$i}px !important;
+  }
+  @if $i >= 5 and $i <= 70 {
+    .fs-#{$i} {
+      font-size: #{$i}px !important;
+    }
+  }
+    .m-#{$i} {
+      margin: #{$i}px !important;
+    }
+    .mx-#{$i} {
+      margin-right: #{$i}px !important;
+      margin-left: #{$i}px !important;
+    }
+    .my-#{$i} {
+      margin-bottom: #{$i}px !important;
+      margin-top: #{$i}px !important;
+    }
+    .mt-#{$i} {
+      margin-top: #{$i}px !important;
+    }
+    .mr-#{$i} {
+      margin-right: #{$i}px !important;
+    }
+    .ml-#{$i} {
+      margin-left: #{$i}px !important;
+    }
+    .mb-#{$i} {
+      margin-bottom: #{$i}px !important;
+    }
+    .p-#{$i} {
+      padding: #{$i}px !important;
+    }
+    .px-#{$i} {
+      padding-left: #{$i}px !important;
+      padding-right: #{$i}px !important;
+    }
+    .py-#{$i} {
+      padding-top: #{$i}px !important;
+      padding-bottom: #{$i}px !important;
+    }
+    .pt-#{$i} {
+      padding-top: #{$i}px !important;
+    }
+    .pr-#{$i} {
+      padding-right: #{$i}px !important;
+    }
+    .pl-#{$i} {
+      padding-left: #{$i}px !important;
+    }
+    .pb-#{$i} {
+      padding-bottom: #{$i}px !important;
+    }
+}
+@mixin d-flex() {
+  display : -webkit-box;
+  display : -ms-flexbox;
+  display : -webkit-flex;
+  display : flex;
+}
+@mixin d-flex-center-all() {
+  -ms-flex-pack           : center;
+  -webkit-justify-content : center;
+  -webkit-box-pack        : center;
+  justify-content         : center;
+  -ms-flex-align      : center;
+  -webkit-align-items : center;
+  -webkit-box-align   : center;
+  align-items         : center;
+  display : -webkit-box;
+  display : -ms-flexbox;
+  display : -webkit-flex;
+  display : flex;
+}
+@mixin d-flex-row() {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  display : -webkit-box;
+  display : -ms-flexbox;
+  display : -webkit-flex;
+  display : flex;
+}
+@mixin d-flex-column() {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+@mixin flex-center-all() {
+  -ms-flex-pack           : center;
+  -webkit-justify-content : center;
+  -webkit-box-pack        : center;
+  justify-content         : center;
+  -ms-flex-align      : center;
+  -webkit-align-items : center;
+  -webkit-box-align   : center;
+  align-items         : center;
+}
+@mixin flex-center() {
+  -ms-flex-pack           : center;
+  -webkit-justify-content : center;
+  -webkit-box-pack        : center;
+  justify-content         : center;
+}
+@mixin flex-middle() {
+  -ms-flex-align      : center;
+  -webkit-align-items : center;
+  -webkit-box-align   : center;
+  align-items         : center;
+}
+@mixin flex-top() {
+  -ms-flex-align      : start;
+  -webkit-align-items : flex-start;
+  -webkit-box-align   : start;
+  align-items         : flex-start;
+}
+@mixin flex-bottom() {
+  -ms-flex-align      : end;
+  -webkit-align-items : flex-end;
+  -webkit-box-align   : end;
+  align-items         : flex-end;
+}
+@mixin flex-right() {
+  -ms-flex-pack           : end;
+  -webkit-justify-content : flex-end;
+  -webkit-box-pack        : end;
+  justify-content         : flex-end;
+}
+@mixin flex-left() {
+  -ms-flex-pack           : start;
+  -webkit-justify-content : flex-start;
+  -webkit-box-pack        : start;
+  justify-content         : flex-start;
+}
+/*end spacing*/

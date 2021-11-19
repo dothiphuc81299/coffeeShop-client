@@ -1,0 +1,63 @@
+.notFound {
+  background-color: #95c2de;
+  .mainbox {
+    background-color: #95c2de;
+    margin: auto;
+    height: calc(100vh - 60px);
+    max-width: 660px;
+    position: relative;
+  }
+  
+  .err {
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position:absolute;
+    left: 20%;
+    top: 8%;
+  }
+  
+  img {
+    position: absolute;
+    font-size: 8.5rem;
+    left: 42%;
+    top: 18%;
+    color: #ffffff;
+    max-width: 154px;
+    animation: mymove 3s infinite;
+  }
+  
+  @keyframes mymove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .err2 {
+    color: #ffffff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 11rem;
+    position:absolute;
+    left: 68%;
+    top: 8%;
+  }
+  
+  .msg {
+      text-align: center;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.6rem;
+      position:absolute;
+      left: 16%;
+      top: 45%;
+      width: 75%;
+    }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
