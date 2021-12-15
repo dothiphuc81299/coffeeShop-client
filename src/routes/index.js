@@ -32,15 +32,19 @@ import NotFound from "../components/NotFound";
 
 import { PrivateRoute } from "./PrivateRoute";
 import RolePage from "../admin/roles/pages/RolePage";
+import AboutUsPage from "../users/pages/aboutus";
+import AboutUs from "../users/components/aboutus/aboutus";
 
 
 const routes = () => {
   return (
     <Switch>
+      
       <Route exact path="/" component={HomePage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
       <Route path="/menu" component={MenuPage} />
+      <Route path="/about-us" component={AboutUs} />
       <PrivateRoute path="/order" component={ConfirmOrderPage} />
       <PrivateRoute exact path="/user/detail" component={UserDetailPage} />
       <PrivateRoute exact path="/user/change-password" component={UserChangePasswordPage} />

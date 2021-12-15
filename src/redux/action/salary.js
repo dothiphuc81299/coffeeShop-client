@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getSalary = (payload) => {
   return async (dispatch) => {
     return axios
-      .get('https://salty-dawn-54578.herokuapp.com/salary/me', {
+      .get('https://mighty-castle-60848.herokuapp.com/salary/me', {
         headers: {
           Authorization: `Bearer ${payload.token}`,
         },
@@ -24,7 +24,7 @@ export const getSalary = (payload) => {
 export const getSalaryByMonth = (payload) => {
   return async (dispatch) => {
     return axios
-      .get(`https://salty-dawn-54578.herokuapp.com/salary/me?month=thang_${payload.month}`, {
+      .get(`https://mighty-castle-60848.herokuapp.com/salary/me?month=thang_${payload.month}`, {
         headers: {
           Authorization: `Bearer ${payload.token}`,
         },

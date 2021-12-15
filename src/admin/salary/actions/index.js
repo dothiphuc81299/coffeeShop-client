@@ -1,16 +1,16 @@
 import axios from "axios";
 import { TokenUtils } from "../../../utils/token.utils";
 
-const token = TokenUtils.TOKEN_ADMIN;
+// const token = TokenUtils.TOKEN_ADMIN;
 
 export const getSalary = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/salary",
+        "https://mighty-castle-60848.herokuapp.com/salary",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         },
         payload

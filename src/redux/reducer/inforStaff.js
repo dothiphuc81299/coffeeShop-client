@@ -5,10 +5,11 @@ const initialState = {
 const inforStaffReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_ADMIN_INFOR": {
-      const { _id, username, phone, address, avatar, permissions } = action.payload;
-
+      const { _id, username, phone, address, avatar, permissions,token } = action.payload;
+      // localStorage.setItem("token", token);
       return {
         ...state,
+        // token: token,
         infor: {
           userId: _id || (state.infor && state.infor.userId),
           username: username || (state.infor && state.infor.username), 
@@ -31,7 +32,9 @@ const inforStaffReducer = (state = initialState, action) => {
 //       }
 //     }
     case "DELETE_STAFF_INFOR": {
+      localStorage.removeItem("token")
       return {
+        token: null,
         infor: null,
       }
     }

@@ -14,6 +14,7 @@ import { getList } from "../../categories/actions";
 import { deleteDrink, updateDrink } from "../actions";
 import MenuDelete from "./MenuDelete";
 import MenuUpdate from "./MenuUpdate";
+import { getInforByToken } from "../../../redux/action/inforStaff";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,12 +47,16 @@ const MenuItems = (props) => {
   const [openDelete, setOpenDelete] = useState(false);
 
   const list = useSelector((state) => state.listAdmin.list);
-
+  const token = useSelector((state) => state.authAdmin.token);
   const category = ObjectUtils.get(drink, "category", {});
 
   const classes = useStyles();
 
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getInforByToken(token));
+  // }, []);
 
   useEffect(() => {
     if (!list) {
@@ -60,7 +65,16 @@ const MenuItems = (props) => {
   }, []);
 
   const handleSubmitUpdate = (payload) => {
-    dispatch(updateDrink(payload));
+    dispatch(
+      updateDrink({
+        token,
+        _id: payload._id,
+        name: payload.name,
+        price: payload.price,
+        image: payload.image,
+        category: payload.category,
+      })
+    );
     setOpenUpdate(false);
   };
 
@@ -73,9 +87,14 @@ const MenuItems = (props) => {
   };
 
   const handleSubmitDelete = (payload) => {
-    dispatch(deleteDrink(payload));
+    dispatch(
+      deleteDrink({
+        token,
+        _id: payload._id,
+      })
+    );
     setOpenDelete(false);
-    window.location.reload();
+  window.location.reload();
   };
 
   const handleOpenDelete = () => {
@@ -124,16 +143,13 @@ const MenuItems = (props) => {
 
       <div className={classes.iconDelete} onClick={handleOpenDelete}>
         <IconButton>
-          {drink.active ? (
-            <DeleteIcon style={{ color: red[500] }} fontSize="small" />
-          ) : (
-            <DeleteIcon fontSize="small" />
-          )}
+          <DeleteIcon style={{ color: red[500] }} fontSize="small" />
         </IconButton>
       </div>
 
       <MenuDelete
         onSubmit={handleSubmitDelete}
+        list={list}
         open={openDelete}
         onOpen={handleOpenDelete}
         onClose={handleCloseDelete}

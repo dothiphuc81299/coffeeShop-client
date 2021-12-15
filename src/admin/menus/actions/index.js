@@ -1,16 +1,13 @@
 import axios from "axios";
 import { TokenUtils } from "../../../utils/token.utils";
 
-const token = TokenUtils.TOKEN_ADMIN;
+// const token = TokenUtils.TOKEN_ADMIN;
 
-export const getDrink = (payload) => {
+export const getDrink = (params) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/drink",
-        { params: { keyword: "" } },
-        payload
-      )
+        "https://mighty-castle-60848.herokuapp.com/drink",{params})
       .then((response) => {
         const data = response.data.data.data;
         dispatch({
@@ -27,10 +24,17 @@ export const getDrink = (payload) => {
 export const postDrink = (payload) => {
   return async (dispatch) => {
     return axios
-      .post("https://salty-dawn-54578.herokuapp.com/drink", payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      .post("https://mighty-castle-60848.herokuapp.com/drink",  
+        {
+          name: payload.name,
+          price: payload.price,
+          category:payload.category,
+          image:payload.image,
         },
+        {
+          headers: {
+            Authorization: `Bearer ${payload.token}`,
+          },
       })
       .then((response) => {
         const data = response.data.data.data;
@@ -49,7 +53,7 @@ export const updateDrink = (payload) => {
   return async (dispatch) => {
     return axios
       .put(
-        `https://salty-dawn-54578.herokuapp.com/drink/${payload._id}`,
+        `https://mighty-castle-60848.herokuapp.com/drink/${payload._id}`,
         {
           name: payload.name,
           price: payload.price,
@@ -58,7 +62,7 @@ export const updateDrink = (payload) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         }
       )
@@ -78,14 +82,12 @@ export const updateDrink = (payload) => {
 export const deleteDrink = (payload) => {
   return async (dispatch) => {
     return axios
-      .patch(
-        `https://salty-dawn-54578.herokuapp.com/drink/${payload._id}/status`,
-        {
-          _id: payload._id
-        },
+      .delete(
+        `https://mighty-castle-60848.herokuapp.com/drink/${payload._id}`,
+     
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         }
       )

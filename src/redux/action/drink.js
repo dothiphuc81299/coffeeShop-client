@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getListDrink = (params) => {
   return async (dispatch) => {
-    return axios.get('https://salty-dawn-54578.herokuapp.com/drink', { params })
+    return axios.get('https://mighty-castle-60848.herokuapp.com/drink', { params })
       .then(response => {
         const data = response.data.data;
         dispatch({
@@ -11,7 +11,7 @@ export const getListDrink = (params) => {
         })
       })
       .catch(error => {
-        throw (error);
+        throw (error);  
       });
   };
 };

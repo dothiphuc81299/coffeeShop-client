@@ -47,6 +47,8 @@ const CartItem = (props) => {
             quantityInput.current.value = quantity + 1;
           }}>+</button>
       </div>
+
+     
     </div>
   )
 }

@@ -6,6 +6,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import { getListDrink } from '../../../redux/action/drink';
 import { getQuery } from '../../../helpers/search';
 import MenuItem from './MenuItem';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -43,7 +44,8 @@ export default function HomePage(props) {
     const { search } = useLocation();
     const dispatch = useDispatch();
     const { data, handleClickAddToCart, total } = props;
-    const [page, setPage] = React.useState(1);
+    const [page, setPage] = useState(1);
+    //React.useState(0);
     const handleChange = (event, value) => {
       setPage(value);
     };
@@ -55,7 +57,7 @@ export default function HomePage(props) {
         limit: 12,
         page,
       }));
-    }, [search, page]);
+    }, [search]);
 
     return (
       <div className="container">
@@ -63,16 +65,16 @@ export default function HomePage(props) {
           MENU
         </Typography>
         <div className={classes.cols}>
-          {
-            !data.length
-            ? <Typography component="h6" variant="h6" className={classes.noData}>No data</Typography>
-            : data.map((item, index) => <MenuItem key={index} item={item} handleClickAddToCart={handleClickAddToCart}/>)
-          }
+        {
+          !data.length 
+          ? <Typography component="h6" variant="h6" className={classes.noData}>No data</Typography>
+          : data.map((item,index) => <MenuItem  key = { index} item ={item} handleClickAddToCart ={handleClickAddToCart}/>)
+        }
         </div>
         <div className={classes.pagination}>
           <Pagination
             size="large"
-            count={total/12}
+            count={6}
             page={page}
             onChange={handleChange}
           />

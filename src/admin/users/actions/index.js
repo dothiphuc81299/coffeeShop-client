@@ -1,19 +1,19 @@
 import axios from "axios";
 import { TokenUtils } from "../../../utils/token.utils";
 
-const token = TokenUtils.TOKEN_ADMIN;
+
 
 export const getUsers = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/users/list",
+        "https://mighty-castle-60848.herokuapp.com/users/list",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload}`,
           },
         },
-        payload
+        // payload
       )
       .then((response) => {
         const data = response.data.data.data;
@@ -32,13 +32,13 @@ export const deleteUser = (payload) => {
   return async (dispatch) => {
     return axios
       .patch(
-        `https://salty-dawn-54578.herokuapp.com/users/${payload._id}/status`,
+        `https://mighty-castle-60848.herokuapp.com/users/${payload._id}/status`,
         {
           _id: payload._id,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         }
       )

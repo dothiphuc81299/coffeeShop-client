@@ -23,23 +23,23 @@ export default function Footer() {
                         <h6 className="text-white typography-h6 mb-0">Logo</h6>
                     </div>
                     <div className="footer__title-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viver ra maecenas accumsan lacus vel facilisis. </p>
+                        <p>The Coffee® được sinh ra từ niềm đam mê bất tận với hạt cà phê Việt Nam. Qua một chặng đường dài, chúng tôi đã không ngừng mang đến những sản phẩm cà phê thơm ngon, sánh đượm trong không gian thoải mái và lịch sự với mức giá hợp lý. Những ly cà phê của chúng tôi không chỉ đơn thuần là thức uống quen thuộc mà còn mang trên mình một sứ mệnh văn hóa phản ánh một phần nếp sống hiện đại của người Việt Nam </p>
                     </div>
                 </div>
                 <div className="footer__infor">
                     <div className="footer__infor-item">
                         <LocationOnIcon />
-                        <p>Main Road, Building Name, Country</p>
+                        <p>Son Tra, Da Nang, Viet Nam</p>
                     </div>
                     <a className="footer__infor-item" href="mailto:info@companyname.com">
                         <EmailIcon />
-                        <p>info@companyname.com</p>
+                        <p>thecoffeeshop.com</p>
                     </a>
                 </div>
             </div>
             <div className="footer__down">
               <div className="footer__copy">
-                  <p>© Company Name 2021. All rights reserved.</p>
+                  <p>© The coffee shop 2021. All rights reserved.</p>
               </div>
               <div className="footer__social">
                   <ul className="social-list">

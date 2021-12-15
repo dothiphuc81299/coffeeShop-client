@@ -1,14 +1,14 @@
 import axios from "axios";
 import { TokenUtils } from "../../../utils/token.utils";
 
-const token = TokenUtils.TOKEN_ADMIN;
+// const token = TokenUtils.TOKEN_ADMIN;
 
 export const postShift = (payload) => {
   return async (dispatch) => {
     return axios
-      .post("https://salty-dawn-54578.herokuapp.com/shift", payload, {
+      .post("https://mighty-castle-60848.herokuapp.com/shift", payload, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${payload.token}`,
         },
       })
       .then((response) => {
@@ -28,7 +28,7 @@ export const getShift = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/shift",
+        "https://mighty-castle-60848.herokuapp.com/shift",
         {
           params: {
             staff: "60710a93e3d1a8fe20caea97",
@@ -38,7 +38,7 @@ export const getShift = (payload) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         },
         payload

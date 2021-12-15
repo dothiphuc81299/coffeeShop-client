@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getListOrder = (payload) => {
   return async (dispatch) => {
-    return axios.get('https://salty-dawn-54578.herokuapp.com/orders/me', {
+    return axios.get('https://mighty-castle-60848.herokuapp.com/orders/me', {
       headers: {
         'Authorization': `Bearer ${payload}`
       }

@@ -6,48 +6,78 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
+import { useEffect } from "react";
 import coffeeCup from "../../../assets/images/commons/coffeeCup.jpg";
+
 import CardActionsCate from "./CardActionsCate";
+import CategoryDelete from "./CardDelete";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import { DateFormat, DateUtils } from "../../../utils";
+import Paper from "@material-ui/core/Paper";
+
 
 const useStyles = makeStyles({
-  root: {
-    width: 280
-  },
-  media: {
-    height: 280
-  },
-  grid: {
-    flexGrow: 1,
-    margin: "auto",
-    display: "block",
+  table: {
+    minWidth: 650,
   },
 });
-
 const CategoryCard = (props) => {
-  const { category } = props;
-
+  const { list, total } = props;
+  
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Grid container justifyContent="center">
-        <Grid item xs={3}>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia className={classes.media} image={coffeeCup} />
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell style={{ fontWeight: "bold" }}>#</TableCell>
+            <TableCell style={{ fontWeight: "bold" }} align="center">
+              Name
+            </TableCell>
 
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="h2">
-                  {category.name}
-                </Typography>
-              </CardContent>
+            <TableCell style={{ fontWeight: "bold" }} align="center">
+              Created At
+            </TableCell>
+            <TableCell
+              style={{ fontWeight: "bold" }}
+              align="center"
+            ></TableCell>
+            <TableCell
+              style={{ fontWeight: "bold" }}
+              align="center"
+            ></TableCell>
+          </TableRow>
+        </TableHead>
 
-              <CardActionsCate category={category} />
-            </CardActionArea>
-          </Card>
-        </Grid>
-      </Grid>
-    </React.Fragment>
+        <TableBody>
+          {list.map((category) => (
+            <TableRow>
+              <TableCell> </TableCell>
+              <TableCell align="center">{category.name}</TableCell>
+              <TableCell align="center">
+                {DateUtils.format(
+                  category.createdAt,
+                  DateFormat.YYYY_MM_DD_hh_mm_ss
+                )}
+              </TableCell>
+              <TableCell align="center">
+                <CardActionsCate category={category} />
+              </TableCell>
+              <TableCell align="center">
+                <CategoryDelete category={category}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 export default CategoryCard;

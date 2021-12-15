@@ -1,5 +1,8 @@
 const initialState = {
   listInCart: JSON.parse(sessionStorage.getItem("cart")) || [],
+  isPoint : false,
+  point :0,
+  fullCart :null
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -12,6 +15,8 @@ const cartReducer = (state = initialState, action) => {
       } else {
         listInCart.push({...action.payload, quantity: 1 });
       }
+
+     
       return {
         ...state,
         listInCart,
@@ -32,10 +37,23 @@ const cartReducer = (state = initialState, action) => {
         listInCart,
       }
     }
+
+    // case "SET_POINT" : {
+    //   let fullCart = [...action.fullCart];
+    //   fullCart.push(action.payload);
+
+    //   return {
+    //     ...state,
+    //     fullCart:fullCart,
+    //   };
+    // }
+
     case "RESET_CART": {
       return {
         ...state,
-        listInCart: []
+        listInCart: [],
+        is_point : false,
+        point :0 ,
       }
     }
     default: {

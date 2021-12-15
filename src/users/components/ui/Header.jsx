@@ -12,6 +12,7 @@ import avatarUser from '../../../assets/images/commons/icon_user.png';
 import Cart from "./Cart";
 import { logout } from "../../../redux/action/auth";
 import { getQuery } from '../../../helpers/search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const useStyles = makeStyles((theme) => ({ 
   cartIcon: {
@@ -113,6 +114,7 @@ export default function Header() {
               <ul className="mb-0 flex-center">
                 <li><Link to="/" onClick={toggle} className={isActive === "/" ? "active" : null}>Home</Link></li>
                 <li><Link to="/menu" onClick={toggle} className={isActive === "/menu" ? "active" : null}>Menu</Link></li>
+                <li><Link to="/about-us" onClick={toggle} className={isActive === "/about-us" ? "active" : null}>About us</Link></li>
                 { token && <li><Link to="/user/detail" onClick={toggle} className={isActive === "/user/detail" ? "active" : null}>Account</Link></li> }
               </ul>
             </div>
@@ -133,7 +135,7 @@ export default function Header() {
                 </React.Fragment>
                 <li className="mr-20">
                   <Badge badgeContent={listInCart.length} color="primary" showZero className={classes.cartIcon}>
-                    <LocalMallOutlinedIcon onClick={toggleDrawer(true)} />
+                    <ShoppingCartIcon onClick={toggleDrawer(true)} />
                   </Badge>
                 </li>
               </ul>

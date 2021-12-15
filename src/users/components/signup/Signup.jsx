@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import TextField from '@material-ui/core/TextField';
 import { useFormik } from "formik";
 import * as yup from 'yup';
-import MapAuthComplete from '../ui/MapAuthComplete';
-import { withScriptjs } from 'react-google-maps';
+
 import logo from "../../../assets/images/commons/logo.png";
 
 
@@ -31,7 +30,6 @@ const validationSchema = yup.object().shape({
 
 export default function Login(props) 
 {
-  const MapLoader = withScriptjs(MapAuthComplete);
   const { handleSubmitForm, status } = props;
   const dispatch = useDispatch();
   let history = useHistory();
@@ -65,9 +63,9 @@ export default function Login(props)
   });
 
   const handleAddressChange = (value) => {
-    const { position, address } = value;
+    const {  address } = value;
     formik.setFieldValue('address', address);
-    formik.setFieldValue('position', position);
+    // formik.setFieldValue('position', position);
   }
 
   return (
@@ -125,15 +123,21 @@ export default function Login(props)
                 helperText={formik.touched.phone && formik.errors.phone}
               />
             </div>
-            <div className="flex-center mb-12 w-100">
-              <MapLoader
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGZOhb6qWmy1PLYJrLmtBho18Vasw0C_U&libraries=places"
-                loadingElement={<div style={{ height: `100%` }}/>}
-                addressProp={formik.values.address}
-                positionProp={formik.values.position}
-                setInfoUser={(value) => handleAddressChange(value)}
+
+            <div className="flex-center mb-12">
+              <TextField 
+                fullWidth 
+                variant="outlined" 
+                label="Address"
+                name="address"
+                type="text"
+                value={formik.values.address}
+                onChange={formik.handleChange}
+                error={formik.touched.address && Boolean(formik.errors.address)}
+                helperText={formik.touched.address && formik.errors.address}
               />
             </div>
+        
             <label className="group-checkbox flex-center mb-32">
               <input 
                 type="checkbox" 

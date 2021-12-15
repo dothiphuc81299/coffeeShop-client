@@ -34,10 +34,10 @@ const menuAdminReducer = (state = initialState, action) => {
       };
     }
     case "DELETE_DRINK": {
-      let drinkData = [...state.drinks];
       return {
-        ...state,
-        drinks: drinkData,
+        drinks:[
+          ...state.drinks.filter(drinks => drinks !== action.payload)
+        ]
       };
     }
     default: {

@@ -9,7 +9,7 @@ import ResponsiveDrawer from "../../components/ResponsiveDrawer";
 import { getEvents, postEvent } from "../actions";
 import EventCreate from "../components/EventCreate";
 import EventItem from "../components/EventItem";
-
+import { getInforByToken } from "../../../redux/action/inforStaff";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -35,8 +35,12 @@ const EventPage = () => {
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.authAdmin.token);
 
   const classes = useStyles();
+  useEffect(() => {
+    dispatch(getInforByToken(token));
+  }, [token]);
 
   useEffect(() => {
     dispatch(getEvents());
@@ -45,7 +49,11 @@ const EventPage = () => {
   const events = useSelector((state) => state.eventAdmin.events);
 
   const handleSubmit = (payload) => {
-    dispatch(postEvent(payload));
+    dispatch(postEvent({
+      token,
+      name:payload.name,
+      desc:payload.desc,
+    }));
     setOpen(false);
   };
 

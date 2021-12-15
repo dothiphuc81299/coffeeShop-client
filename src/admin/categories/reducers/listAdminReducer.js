@@ -29,10 +29,16 @@ const listAdminReducer = (state = initialState, action) => {
         list: listData,
       };
     }
-    default: {
-      return state;
+    
+    case "DELETE_CATEGORY": 
+      return {
+        list:[
+          ...state.list.filter(list => list !== action.payload)
+        ]
+      };
+    default:
+        return state;
     }
-  }
 };
 
 export default listAdminReducer;

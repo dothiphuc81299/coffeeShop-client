@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeQuantityItem } from '../../../redux/action/cart';
-
+import { addToCart } from '../../../redux/action/cart';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "calc(25% - 32px)",
@@ -84,7 +84,7 @@ export default function MenuItem(props) {
   const dispatch = useDispatch();
 
   const handleChangeQuantity = (payload) => {
-    dispatch(changeQuantityItem(payload))
+    dispatch(addToCart(payload))
   }
 
   useEffect(() => {

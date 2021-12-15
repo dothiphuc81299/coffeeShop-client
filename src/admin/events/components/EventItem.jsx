@@ -8,14 +8,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AccessAlarmIcon from "@material-ui/icons/AccessAlarm";
 import EditIcon from "@material-ui/icons/Edit";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { DateFormat, DateUtils } from "../../../utils";
 import EventUpdate from "./EventUpdate";
 import EventDelete from "./EventDelete";
 import { deleteEvent, updateEvent } from "../actions";
 import DeleteIcon from "@material-ui/icons/Delete";
-
+import { getInforByToken } from "../../../redux/action/inforStaff";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -61,13 +61,23 @@ const EventItem = (props) => {
   const [openUpdate, setOpenUpdate] = useState(false);
 
   const [openDelete, setOpenDelete] = useState(false);
-
+  const token = useSelector((state) => state.authAdmin.token);
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getInforByToken(token));
+  }, [token]);
   const handleSubmitUpdate = (payload) => {
-    dispatch(updateEvent(payload));
+    dispatch(
+      updateEvent({
+        token,
+        _id: payload._id,
+        name: payload.name,
+        desc: payload.desc,
+      })
+    );
     setOpenUpdate(false);
   };
 
@@ -80,7 +90,12 @@ const EventItem = (props) => {
   };
 
   const handleSubmitDelete = (payload) => {
-    dispatch(deleteEvent(payload));
+    dispatch(
+      deleteEvent({
+        token,
+        _id: payload._id,
+      })
+    );
     setOpenDelete(false);
     window.location.reload();
   };

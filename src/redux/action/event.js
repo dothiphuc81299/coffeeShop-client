@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getEvent = () => {
   return async (dispatch) => {
-    return axios.get('https://salty-dawn-54578.herokuapp.com/event')
+    return axios.get('https://mighty-castle-60848.herokuapp.com/event')
       .then(response => {
         const data = response.data.data.data;
         dispatch({

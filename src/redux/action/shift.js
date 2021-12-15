@@ -4,7 +4,7 @@ export const getShift = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        `https://salty-dawn-54578.herokuapp.com/shift?staff=60710a93e3d1a8fe20caea97&startAt=${payload.startAt}&endAt=${payload.endAt}`,
+        `https://mighty-castle-60848.herokuapp.com/shift?staff=60710a93e3d1a8fe20caea97&startAt=${payload.startAt}&endAt=${payload.endAt}`,
         {
           headers: {
             Authorization: `Bearer ${payload.token}`,
@@ -27,7 +27,7 @@ export const getShift = (payload) => {
 export const createShift = (payload) => {
   return async (dispatch) => {
     return axios
-      .post(`https://salty-dawn-54578.herokuapp.com/shift`, payload, {
+      .post(`https://mighty-castle-60848.herokuapp.com/shift`, payload, {
         headers: {
           Authorization: `Bearer ${payload.token}`,
         },
@@ -51,7 +51,7 @@ export const getNextShift = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        `https://salty-dawn-54578.herokuapp.com/shift?staff=60710a93e3d1a8fe20caea97&startAt=${payload.startAt}&endAt=${payload.endAt}`,
+        `https://mighty-castle-60848.herokuapp.com/shift?staff=60710a93e3d1a8fe20caea97&startAt=${payload.startAt}&endAt=${payload.endAt}`,
         {
           headers: {
             Authorization: `Bearer ${payload.token}`,
@@ -75,7 +75,7 @@ export const deleteShift = (payload) => {
   return async (dispatch) => {
     return axios
       .delete(
-        `https://salty-dawn-54578.herokuapp.com/shift/${payload.id}`,
+        `https://mighty-castle-60848.herokuapp.com/shift/${payload.id}`,
         {
           headers: {
             Authorization: `Bearer ${payload.token}`,

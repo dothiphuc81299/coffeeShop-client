@@ -1,20 +1,34 @@
 import axios from "axios";
 import { TokenUtils } from "../../../utils/token.utils";
 
-const token = TokenUtils.TOKEN_ADMIN;
+// const token = TokenUtils.TOKEN_ADMIN;
 
-export const getOrders = (payload) => {
+export const getOrders = (params) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/orders",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-        { params: { status: "delivery" } },
-        payload
+        "https://mighty-castle-60848.herokuapp.com/orders",{params}, 
+        //   headers: {
+        //     Authorization: `Bearer ${payload.token}`,
+        //   },
+        // },
+        // {
+        //   params:
+        //   {
+        //     page:payload.page,
+        //     limit:payload.limit
+        //   },      
+        // }
+        // {
+        //   params: {
+        //     page : payload.page,
+        //   }
+        // }
+        
+        // { params: { status: "pending"|| "success" }},
+       
+       
+        
       )
       .then((response) => {
         const data = response.data.data.order;

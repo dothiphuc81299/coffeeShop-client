@@ -26,8 +26,9 @@ const CategoryCreate = (props) => {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
-      <Grid container>
+    // <React.Fragment>
+    //   <Grid container>
+    <div >
         <Button
           variant="contained"
           onClick={onOpen}
@@ -41,7 +42,7 @@ const CategoryCreate = (props) => {
         >
           Add Category
         </Button>
-      </Grid>
+      {/* // </Grid> */}
 
       {open && (
         <Dialog open={open} fullScreen>
@@ -62,7 +63,7 @@ const CategoryCreate = (props) => {
           <CategoryCreateDialog onSubmit={onSubmit} />
         </Dialog>
       )}
-    </React.Fragment>
+  </div>
   );
 };
 export default CategoryCreate;

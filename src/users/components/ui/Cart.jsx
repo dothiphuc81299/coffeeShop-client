@@ -7,8 +7,8 @@ import List from "@material-ui/core/List";
 import { Typography } from "@material-ui/core";
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { changeQuantityItem } from "../../../redux/action/cart";
-
+import { changeQuantityItem,postNewOrder } from "../../../redux/action/cart";
+import Checkbox from '@mui/material/Checkbox';
 const useStyles = makeStyles({
   list: {
     width: 300,
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     marginTop: 15
   }
 });
-
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const Cart = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -61,6 +61,7 @@ const Cart = (props) => {
     dispatch(changeQuantityItem(payload))
   }
 
+
   const list = () => (
     <div
       className={classes.list}
@@ -77,6 +78,9 @@ const Cart = (props) => {
             <CartItem item={item} key={index} handleChangeQuantity={handleChangeQuantity}/>
           ))}
         </List>
+      </div>
+      <div>
+   
       </div>
       <div className={classes.footer}>
         <div className={classes.total}>

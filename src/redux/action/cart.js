@@ -19,11 +19,22 @@ export const changeQuantityItem = (payload) => {
   }
 }
 
+// export const addPointToOrder = (payload) => {
+//   return async (dispatch) => {
+//     dispatch ({
+//       type :""
+//     }
+//     )
+//   }
+// }
+
 export const postNewOrder = (payload) => {
 
   return async (dispatch) => {
-    return axios.post('https://salty-dawn-54578.herokuapp.com/orders', {
-      drink: payload.drink
+    return axios.post('https://mighty-castle-60848.herokuapp.com/orders', {
+      drink: payload.drink,
+      // is_point: payload.is_point,
+      // point: payload.point
     }, {
       headers: {
         'Authorization': `Bearer ${payload.token}`
@@ -32,11 +43,13 @@ export const postNewOrder = (payload) => {
       .then(response => {
         toast.success("Mua hàng thành công!")
         dispatch({
-          type: "RESET_CART"
+          type: "RESET_CART",
+          payload: payload
         })
       })
       .catch(error => {
         toast.error("Đã xảy ra lỗi. Vui lòng thử lại!")
+        throw(error)
       });
   };
 }

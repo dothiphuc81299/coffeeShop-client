@@ -1,16 +1,16 @@
 import axios from "axios";
 import { TokenUtils } from "../../../utils/token.utils";
 
-const token = TokenUtils.TOKEN_ADMIN;
+// const token = TokenUtils.TOKEN_ADMIN;
 
 export const getRoles = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/staffRole",
+        "https://mighty-castle-60848.herokuapp.com/staffRole",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         },
         payload
@@ -31,9 +31,9 @@ export const getRoles = (payload) => {
 export const postRole = (payload) => {
   return async (dispatch) => {
     return axios
-      .post("https://salty-dawn-54578.herokuapp.com/staffRole", payload, {
+      .post("https://mighty-castle-60848.herokuapp.com/staffRole", payload, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${payload.token}`,
         },
       })
       .then((response) => {
@@ -53,10 +53,10 @@ export const getPermissions = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/staffRole/permissions",
+        "https://mighty-castle-60848.herokuapp.com/staffRole/permissions",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         },
         payload
@@ -78,14 +78,14 @@ export const updateRole = (payload) => {
   return async (dispatch) => {
     return axios
       .put(
-        `https://salty-dawn-54578.herokuapp.com/staffRole/${payload._id}`,
+        `https://mighty-castle-60848.herokuapp.com/staffRole/${payload._id}`,
         {
           name: payload.name,
           permissions: payload.permissions,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         }
       )

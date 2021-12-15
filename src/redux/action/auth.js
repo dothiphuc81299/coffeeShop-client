@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const sendPostLogin = (payload) => {
   return async (dispatch) => {
-    return axios.post('https://salty-dawn-54578.herokuapp.com/users/log-in', payload)
+    return axios.post('https://mighty-castle-60848.herokuapp.com/users/log-in', payload)
       .then(response => {
         const data = response.data.data.data;
         dispatch({
@@ -21,7 +21,7 @@ export const sendPostLogin = (payload) => {
 
 export const getInforByToken = (payload) => {
   return async (dispatch) => {
-    return axios.get('https://salty-dawn-54578.herokuapp.com/users/me', {
+    return axios.get('https://mighty-castle-60848.herokuapp.com/users/me', {
       headers: {
         'Authorization': `Bearer ${payload}`
       }
@@ -53,7 +53,7 @@ export const sendPostSignup = (payload) => {
     dispatch({
       type: "RESET_STATUS"
     })
-    return axios.post('https://salty-dawn-54578.herokuapp.com/users/sign-up', payload)
+    return axios.post('https://mighty-castle-60848.herokuapp.com/users/sign-up', payload)
       .then(response => {
         dispatch({
           type: "SET_STATUS",
@@ -64,6 +64,7 @@ export const sendPostSignup = (payload) => {
         })
       })
       .catch(error => {
+        toast.error("Username or phone already exists.")
         throw (error);
       });
   }
@@ -71,11 +72,11 @@ export const sendPostSignup = (payload) => {
 
 export const sendPostUpdateInfor = (payload) => {
   return async (dispatch) => {
-    return axios.put('https://salty-dawn-54578.herokuapp.com/users/update', {
+    return axios.put('https://mighty-castle-60848.herokuapp.com/users/me/update', {
       username: payload.username,
       address: payload.address,
       phone: payload.phone,
-      position: payload.position,
+      //  currentPoint: payload.currentPoint,
     }, {
       headers: {
         'Authorization': `Bearer ${payload.token}`
@@ -96,7 +97,7 @@ export const sendPostUpdateInfor = (payload) => {
 
 export const sendPostUpdatePassword = (payload) => {
   return async (dispatch) => {
-    return axios.put('https://salty-dawn-54578.herokuapp.com/users/me/password',{
+    return axios.put('https://mighty-castle-60848.herokuapp.com/users/me/password',{
       password: payload.password,
       newPassword: payload.newPassword,
       newPasswordAgain: payload.newPasswordAgain,

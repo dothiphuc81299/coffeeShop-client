@@ -1,16 +1,16 @@
 import axios from "axios";
 import { TokenUtils } from "../../../utils/token.utils";
 
-const token = TokenUtils.TOKEN_ADMIN;
+// const token = TokenUtils.TOKEN_ADMIN;
 
 export const getListStaff = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://salty-dawn-54578.herokuapp.com/staff",
+        "https://mighty-castle-60848.herokuapp.com/staff",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         },
         payload
@@ -31,9 +31,9 @@ export const getListStaff = (payload) => {
 export const postStaff = (payload) => {
   return async (dispatch) => {
     return axios
-      .post("https://salty-dawn-54578.herokuapp.com/staff", payload, {
+      .post("https://mighty-castle-60848.herokuapp.com/staff", payload, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${payload.token}`,
         },
       })
       .then((response) => {
@@ -53,7 +53,7 @@ export const updateStaff = (payload) => {
   return async (dispatch) => {
     return axios
       .put(
-        `https://salty-dawn-54578.herokuapp.com/staff/${payload._id}`,
+        `https://mighty-castle-60848.herokuapp.com/staff/${payload._id}`,
         {
           username: payload.username,
           password: payload.password,
@@ -63,7 +63,7 @@ export const updateStaff = (payload) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         }
       )
@@ -84,13 +84,13 @@ export const deleteStaff = (payload) => {
   return async (dispatch) => {
     return axios
       .patch(
-        `https://salty-dawn-54578.herokuapp.com/staff/${payload._id}/status`,
+        `https://mighty-castle-60848.herokuapp.com/staff/${payload._id}/status`,
         {
           _id: payload._id,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${payload.token}`,
           },
         }
       )

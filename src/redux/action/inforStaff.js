@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 export const getInforByToken = (payload) => {
   return async (dispatch) => {
-    return axios.get('https://salty-dawn-54578.herokuapp.com/staff/me', {
+    return axios.get('https://mighty-castle-60848.herokuapp.com/staff/me', {
       headers: {
         'Authorization': `Bearer ${payload}`
       }
@@ -23,7 +23,7 @@ export const getInforByToken = (payload) => {
 
 export const sendPostUpdateInforStaff = (payload) => {
   return async (dispatch) => {
-    return axios.put('https://salty-dawn-54578.herokuapp.com/staff/update',{
+    return axios.put('https://mighty-castle-60848.herokuapp.com/staff/update',{
       username: payload.username,
       address: payload.address,
       phone: payload.phone
@@ -43,7 +43,7 @@ export const sendPostUpdateInforStaff = (payload) => {
 
 export const sendPostUpdatePasswordStaff = (payload) => {
   return async (dispatch) => {
-    return axios.put('https://salty-dawn-54578.herokuapp.com/staff/me/password',{
+    return axios.put('https://mighty-castle-60848.herokuapp.com/staff/me/password',{
       password: payload.password,
       newPassword: payload.newPassword,
       newPasswordAgain: payload.newPasswordAgain,

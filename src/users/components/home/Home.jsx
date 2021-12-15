@@ -92,74 +92,7 @@ export default function Home(props) {
                     </div>
                 </section>
 
-                <section className="choiceAndEnjoy">
-                    <div className="container">
-                        <div className="choiceAndEnjoy__text">
-                            <div className="choiceAndEnjoy__text-title">
-                                <h1 className="typography-h1">Choice & enjoy</h1>
-                            </div>
-                            <p className="choiceAndEnjoy__text-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                        </div>
-
-                        <div className="listFood">
-                            <div className="listFood-item">
-                                <div className="food-item">
-                                    <div className="food-item__image">
-                                        <img src={coffee1} alt="Image Food"/>
-                                    </div>
-                                    <div className="food-item__text">
-                                        <div className="food-item__text-title">
-                                            <h6 className="typography-h6">Lorem ipsum dolor</h6>
-                                        </div>
-                                        <div className="food-item__text-sub">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                                        </div>
-                                    </div>
-                                    <div className="food-item__button">
-                                        <Link to="/menu" className="button button-yellow">Order now</Link>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="listFood-item">
-                                <div className="food-item">
-                                    <div className="food-item__image">
-                                        <img src={coffee2} alt="Image Food"/>
-                                    </div>
-                                    <div className="food-item__text">
-                                        <div className="food-item__text-title">
-                                            <h6 className="typography-h6">Lorem ipsum dolor</h6>
-                                        </div>
-                                        <div className="food-item__text-sub">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                                        </div>
-                                    </div>
-                                    <div className="food-item__button">
-                                        <Link to="/menu" className="button button-yellow">Order now</Link>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="listFood-item">
-                                <div className="food-item">
-                                    <div className="food-item__image">
-                                        <img src={coffee3} alt="Image Food"/>
-                                    </div>
-                                    <div className="food-item__text">
-                                        <div className="food-item__text-title">
-                                            <h6 className="typography-h6">Lorem ipsum dolor</h6>
-                                        </div>
-                                        <div className="food-item__text-sub">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                                        </div>
-                                    </div>
-                                    <div className="food-item__button">
-                                        <Link to="/menu" className="button button-yellow">Order now</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+              
             </main>
         </div>
     )
