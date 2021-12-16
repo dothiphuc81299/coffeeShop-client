@@ -12,6 +12,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import DoneIcon from "@material-ui/icons/Done";
 import React from "react";
 import { DateFormat, DateUtils } from "../../../utils";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const useStyles = makeStyles({
   table: {
@@ -24,11 +25,45 @@ const BasicTable = (props) => {
 
   const classes = useStyles();
 
+  const checkStatusLabel = (param) => {
+    switch (param) {
+      case "success":
+        return "Success";
+      case "cancel":
+        return "Cancel";
+      default:
+        return "Pending";
+    }
+  };
+
+  const checkStatusColor = (param) => {
+    switch (param) {
+      case "success":
+        return "primary";
+      case "cancel":
+        return "secondary";
+      default:
+        return "secondary";
+    }
+  };
+
+  const checkStatusIcon = (param) => {
+    switch (param) {
+      case "success":
+        return <DoneIcon />;
+      case "cancel":
+        return <CancelIcon />;
+      default:
+        return <AccessTimeIcon />;
+    }
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
+          <TableCell style={{ fontWeight: "bold" }}>#</TableCell>
             <TableCell style={{ fontWeight: "bold" }}>Username</TableCell>
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Address
@@ -36,7 +71,7 @@ const BasicTable = (props) => {
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Drinks
             </TableCell>
-            <TableCell style={{ fontWeight: "bold" }} align="center">
+            <TableCell style={{width: '1px', whiteSpace: 'nowrap',fontWeight: "bold"}}>
               Total Price
             </TableCell>
             <TableCell style={{ fontWeight: "bold" }} align="center">
@@ -45,25 +80,28 @@ const BasicTable = (props) => {
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Created At
             </TableCell>
+         
+
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {orders.map((order) => (
-            <TableRow>
-              <TableCell>{order.user.username}</TableCell>
-              <TableCell align="center">{order.user.address}</TableCell>
-              <TableCell align="left">
-                {order.drink.map((item, index) => (
+          {orders.map((order,index) => (
+            <TableRow >
+               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{index + 1}</TableCell>
+              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.username}</TableCell>
+              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.address}</TableCell>
+              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>
+                {order.drink.map((item) => (
                   <React.Fragment>
-                    <div style={{ fontWeight: 600 }}>
-                      {index + 1}. {item.name}
+                    <div >
+                      {item.name}
                     </div>
                     <br />
-                    <div>Price: {item.price}</div>
+                    {/* <div>Price: {item.price}</div>
                     <br />
                     <div>Quantity: {item.quantity}</div>
-                    <br />
+                    <br /> */}
                   </React.Fragment>
                 ))}
               </TableCell>
@@ -71,22 +109,18 @@ const BasicTable = (props) => {
               <TableCell align="center">
                 <Chip
                   size="small"
-                  label={order.status === "success" ? "Success" : "Pending"}
-                  color={order.status === "success" ? "primary" : "secondary"}
-                  icon={
-                    order.status === "success" ? (
-                      <DoneIcon />
-                    ) : (
-                      <AccessTimeIcon />
-                    )
-                  }
+                  label={checkStatusLabel(order.status)}
+                  color={checkStatusColor(order.status)}
+                  icon={checkStatusIcon(order.status)}
                 />
               </TableCell>
-              <TableCell align="center">
+              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}} >
                 {DateUtils.format(
                   order.createdAt,
                   DateFormat.YYYY_MM_DD_hh_mm_ss
                 )}
+        
+               
               </TableCell>
             </TableRow>
           ))}

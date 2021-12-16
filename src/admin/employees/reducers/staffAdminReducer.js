@@ -20,12 +20,13 @@ const staffAdminReducer = (state = initialState, action) => {
     }
     case "UPDATE_STAFF": {
       let staffData = [...state.listStaff];
-      const staffIsList = staffData.find(
-        (item) => item._id === action.payload._id
-      );
-      staffData.splice(staffData.indexOf(staffIsList), 1, {
-        ...action.payload,
-      });
+      // const staffIsList = staffData.find(
+      //   (item) => item._id === action.payload._id
+      // );
+      
+      // staffData.splice(staffData.indexOf(staffIsList), 1, {
+      //   ...action.payload,
+      // });
       return {
         ...state,
         listStaff: staffData,

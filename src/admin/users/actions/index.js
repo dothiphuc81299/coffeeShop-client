@@ -3,16 +3,12 @@ import { TokenUtils } from "../../../utils/token.utils";
 
 
 
-export const getUsers = (payload) => {
+export const getUsers = (params) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://mighty-castle-60848.herokuapp.com/users/list",
-        {
-          headers: {
-            Authorization: `Bearer ${payload}`,
-          },
-        },
+        "https://mighty-castle-60848.herokuapp.com/users/list", {params}
+       
         // payload
       )
       .then((response) => {

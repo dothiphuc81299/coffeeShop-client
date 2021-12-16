@@ -23,6 +23,7 @@ const listAdminReducer = (state = initialState, action) => {
       const listIsList = listData.find(
         (item) => item._id === action.payload._id
       );
+      
       listData.splice(listData.indexOf(listIsList), 1, { ...action.payload });
       return {
         ...state,

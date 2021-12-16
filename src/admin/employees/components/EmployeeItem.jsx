@@ -9,19 +9,20 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { DateFormat, DateUtils } from "../../../utils";
 import avatar from "../../svg/avatar.jpg";
 import { deleteStaff, updateStaff } from "../actions";
 import PermissionDialog from "../dialogs/PermissionDialog";
 import EmployeeUpdate from "./EmployeeUpdate";
 import EmployeeDelete from "./EmployeeDelete";
-
+import { getInforByToken } from "../../../redux/action/inforStaff";
+import {getListStaff} from "../../employees/actions/index";
 const useStyles = makeStyles(() => ({
   root: {
     width: 320,
-    height: 350
+    height: 350,
   },
   media: {
     height: 0,
@@ -49,14 +50,26 @@ const EmployeeItem = (props) => {
   const [openUpdate, setOpenUpdate] = useState(false);
 
   const [openDelete, setOpenDelete] = useState(false);
-
+  const token = useSelector((state) => state.authAdmin.token);
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getInforByToken(token));
+  }, [token]);
+
+ 
   const handleSubmitUpdate = (payload) => {
-    dispatch(updateStaff(payload));
+    dispatch(
+      updateStaff({
+        token,
+        _id: payload._id,
+        role: payload.role,
+      })
+    );
     setOpenUpdate(false);
+    window.location.reload();
   };
 
   const handleOpenUpdate = () => {
@@ -68,7 +81,12 @@ const EmployeeItem = (props) => {
   };
 
   const handleSubmitDelete = (payload) => {
-    dispatch(deleteStaff(payload));
+    dispatch(
+      deleteStaff({
+        token,
+        _id: payload._id,
+      })
+    );
     setOpenDelete(false);
     window.location.reload();
   };
@@ -144,12 +162,12 @@ const EmployeeItem = (props) => {
       </CardContent>
 
       <EmployeeUpdate
+        staff={staff}
+        roles={roles}
         onSubmit={handleSubmitUpdate}
         open={openUpdate}
         onOpen={handleOpenUpdate}
         onClose={handleCloseUpdate}
-        staff={staff}
-        roles={roles}
       />
 
       <EmployeeDelete

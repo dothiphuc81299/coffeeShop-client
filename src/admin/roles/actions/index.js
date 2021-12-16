@@ -7,13 +7,7 @@ export const getRoles = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://mighty-castle-60848.herokuapp.com/staffRole",
-        {
-          headers: {
-            Authorization: `Bearer ${payload.token}`,
-          },
-        },
-        payload
+        "https://mighty-castle-60848.herokuapp.com/staffRole"
       )
       .then((response) => {
         const data = response.data.data.staffRoles;
@@ -31,11 +25,16 @@ export const getRoles = (payload) => {
 export const postRole = (payload) => {
   return async (dispatch) => {
     return axios
-      .post("https://mighty-castle-60848.herokuapp.com/staffRole", payload, {
-        headers: {
-          Authorization: `Bearer ${payload.token}`,
+      .post("https://mighty-castle-60848.herokuapp.com/staffRole",  
+        {
+          name: payload.name,
+          permissions: payload.permissions,
         },
-      })
+        {
+          headers: {
+            Authorization: `Bearer ${payload.token}`,
+          },
+        })
       .then((response) => {
         const data = response.data.data.role;
         dispatch({
@@ -54,11 +53,11 @@ export const getPermissions = (payload) => {
     return axios
       .get(
         "https://mighty-castle-60848.herokuapp.com/staffRole/permissions",
-        {
-          headers: {
-            Authorization: `Bearer ${payload.token}`,
-          },
-        },
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${payload.token}`,
+        //   },
+        // },
         payload
       )
       .then((response) => {

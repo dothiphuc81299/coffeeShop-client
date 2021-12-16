@@ -8,12 +8,8 @@ export const getListStaff = (payload) => {
     return axios
       .get(
         "https://mighty-castle-60848.herokuapp.com/staff",
-        {
-          headers: {
-            Authorization: `Bearer ${payload.token}`,
-          },
-        },
-        payload
+  
+        
       )
       .then((response) => {
         const data = response.data.data.staffs;
@@ -31,7 +27,15 @@ export const getListStaff = (payload) => {
 export const postStaff = (payload) => {
   return async (dispatch) => {
     return axios
-      .post("https://mighty-castle-60848.herokuapp.com/staff", payload, {
+      .post("https://mighty-castle-60848.herokuapp.com/staff",
+      {
+        username: payload.username,
+        password: payload.password,
+        phone: payload.phone,
+        address: payload.address,
+        role: payload.role,
+      },
+        {
         headers: {
           Authorization: `Bearer ${payload.token}`,
         },
@@ -55,10 +59,10 @@ export const updateStaff = (payload) => {
       .put(
         `https://mighty-castle-60848.herokuapp.com/staff/${payload._id}`,
         {
-          username: payload.username,
-          password: payload.password,
-          phone: payload.phone,
-          address: payload.address,
+          // username: payload.username,
+          // password: payload.password,
+          // phone: payload.phone,
+          // address: payload.address,
           role: payload.role,
         },
         {
@@ -83,11 +87,9 @@ export const updateStaff = (payload) => {
 export const deleteStaff = (payload) => {
   return async (dispatch) => {
     return axios
-      .patch(
-        `https://mighty-castle-60848.herokuapp.com/staff/${payload._id}/status`,
-        {
-          _id: payload._id,
-        },
+      .delete(
+        `https://mighty-castle-60848.herokuapp.com/staff/${payload._id}`,
+       
         {
           headers: {
             Authorization: `Bearer ${payload.token}`,

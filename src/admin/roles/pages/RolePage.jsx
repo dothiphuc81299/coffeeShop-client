@@ -10,7 +10,7 @@ import ResponsiveDrawer from "../../components/ResponsiveDrawer";
 import { getPermissions, getRoles, postRole } from "../actions";
 import RoleItem from "../components/RoleItem";
 import RoleCreate from "../components/RoleCreate";
-
+import { getInforByToken } from "../../../redux/action/inforStaff";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -33,8 +33,11 @@ const useStyles = makeStyles((theme) => ({
 
 const RolePage = () => {
   const [open, setOpen] = useState(false);
-
+  const token = useSelector((state) => state.authAdmin.token);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getInforByToken(token));
+  }, [token]);
 
   useEffect(() => {
     dispatch(getRoles());
@@ -45,7 +48,11 @@ const RolePage = () => {
   }, []);
 
   const handleSubmit = (payload) => {
-    dispatch(postRole(payload));
+    dispatch(postRole({
+      token,
+      name: payload.name,
+      permissions:payload.permissions,
+    }));
     setOpen(false);
   };
 
@@ -87,7 +94,7 @@ const RolePage = () => {
         />
         <Grid container spacing={2}>
           {roles.map((role) => (
-            <Grid item xs={3}>
+            <Grid >
               <RoleItem role={role} permissions={permissions} />
             </Grid>
           ))}

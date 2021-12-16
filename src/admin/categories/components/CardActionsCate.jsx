@@ -16,12 +16,12 @@ const CardActionsCate = (props) => {
   useEffect(() => {
     dispatch(getInforByToken(token));
   }, [token]);
+
   const handleSubmitUpdate = (payload) => {
     dispatch(updateList({
       token,
       _id : payload._id,
       name:payload.name,
-
     }));
     setOpenUpdate(false);
   };

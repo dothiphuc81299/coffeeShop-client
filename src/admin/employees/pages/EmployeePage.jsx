@@ -11,7 +11,7 @@ import { getRoles } from "../../roles/actions";
 import { getListStaff, postStaff } from "../actions";
 import EmployeeCreate from "../components/EmployeeCreate";
 import EmployeeItem from "../components/EmployeeItem";
-
+import { getInforByToken } from "../../../redux/action/inforStaff";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const EmployeePage = () => {
   const [open, setOpen] = useState(false);
-
+  const token = useSelector((state) => state.authAdmin.token);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,8 +45,21 @@ const EmployeePage = () => {
     dispatch(getRoles());
   }, []);
 
+  useEffect(() => {
+    dispatch(getInforByToken(token));
+  }, [token]);
+
   const handleSubmit = (payload) => {
-    dispatch(postStaff(payload));
+    dispatch(
+      postStaff({
+        token,
+        username: payload.username,
+        password: payload.password,
+        phone: payload.phone,
+        address: payload.address,
+        role: payload.role,
+      })
+    );
     setOpen(false);
   };
 
@@ -90,7 +103,7 @@ const EmployeePage = () => {
         <Grid container spacing={5}>
           {listStaff.map((staff) => (
             <Grid item>
-              <EmployeeItem staff={staff} roles={roles}/>
+              <EmployeeItem staff={staff} roles={roles} />
             </Grid>
           ))}
         </Grid>

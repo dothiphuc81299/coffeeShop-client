@@ -20,7 +20,6 @@ const EmployeeUpdateDialog = (props) => {
   const formik = useFormik({
     initialValues: {
       username: staff.username,
-      password: "123456",
       phone: staff.phone,
       address: staff.address,
       role: staff.role,
@@ -50,7 +49,7 @@ const EmployeeUpdateDialog = (props) => {
             />
           </Grid>
 
-          <Grid item xs={12} style={{ marginBottom: 16 }}>
+          {/* <Grid item xs={12} style={{ marginBottom: 16 }}>
             <TextField
               name="password"
               type="text"
@@ -63,7 +62,7 @@ const EmployeeUpdateDialog = (props) => {
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
             />
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} style={{ marginBottom: 16 }}>
             <TextField

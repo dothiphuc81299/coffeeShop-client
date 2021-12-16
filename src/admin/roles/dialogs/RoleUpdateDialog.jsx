@@ -19,13 +19,14 @@ const RoleUpdateDialog = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      name: role.name,
-      permissions: role.permissions,
+      name: role.name || null,
+      permissions: null,
     },
     onSubmit: (values) => {
       onSubmit({
         ...values,
         _id: role._id,
+        
       });
     },
   });
@@ -66,14 +67,21 @@ const RoleUpdateDialog = (props) => {
                       <FormGroup
                         aria-label="Permissions"
                         name="permissions"
-                        value={[formik.values.permissions]}
+                       
+                        // value={[formik.values.permissions]}
+                         value ={[formik.values.permissions]}
+                        control={<Checkbox color="primary" />}
+                        // value ={formik.values.permissions}
+                       
                         onChange={formik.handleChange}
                       >
                         <FormControlLabel
                           name="permissions"
-                          value={item._id}
+                           value={item._id}
                           control={<Checkbox color="primary" />}
-                          label={item._id}
+                           label={item._id}
+                         
+                         
                         />
                       </FormGroup>
                     ))}

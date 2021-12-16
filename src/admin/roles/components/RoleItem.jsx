@@ -4,13 +4,16 @@ import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Alert } from "@material-ui/lab";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { ObjectUtils } from "../../../utils";
 import EditIcon from "@material-ui/icons/Edit";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { updateRole } from "../actions";
 import RoleUpdate from "./RoleUpdate";
 
+
+import { useHistory } from "react-router";
+import { getInforByToken } from "../../../redux/action/inforStaff";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 300,
@@ -54,13 +57,23 @@ const RoleItem = (props) => {
   const { role, permissions } = props;
 
   const [openUpdate, setOpenUpdate] = useState(false);
-
+  const token = useSelector((state) => state.authAdmin.token);
   const classes = useStyles({ role });
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getInforByToken(token));
+  }, [token]);
+
   const handleSubmitUpdate = (payload) => {
-    dispatch(updateRole(payload));
+    dispatch(updateRole({
+      token,
+      _id :payload._id,
+      name: payload.name,
+      permissions:payload.permissions,
+
+    }));
     setOpenUpdate(false);
   };
 
