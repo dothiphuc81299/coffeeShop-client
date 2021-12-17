@@ -38,6 +38,13 @@ const roleAdminReducer = (state = initialState, action) => {
         roles: roleData,
       };
     }
+    case "DELETE_ROLE": {
+      let roleData = [...state.roles];
+      return {
+        ...state,
+        roles: roleData
+      };
+    }
     default: {
       return state;
     }
@@ -45,3 +52,6 @@ const roleAdminReducer = (state = initialState, action) => {
 };
 
 export default roleAdminReducer;
+
+
+

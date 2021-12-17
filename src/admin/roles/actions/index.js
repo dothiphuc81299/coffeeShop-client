@@ -100,3 +100,30 @@ export const updateRole = (payload) => {
       });
   };
 };
+
+
+
+export const deleteRole = (payload) => {
+  return async (dispatch) => {
+    return axios
+      .delete(
+        `https://mighty-castle-60848.herokuapp.com/staffRole/${payload._id}`,
+        
+        {
+          headers: {
+            Authorization: `Bearer ${payload.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        const data = response.data.data.role;
+        dispatch({
+          type: "DELETE_ROLE",
+          payload: data,
+        });
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+};

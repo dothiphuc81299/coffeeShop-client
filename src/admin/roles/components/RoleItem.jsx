@@ -4,13 +4,14 @@ import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Alert } from "@material-ui/lab";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ObjectUtils } from "../../../utils";
 import EditIcon from "@material-ui/icons/Edit";
-import { useDispatch,useSelector } from "react-redux";
-import { updateRole } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteRole, updateRole } from "../actions";
 import RoleUpdate from "./RoleUpdate";
-
+import RoleDelete from "./RoleDelete";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import { useHistory } from "react-router";
 import { getInforByToken } from "../../../redux/action/inforStaff";
@@ -30,6 +31,11 @@ const useStyles = makeStyles((theme) => ({
   iconButton: {
     position: "absolute",
     marginLeft: theme.spacing(27),
+    marginTop: -32,
+  },
+  iconDelete : {
+    position: "absolute",
+    marginLeft: theme.spacing(30),
     marginTop: -32,
   },
   alert: {
@@ -59,7 +65,7 @@ const RoleItem = (props) => {
   const [openUpdate, setOpenUpdate] = useState(false);
   const token = useSelector((state) => state.authAdmin.token);
   const classes = useStyles({ role });
-
+  const [openDelete, setOpenDelete] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,15 +73,34 @@ const RoleItem = (props) => {
   }, [token]);
 
   const handleSubmitUpdate = (payload) => {
-    dispatch(updateRole({
-      token,
-      _id :payload._id,
-      name: payload.name,
-      permissions:payload.permissions,
-
-    }));
+    dispatch(
+      updateRole({
+        token,
+        _id: payload._id,
+        name: payload.name,
+        permissions: payload.permissions,
+      })
+    );
     setOpenUpdate(false);
   };
+
+  const handleSubmitDelete = (payload) => {
+    dispatch(deleteRole({
+      token,
+      _id : payload._id
+    }));
+    setOpenDelete(false);
+     window.location.reload();
+  };
+
+  const handleOpenDelete = () => {
+    setOpenDelete(!openDelete);
+  };
+
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
+  };
+
 
   const handleOpenUpdate = () => {
     setOpenUpdate(!openUpdate);
@@ -93,6 +118,11 @@ const RoleItem = (props) => {
         <div className={classes.iconButton} onClick={handleOpenUpdate}>
           <IconButton>
             <EditIcon style={{ color: "white" }} fontSize="small" />
+          </IconButton>
+        </div>
+        <div className={classes.iconDelete} onClick={handleOpenDelete}>
+          <IconButton>
+            <DeleteIcon style={{ color: "white" }} fontSize="small" />
           </IconButton>
         </div>
       </Alert>
@@ -114,6 +144,14 @@ const RoleItem = (props) => {
         open={openUpdate}
         onOpen={handleOpenUpdate}
         onClose={handleCloseUpdate}
+        role={role}
+      />
+
+      <RoleDelete
+        onSubmit={handleSubmitDelete}
+        open={openDelete}
+        onOpen={handleOpenDelete}
+        onClose={handleCloseDelete}
         role={role}
       />
     </Card>
