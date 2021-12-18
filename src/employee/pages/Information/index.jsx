@@ -7,7 +7,9 @@ import Loading from '../../containers/ui/Loading';
 import Layout from '../../PrivateLayout';
 import { Card, makeStyles, Typography } from '@material-ui/core';
 import SideBar from '../../containers/Information/Sidebar';
-
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import ResponsiveDrawer from "../../../admin/components/ResponsiveDrawer";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -58,8 +60,12 @@ export default function UserDetailPage() {
 
   return (
     <Layout>
-      <div className="d-flex">
-        <SideBar></SideBar>
+      <div className={classes.root}>
+        <CssBaseline />
+
+        <AppBar position="fixed" className={classes.appBar}>
+        </AppBar>
+        <ResponsiveDrawer />
         <main className={classes.content}>
           <div className="user-detail">
             <div className="mt-30 container">

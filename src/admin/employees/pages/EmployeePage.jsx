@@ -12,6 +12,7 @@ import { getListStaff, postStaff } from "../actions";
 import EmployeeCreate from "../components/EmployeeCreate";
 import EmployeeItem from "../components/EmployeeItem";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import Layout from '../../../employee/PrivateLayout';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -78,15 +79,16 @@ const EmployeePage = () => {
   const classes = useStyles();
 
   return (
+    <Layout>
     <div className={classes.root}>
       <CssBaseline />
 
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        {/* <Toolbar>
           <Typography variant="h6" noWrap>
             Employee Managements
           </Typography>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
 
       <ResponsiveDrawer />
@@ -109,6 +111,7 @@ const EmployeePage = () => {
         </Grid>
       </main>
     </div>
+    </Layout>
   );
 };
 export default EmployeePage;

@@ -10,6 +10,7 @@ import { getEvents, postEvent } from "../actions";
 import EventCreate from "../components/EventCreate";
 import EventItem from "../components/EventItem";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import Layout from '../../../employee/PrivateLayout';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -66,15 +67,16 @@ const EventPage = () => {
   };
 
   return (
+    <Layout>
     <div className={classes.root}>
       <CssBaseline />
 
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        {/* <Toolbar>
           <Typography variant="h6" noWrap>
             Event Managements
           </Typography>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
 
       <ResponsiveDrawer />
@@ -92,6 +94,7 @@ const EventPage = () => {
         ))}
       </main>
     </div>
+    </Layout>
   );
 };
 export default EventPage;

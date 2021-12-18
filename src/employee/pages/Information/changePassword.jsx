@@ -6,7 +6,9 @@ import ChangePasswordForm from '../../containers/Information/ChangePasswordForm'
 import Layout from '../../PrivateLayout';
 import { Card, makeStyles, Typography } from '@material-ui/core';
 import SideBar from '../../containers/Information/Sidebar';
-
+import ResponsiveDrawer from "../../../admin/components/ResponsiveDrawer";
+import AppBar from "@material-ui/core/AppBar";
+import CssBaseline from "@material-ui/core/CssBaseline";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -52,8 +54,14 @@ export default function ChangePasswordStaffPage() {
 
   return (
     <Layout>
-      <div className="d-flex">
-        <SideBar></SideBar>
+       <div className={classes.root}>
+        <CssBaseline />
+
+        <AppBar position="fixed" className={classes.appBar}>
+         
+        </AppBar>
+
+        <ResponsiveDrawer />
         <main className={classes.content}>
           <div className="user-detail">
             <div className="mt-30 container">
@@ -67,7 +75,7 @@ export default function ChangePasswordStaffPage() {
             </div>
           </div>
         </main>
-      </div>
+   </div>
     </Layout>
 
   );

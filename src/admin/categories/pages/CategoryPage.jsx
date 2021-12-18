@@ -18,6 +18,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import { useHistory } from "react-router";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import Layout from '../../../employee/PrivateLayout';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -131,16 +132,19 @@ const CategoryPage = () => {
   };
 
   return (
+    <Layout>
+
+   
     <div className="container">
       <div className={classes.root}>
         <CssBaseline />
 
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
+          {/* <Toolbar>
             <Typography variant="h6" noWrap>
               Category Managements
             </Typography>
-          </Toolbar>
+          </Toolbar> */}
         </AppBar>
 
         <ResponsiveDrawer />
@@ -185,6 +189,7 @@ const CategoryPage = () => {
         />
       </div>
     </div>
+    </Layout>
   );
 };
 

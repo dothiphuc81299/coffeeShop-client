@@ -19,6 +19,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { getQuery } from "../../../helpers/search";
+import Layout from '../../../employee/PrivateLayout';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -96,16 +97,17 @@ const OrderPage = () => {
   const classes = useStyles();
 
   return (
+    <Layout>
     <div className="container">
       <div className={classes.root}>
         <CssBaseline />
 
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
+          {/* <Toolbar>
             <Typography variant="h6" noWrap>
               Order Managements
             </Typography>
-          </Toolbar>
+          </Toolbar> */}
         </AppBar>
 
         <ResponsiveDrawer />
@@ -155,6 +157,7 @@ const OrderPage = () => {
         />
       </div>
     </div>
+    </Layout>
   );
 };
 export default OrderPage;

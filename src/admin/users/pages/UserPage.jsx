@@ -17,6 +17,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from "react-router";
+import Layout from '../../../employee/PrivateLayout';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -88,16 +89,17 @@ const UserPage = () => {
   const classes = useStyles();
 
   return (
+    <Layout>
     <div className="container">
     <div className={classes.root}>
       <CssBaseline />
 
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        {/* <Toolbar>
           <Typography variant="h6" noWrap>
             User Managements
           </Typography>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
 
       <ResponsiveDrawer />
@@ -139,6 +141,7 @@ const UserPage = () => {
         />
       </div>
     </div>
+    </Layout>
   );
 };
 export default UserPage;

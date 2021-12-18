@@ -34,8 +34,6 @@ import { PrivateRoute } from "./PrivateRoute";
 import RolePage from "../admin/roles/pages/RolePage";
 import AboutUsPage from "../users/pages/aboutus";
 import AboutUs from "../users/components/aboutus/aboutus";
-import StaffDetailPage from "../admin/myaccount/pages/account";
-
 
 const routes = () => {
   return (
@@ -64,9 +62,12 @@ const routes = () => {
       <PrivateRoute path="/admin/events" component={EventPage} />
       <PrivateRoute path="/admin/orders" component={OrderPage} />
       <PrivateRoute path="/admin/roles" component={RolePage} />
-      <PrivateRoute path ="/admin/myaccount" component={StaffDetailPage}/>
-      <PrivateRoute path="/employee/:employeeId/account/detail" component={InformationStaff} />
-      <PrivateRoute path="/employee/:employeeId/account/change-password" component={ChangePasswordStaffPage} />
+      <PrivateRoute path ="/admin/myaccount" component={InformationStaff}/>
+      <PrivateRoute path="/admin/account/detail" component={InformationStaff} />
+      {/* <PrivateRoute path="/employee/:employeeId/account/change-password" component={ChangePasswordStaffPage} /> */
+      }
+
+      <PrivateRoute path="/admin/account/changePassword" component={ChangePasswordStaffPage} />
       <PrivateRoute path="/employee/:employeeId/salary" component={Salary} />
       <PrivateRoute path="/employee/:employeeId/calendar" component={Calendar} />
       

@@ -11,6 +11,7 @@ import { getPermissions, getRoles, postRole } from "../actions";
 import RoleItem from "../components/RoleItem";
 import RoleCreate from "../components/RoleCreate";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import Layout from "../../../employee/PrivateLayout";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -48,11 +49,13 @@ const RolePage = () => {
   }, []);
 
   const handleSubmit = (payload) => {
-    dispatch(postRole({
-      token,
-      name: payload.name,
-      permissions:payload.permissions,
-    }));
+    dispatch(
+      postRole({
+        token,
+        name: payload.name,
+        permissions: payload.permissions,
+      })
+    );
     setOpen(false);
   };
 
@@ -71,36 +74,38 @@ const RolePage = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
+    <Layout>
+      <div className={classes.root}>
+        <CssBaseline />
 
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Role Managements
-          </Typography>
-        </Toolbar>
-      </AppBar>
+        <AppBar position="fixed" className={classes.appBar}>
+          {/* <Toolbar>
+            <Typography variant="h6" noWrap>
+              Role Managements
+            </Typography>
+          </Toolbar> */}
+        </AppBar>
 
-      <ResponsiveDrawer />
+        <ResponsiveDrawer />
 
-      <main className={classes.content}>
-        <RoleCreate
-          onSubmit={handleSubmit}
-          permissions={permissions}
-          open={open}
-          onOpen={handleOpen}
-          onClose={handleClose}
-        />
-        <Grid container spacing={2}>
-          {roles.map((role) => (
-            <Grid >
-              <RoleItem role={role} permissions={permissions} />
-            </Grid>
-          ))}
-        </Grid>
-      </main>
-    </div>
+        <main className={classes.content}>
+          <RoleCreate
+            onSubmit={handleSubmit}
+            permissions={permissions}
+            open={open}
+            onOpen={handleOpen}
+            onClose={handleClose}
+          />
+          <Grid container spacing={2}>
+            {roles.map((role) => (
+              <Grid>
+                <RoleItem role={role} permissions={permissions} />
+              </Grid>
+            ))}
+          </Grid>
+        </main>
+      </div>
+    </Layout>
   );
 };
 export default RolePage;

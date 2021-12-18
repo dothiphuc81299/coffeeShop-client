@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import ResponsiveDrawer from "./components/ResponsiveDrawer";
+import Layout from "../employee/PrivateLayout";
 
 const drawerWidth = 240;
 
@@ -35,15 +36,16 @@ const Admin = () => {
   const classes = useStyles();
 
   return (
+    <Layout>
     <div className={classes.root}>
       <CssBaseline />
 
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
+        {/* <Toolbar>
           <Typography variant="h6" noWrap>
             Coffee Managements
           </Typography>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
 
       <ResponsiveDrawer />
@@ -52,6 +54,7 @@ const Admin = () => {
         <div className={classes.toolbar} />
       </main>
     </div>
+    </Layout>
   );
 };
 

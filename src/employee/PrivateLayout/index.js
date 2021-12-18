@@ -44,7 +44,13 @@ const PrivateLayout = ({ children }) => {
     <MenuWrapper>
       <Menu.Item>
         <UserOutlined />
-        <Link to={`/employee/${employeeId}/account/detail`}>Account</Link>
+        {/* <Link to={`/employee/${employeeId}/account/detail`}>Account</Link> */}
+        <Link to={`/admin/account/detail`}>Account</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <UserOutlined />
+        {/* <Link to={`/employee/${employeeId}/account/detail`}>Account</Link> */}
+        <Link to={`/admin/account/changePassword`}>changePassword</Link>
       </Menu.Item>
       <Menu.Item onClick={handleClickLogOut}>
         <LogoutOutlined />
@@ -62,17 +68,6 @@ const PrivateLayout = ({ children }) => {
         </div>
         <div className="right-section">
           <Menu mode="horizontal" selectedKeys={[pathname.split('/')[3]]}>
-            <Menu.Item key="salary">
-              <Link to={`/employee/${employeeId}/salary`}>Salary</Link>
-            </Menu.Item>
-            {!info?.username.includes('shipper') && (
-              <Menu.Item key="calendar">
-                <Link to={`/employee/${employeeId}/calendar`}>Calendar</Link>
-              </Menu.Item>
-            )}
-            <Menu.Item key="account">
-              <Link to={`/employee/${employeeId}/account/detail`}>Account</Link>
-            </Menu.Item>
           </Menu>
           <div className="name-section">
             <h3>Hello !!!</h3>

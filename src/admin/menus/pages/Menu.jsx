@@ -19,6 +19,7 @@ import InputBase from "@material-ui/core/InputBase";
 import { useHistory } from "react-router";
 import { useLocation } from "react-router-dom";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import Layout from '../../../employee/PrivateLayout';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -142,16 +143,17 @@ const MenuPage = () => {
   };
 
   return (
-    <div className="container">
+    <Layout>
+         <div className="container">
       <div className={classes.root}>
         <CssBaseline />
 
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
+          {/* <Toolbar>
             <Typography variant="h6" noWrap>
               Menu Managements
             </Typography>
-          </Toolbar>
+          </Toolbar> */}
         </AppBar>
 
         <ResponsiveDrawer />
@@ -199,6 +201,7 @@ const MenuPage = () => {
         />
       </div>
     </div>
+    </Layout>
   );
 };
 export default MenuPage;

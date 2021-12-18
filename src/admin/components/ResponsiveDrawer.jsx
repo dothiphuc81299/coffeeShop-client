@@ -54,10 +54,6 @@ function ResponsiveDrawer(props) {
       return "/admin/roles";
     }
 
-    if (text === "My Account"){
-      return "/admin/myaccount";
-    }
-
     if (text === "Statistic"){
       return "/admin/statistic";
     }
@@ -85,7 +81,7 @@ function ResponsiveDrawer(props) {
           "Events",
           "Users",
           "Employees",
-          "My Account",
+        
           "Statistic",
           "Roles"
         ].map((text) => (
