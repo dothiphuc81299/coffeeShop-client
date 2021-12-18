@@ -5,11 +5,12 @@ import Typography from "@material-ui/core/Typography";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ResponsiveDrawer from "../../components/ResponsiveDrawer";
-import { getInforByToken } from "../../../redux/action/inforStaff";
+import { getInforByToken, sendPostUpdateInforStaff } from "../../../redux/action/inforStaff";
 import { TextField, Button } from "@material-ui/core";
 import { useFormik } from "formik";
 import Toolbar from "@material-ui/core/Toolbar";
 import { useHistory } from "react-router-dom";
+import AccountUpdate from "../components/AccountUpdate";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -70,6 +71,28 @@ const StaffDetailPage = () => {
   let history = useHistory();
   const token = useSelector((state) => state.authAdmin.token);
 
+ 
+  const infor = useSelector((state) => state.inforStaff.infor);
+
+ 
+  const [openUpdate, setOpenUpdate] = useState(false);
+  const handleSubmitUpdate = (payload) => {
+    dispatch(sendPostUpdateInforStaff({
+      token,
+      username:payload.username,
+      address: payload.address,
+      phone: payload.phone,
+    }));
+    setOpenUpdate(false);
+  };
+
+  const handleOpenUpdate = () => {
+    setOpenUpdate(!openUpdate);
+  };
+
+  const handleCloseUpdate = () => {
+    setOpenUpdate(false);
+  };
   useEffect(() => {
     if (!token) {
       history.push("/");
@@ -77,12 +100,6 @@ const StaffDetailPage = () => {
       dispatch(getInforByToken(token));
     }
   }, [token]);
-  const infor = useSelector((state) => state.inforStaff.infor);
-  const formik = useFormik({
-    initialValues: {
-      ...infor,
-    },
-  });
 
   const classes = useStyles();
 
@@ -149,16 +166,24 @@ const StaffDetailPage = () => {
             variant="contained"
             color="secondary"
             type="button"
-            // onClick={handleOpenUpdate}
+            onClick={handleOpenUpdate}
           >
             update
           </Button>
+
+          <AccountUpdate
+            onSubmit={handleSubmitUpdate}
+            infor={infor}
+            open={openUpdate}
+            onOpen={handleOpenUpdate}
+            onClose={handleCloseUpdate}
+          />
+
           <Button
             className={classes.button}
             variant="contained"
             color="primary"
             type="button"
-            
           >
             password
           </Button>
