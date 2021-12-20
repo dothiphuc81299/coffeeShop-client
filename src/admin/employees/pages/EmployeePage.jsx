@@ -12,7 +12,9 @@ import { getListStaff, postStaff } from "../actions";
 import EmployeeCreate from "../components/EmployeeCreate";
 import EmployeeItem from "../components/EmployeeItem";
 import { getInforByToken } from "../../../redux/action/inforStaff";
-import Layout from '../../../employee/PrivateLayout';
+import Layout from "../../../employee/PrivateLayout";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -80,37 +82,40 @@ const EmployeePage = () => {
 
   return (
     <Layout>
-    <div className={classes.root}>
-      <CssBaseline />
+      <div className={classes.root}>
+        <CssBaseline />
 
-      <AppBar position="fixed" className={classes.appBar}>
-        {/* <Toolbar>
+        <AppBar position="fixed" className={classes.appBar}>
+          {/* <Toolbar>
           <Typography variant="h6" noWrap>
             Employee Managements
           </Typography>
         </Toolbar> */}
-      </AppBar>
+        </AppBar>
 
-      <ResponsiveDrawer />
+        <ResponsiveDrawer />
 
-      <main className={classes.content}>
-        <EmployeeCreate
-          onSubmit={handleSubmit}
-          roles={roles}
-          open={open}
-          onOpen={handleOpen}
-          onClose={handleClose}
-        />
-
-        <Grid container spacing={5}>
-          {listStaff.map((staff) => (
-            <Grid item>
-              <EmployeeItem staff={staff} roles={roles} />
-            </Grid>
-          ))}
-        </Grid>
-      </main>
-    </div>
+        <main className={classes.content}>
+          <EmployeeCreate
+            onSubmit={handleSubmit}
+            roles={roles}
+            open={open}
+            onOpen={handleOpen}
+            onClose={handleClose}
+          />
+          {/* <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            This is an error alert — <strong>check it out!</strong>
+          </Alert> */}
+          <Grid container spacing={5}>
+            {listStaff.map((staff) => (
+              <Grid item>
+                <EmployeeItem staff={staff} roles={roles} />
+              </Grid>
+            ))}
+          </Grid>
+        </main>
+      </div>
     </Layout>
   );
 };

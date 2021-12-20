@@ -50,7 +50,7 @@ const PrivateLayout = ({ children }) => {
       <Menu.Item>
         <UserOutlined />
         {/* <Link to={`/employee/${employeeId}/account/detail`}>Account</Link> */}
-        <Link to={`/admin/account/changePassword`}>changePassword</Link>
+        <Link to={`/admin/account/changePassword`}>Password</Link>
       </Menu.Item>
       <Menu.Item onClick={handleClickLogOut}>
         <LogoutOutlined />

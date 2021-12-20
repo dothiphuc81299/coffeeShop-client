@@ -17,8 +17,11 @@ export const getUsers = (params) => {
           type: "GET_USERS",
           payload: data,
         });
+        console.log("data",data)
       })
+      
       .catch((error) => {
+      
         throw error;
       });
   };
@@ -44,6 +47,7 @@ export const deleteUser = (payload) => {
           type: "DELETE_USER",
           payload: data,
         });
+       
       })
       .catch((error) => {
         throw error;

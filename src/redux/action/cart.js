@@ -33,8 +33,8 @@ export const postNewOrder = (payload) => {
   return async (dispatch) => {
     return axios.post('https://mighty-castle-60848.herokuapp.com/orders', {
       drink: payload.drink,
-      // is_point: payload.is_point,
-      // point: payload.point
+       is_point: payload.is_point,
+       point: payload.point
     }, {
       headers: {
         'Authorization': `Bearer ${payload.token}`

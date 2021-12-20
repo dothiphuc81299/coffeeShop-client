@@ -52,8 +52,6 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         listInCart: [],
-        is_point : false,
-        point :0 ,
       }
     }
     default: {

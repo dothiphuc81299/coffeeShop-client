@@ -56,6 +56,12 @@ const useStyles = makeStyles((theme) => ({
       color: "#fff",
     },
   },
+  textTypo:{
+    display: "flex",
+    justifyContent: "flex-start",
+    marginRight: theme.spacing(20),
+    color: "#5fa3b7",
+  },
 }));
 
 const UserPage = () => {
@@ -111,6 +117,7 @@ const UserPage = () => {
       </main> */}
       </div>
       <div className={classes.input}>
+      <Typography variant="h5" noWrap className={classes.textTypo}>User Management</Typography>
           <InputBase
             placeholder="Finding user..."
             value={searchForm}

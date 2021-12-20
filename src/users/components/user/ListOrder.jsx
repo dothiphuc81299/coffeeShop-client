@@ -12,6 +12,7 @@ import DoneIcon from "@material-ui/icons/Done";
 import React from "react";
 import { DateFormat, DateUtils } from "../../../utils";
 import { Button } from "@material-ui/core";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const useStyles = makeStyles({
   table: {
@@ -22,6 +23,37 @@ const useStyles = makeStyles({
 const ListOrder = (props) => {
   const { data } = props;
   const classes = useStyles();
+  const checkStatusLabel = (param) => {
+    switch (param) {
+      case "success":
+        return "Success";
+      case "cancel":
+        return "Cancel";
+      default:
+        return "Pending";
+    }
+  };
+  const checkStatusColor = (param) => {
+    switch (param) {
+      case "success":
+        return "primary";
+      case "cancel":
+        return "secondary";
+      default:
+        return "secondary";
+    }
+  };
+
+  const checkStatusIcon = (param) => {
+    switch (param) {
+      case "success":
+        return <DoneIcon />;
+      case "cancel":
+        return <CancelIcon />;
+      default:
+        return <AccessTimeIcon />;
+    }
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -66,17 +98,11 @@ const ListOrder = (props) => {
               </TableCell>
               <TableCell align="center">{order.totalPrice.toLocaleString()}đ</TableCell>
               <TableCell align="center">
-                <Chip
+              <Chip
                   size="small"
-                  label={order.status === "success" ? "Success" : "Pending"}
-                  color={order.status === "success" ? "primary" : "secondary"}
-                  icon={
-                    order.status === "success" ? (
-                      <DoneIcon />
-                    ) : (
-                      <AccessTimeIcon />
-                    )
-                  }
+                  label={checkStatusLabel(order.status)}
+                  color={checkStatusColor(order.status)}
+                  icon={checkStatusIcon(order.status)}
                 />
               </TableCell>
               <TableCell align="center">
@@ -86,7 +112,7 @@ const ListOrder = (props) => {
                 )}
                
               </TableCell>
-              <Button> Cancel</Button>
+         
             </TableRow>
           ))}
         </TableBody>

@@ -1,7 +1,4 @@
 import axios from "axios";
-import { TokenUtils } from "../../../utils/token.utils";
-
-// const token = TokenUtils.TOKEN_ADMIN;
 
 export const getList = (params) => {
   return async (dispatch) => {
@@ -15,6 +12,7 @@ export const getList = (params) => {
         });
       })
       .catch((error) => {
+      
         throw error;
       });
   };
@@ -38,6 +36,7 @@ export const postList = (payload) => {
         });
       })
       .catch((error) => {
+         console.log("1",error);
         throw error;
       });
   };

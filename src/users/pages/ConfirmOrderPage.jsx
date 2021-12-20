@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Card, makeStyles, Typography } from "@material-ui/core";
+import { Card, makeStyles, Typography,  TextField } from "@material-ui/core";
 import { getInforByToken } from "../../redux/action/auth";
 import { addToCart, postNewOrder } from "../../redux/action/cart";
 import OrderItem from "../components/order/OrderItem";
@@ -54,9 +54,11 @@ const ConfirmOrderPage = () => {
   const token = useSelector((state) => state.auth.token);
   const infor = useSelector((state) => state.auth.infor);
   const listInCart = useSelector((state) => state.cart.listInCart);
-  const [is_point, setPoint] =  React.useState(false);
- 
-
+  // const [is_point, setPoint] =  React.useState(false);
+  const [point, setPoint] = useState('');
+  const handleChange = (e) => {
+    setPoint(e.target.value);
+  };
 
   // const [lat, setLat] = useState(0);
   // const [lng, setLng] = useState(0);
@@ -88,7 +90,8 @@ const ConfirmOrderPage = () => {
     }
   }, [listInCart]);
 
-  const handleSubmitOrder = () => {
+  const handleSubmitOrder = (payload) => {
+   
     const dataFormat = listInCart.map((item) => {
       return {
         name: item._id,
@@ -100,15 +103,18 @@ const ConfirmOrderPage = () => {
       postNewOrder({
         token,
         drink: dataFormat,
-        is_point:false,
-        point :1
-        // isPoint,
-        // point,
+        is_point:payload.is_point,
+        point :payload.point,
+       
       })
+      
     );
+    console.log("payload.point",payload.point)
+    console.log("drink",dataFormat)
   };
-  console.log("test",postNewOrder.is_point)
-  console.log("postNewOrder",postNewOrder.drink)
+
+  console.log("text",point)
+  
 
   return (
     <div className="">
@@ -141,8 +147,19 @@ const ConfirmOrderPage = () => {
                   <div>
                   <Typography variant="h6" className="text-bold mb-10">
                     Sử dụng điểm{" "}
-                    <Checkbox {...label} defaultChecked={is_point} onChange = {() => setPoint(!is_point)}  />
+                    <Checkbox {...label}   />
                   </Typography>
+
+                  <TextField
+              name="Point"
+              type="text"
+              label="Số Điểm"
+              variant="outlined"
+              fullWidth
+               value={point}
+               onChange={handleSubmitOrder}
+           
+            />
                 </div>
                
              

@@ -16,6 +16,7 @@ export const getDrink = (params) => {
         });
       })
       .catch((error) => {
+      
         throw error;
       });
   };
@@ -44,6 +45,7 @@ export const postDrink = (payload) => {
         });
       })
       .catch((error) => {
+      
         throw error;
       });
   };

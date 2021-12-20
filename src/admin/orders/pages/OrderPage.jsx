@@ -20,6 +20,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { getQuery } from "../../../helpers/search";
 import Layout from '../../../employee/PrivateLayout';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
       color: "#fff",
     },
   },
+  textTypo:{
+    display: "flex",
+    justifyContent: "flex-start",
+    marginRight: theme.spacing(10),
+    color: "#5fa3b7",
+  },
 }));
 
 const OrderPage = () => {
@@ -85,7 +92,6 @@ const OrderPage = () => {
     dispatch(
       getOrders({
         status,
-      
         limit: 12,
         page,
       })
@@ -113,8 +119,9 @@ const OrderPage = () => {
         <ResponsiveDrawer />
       </div>
       <div className={classes.input}>
-     
+      <Typography variant="h4" noWrap className={classes.textTypo}>Order Management</Typography>
         <FormControl sx={{ m: 1, minWidth: 180,color : "black" }}>
+        
           <InputLabel id="demo-simple-select-autowidth-label">
             Status
           </InputLabel>
