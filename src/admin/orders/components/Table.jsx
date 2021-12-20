@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 });
 
 const BasicTable = (props) => {
-  const { orders } = props;
+  const { orders,page } = props;
 
   const classes = useStyles();
 
@@ -58,6 +58,19 @@ const BasicTable = (props) => {
     }
   };
 
+  const checkPage =(index,page) => {
+    switch (page) {
+      case 2 :
+      case 3 :
+      case 4 :
+      case 5 :
+      case 6 :
+       return (index +1) +(page-1)*12;
+      default :
+        return index +1;
+    }
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -88,7 +101,8 @@ const BasicTable = (props) => {
         <TableBody>
           {orders.map((order,index) => (
             <TableRow >
-               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{index + 1}</TableCell>
+             
+               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{checkPage(index,page)}</TableCell>
               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.username}</TableCell>
               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.address}</TableCell>
               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>

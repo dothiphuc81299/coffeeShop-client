@@ -150,7 +150,7 @@ const OrderPage = () => {
       </div>
       {/* <main className={classes.content}> */}
       <div className={classes.table}>
-        <Table orders={orders} />
+        <Table orders={orders} page={page}/>
       </div>
 
       {/* </main> */}
