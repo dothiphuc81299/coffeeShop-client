@@ -13,6 +13,7 @@ import React from "react";
 import { DateFormat, DateUtils } from "../../../utils";
 import { Button } from "@material-ui/core";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
@@ -60,6 +61,9 @@ const ListOrder = (props) => {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
+          <TableCell style={{ fontWeight: "bold" }} align="center">
+            #
+            </TableCell>
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Address
             </TableCell>
@@ -79,8 +83,9 @@ const ListOrder = (props) => {
         </TableHead>
 
         <TableBody>
-          {data.map((order) => (
+          {data.map((order,index) => (
             <TableRow>
+                <TableCell align="center"><Link to={`/user/history-order/${order._id}`}> {index+1} </Link></TableCell>
               <TableCell align="center">{order.user.address}</TableCell>
               <TableCell align="left">
                 {order.drink.map((item, index) => (
@@ -88,9 +93,9 @@ const ListOrder = (props) => {
                     <div style={{ fontWeight: 600 }}>
                       {index + 1}. {item.name}
                     </div>
-                    <br />
+                    {/* <br />
                     <div>Price: {item.price.toLocaleString()}đ</div>
-                    <br />
+                    <br /> */}
                     <div>Quantity: {item.quantity}</div>
                     <br />
                   </React.Fragment>

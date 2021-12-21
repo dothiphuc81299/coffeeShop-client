@@ -12,6 +12,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import DoneIcon from "@material-ui/icons/Done";
 import React from "react";
 import { DateFormat, DateUtils } from "../../../utils";
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
 import CancelIcon from "@mui/icons-material/Cancel";
 
 const useStyles = makeStyles({
@@ -70,6 +71,8 @@ const BasicTable = (props) => {
         return index +1;
     }
   };
+  
+ 
 
   return (
     <TableContainer component={Paper}>
@@ -101,8 +104,7 @@ const BasicTable = (props) => {
         <TableBody>
           {orders.map((order,index) => (
             <TableRow >
-             
-               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{checkPage(index,page)}</TableCell>
+          <TableCell key={order._id} style={{width: '1px', whiteSpace: 'nowrap'}}><Link to={`/admin/orders/${order._id}`}>{checkPage(index,page)}  </Link> </TableCell>
               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.username}</TableCell>
               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.address}</TableCell>
               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>

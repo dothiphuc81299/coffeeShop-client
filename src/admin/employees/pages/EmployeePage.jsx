@@ -42,11 +42,11 @@ const EmployeePage = () => {
 
   useEffect(() => {
     dispatch(getListStaff());
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     dispatch(getRoles());
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     dispatch(getInforByToken(token));

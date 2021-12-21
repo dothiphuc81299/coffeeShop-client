@@ -1,7 +1,5 @@
 import axios from "axios";
-import { TokenUtils } from "../../../utils/token.utils";
-
-// const token = TokenUtils.TOKEN_ADMIN;
+import { toast } from "react-toastify";
 
 export const getListStaff = (payload) => {
   return async (dispatch) => {
@@ -48,6 +46,7 @@ export const postStaff = (payload) => {
         });
       })
       .catch((error) => {
+        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
         throw error;
       });
   };
@@ -79,6 +78,7 @@ export const updateStaff = (payload) => {
         });
       })
       .catch((error) => {
+        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
         throw error;
       });
   };
@@ -104,6 +104,7 @@ export const deleteStaff = (payload) => {
         });
       })
       .catch((error) => {
+        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
         throw error;
       });
   };

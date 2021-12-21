@@ -34,6 +34,8 @@ import { PrivateRoute } from "./PrivateRoute";
 import RolePage from "../admin/roles/pages/RolePage";
 import AboutUsPage from "../users/pages/aboutus";
 import AboutUs from "../users/components/aboutus/aboutus";
+import DetailPage  from "../admin/orders/pages/DetailPage";
+import OrderDetailPage from "../users/pages/OrderDetailPage";
 
 const routes = () => {
   return (
@@ -48,6 +50,7 @@ const routes = () => {
       <PrivateRoute exact path="/user/detail" component={UserDetailPage} />
       <PrivateRoute exact path="/user/change-password" component={UserChangePasswordPage} />
       <PrivateRoute exact path="/user/history-order" component={UserHistoryOrder} />
+      {/* <PrivateRoute  path="/user/history-order/:orderId" component={OrderDetailPage} /> */}
       
       <Route path="/admin/login" component={AdminLoginPage} />
       <Redirect exact from="/admin" to="/admin/summary" />
@@ -60,7 +63,8 @@ const routes = () => {
       <PrivateRoute path="/admin/categories" component={CategoryPage} />
       <PrivateRoute path="/admin/feedbacks" component={FeedbackPage} />
       <PrivateRoute path="/admin/events" component={EventPage} />
-      <PrivateRoute path="/admin/orders" component={OrderPage} />
+      <PrivateRoute exact path="/admin/orders" component={OrderPage} />
+      <PrivateRoute path ="/admin/orders/:orderId" component={DetailPage} />
       <PrivateRoute path="/admin/roles" component={RolePage} />
       <PrivateRoute path ="/admin/myaccount" component={InformationStaff}/>
       <PrivateRoute path="/admin/account/detail" component={InformationStaff} />

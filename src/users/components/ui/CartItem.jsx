@@ -12,7 +12,7 @@ const CartItem = (props) => {
       </div>
       <div className="cart-item__infor">
         <p className="cart-item__infor--bold">{name}</p>
-        <p>{price.toLocaleString()}đ</p>
+        <p>{price}đ</p>
       </div>
       <div className="cart-item__count">
         <button 

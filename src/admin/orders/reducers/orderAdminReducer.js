@@ -1,5 +1,6 @@
 const initialState = {
   orders: [],
+  detailOrder: null,
 };
 
 const orderAdminReducer = (state = initialState, action) => {
@@ -8,6 +9,12 @@ const orderAdminReducer = (state = initialState, action) => {
       return {
         ...state,
         orders: action.payload,
+      };
+    }
+    case "GET_DETAIL_ORDERS": {
+      return {
+        ...state,
+        detailOrder:action.payload,
       };
     }
     default: {

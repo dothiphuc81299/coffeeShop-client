@@ -1,7 +1,6 @@
 import axios from "axios";
-import { TokenUtils } from "../../../utils/token.utils";
+import { toast } from "react-toastify";
 
-// const token = TokenUtils.TOKEN_ADMIN;
 
 export const getRoles = (payload) => {
   return async (dispatch) => {
@@ -17,6 +16,7 @@ export const getRoles = (payload) => {
         });
       })
       .catch((error) => {
+      
         throw error;
       });
   };
@@ -43,6 +43,7 @@ export const postRole = (payload) => {
         });
       })
       .catch((error) => {
+        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
         throw error;
       });
   };
@@ -96,6 +97,7 @@ export const updateRole = (payload) => {
         });
       })
       .catch((error) => {
+        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
         throw error;
       });
   };
@@ -123,6 +125,7 @@ export const deleteRole = (payload) => {
         });
       })
       .catch((error) => {
+        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
         throw error;
       });
   };

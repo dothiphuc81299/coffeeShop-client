@@ -57,7 +57,7 @@ export default function HomePage(props) {
         limit: 12,
         page,
       }));
-    }, [search]);
+    }, [search,page]);
 
     return (
       <div className="container">

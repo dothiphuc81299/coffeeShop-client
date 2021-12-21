@@ -42,3 +42,24 @@ export const getOrders = (params) => {
       });
   };
 };
+
+
+export const getDetailOrders = (payload) => {
+  return async (dispatch) => {
+    return axios
+      .get(
+        `https://mighty-castle-60848.herokuapp.com/orders/${payload._id}`,         
+      )
+      .then((response) => {
+        const data = response.data.data.order;
+        dispatch({
+          type: "GET_DETAIL_ORDERS",
+          payload: data,
+        });
+        console.log("data",data)
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+};

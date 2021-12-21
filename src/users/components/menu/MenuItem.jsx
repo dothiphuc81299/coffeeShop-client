@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeQuantityItem } from '../../../redux/action/cart';
 import { addToCart } from '../../../redux/action/cart';
+import { ObjectUtils } from "../../../utils/object.utils";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "calc(25% - 32px)",
@@ -87,6 +88,8 @@ export default function MenuItem(props) {
     dispatch(addToCart(payload))
   }
 
+  const category = ObjectUtils.get(props.item, "category", {});
+
   useEffect(() => {
     const item = listInCart.find((item) => item._id === _id);
     if (item) {
@@ -107,6 +110,9 @@ export default function MenuItem(props) {
           </Typography>
           <Typography variant="subtitle1" color="textSecondary">
             {price.toLocaleString()}đ
+          </Typography>
+          <Typography variant="subtitle1" color="textSecondary">
+            Category:{category.name}
           </Typography>
         </CardContent>
         <div className={classes.controls}>
