@@ -81,13 +81,13 @@ const OrderPage = () => {
     setStatus(event.target.value);
   };
 
-  const handleClickSearch = () => {
-    history.push(`/admin/orders?status=${status}`);
-  };
+  // const handleClickSearch = () => {
+  //   history.push(`/admin/orders?status=${status}`);
+  // };
 
 
   useEffect(() => {
-    const params = getQuery(status);
+    // const params = getQuery(status);
 
     dispatch(
       getOrders({

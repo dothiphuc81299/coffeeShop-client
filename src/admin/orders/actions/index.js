@@ -1,34 +1,10 @@
 import axios from "axios";
-import { TokenUtils } from "../../../utils/token.utils";
-
-// const token = TokenUtils.TOKEN_ADMIN;
-
+import { toast } from "react-toastify";
 export const getOrders = (params) => {
   return async (dispatch) => {
     return axios
       .get(
         "https://mighty-castle-60848.herokuapp.com/orders",{params}, 
-        //   headers: {
-        //     Authorization: `Bearer ${payload.token}`,
-        //   },
-        // },
-        // {
-        //   params:
-        //   {
-        //     page:payload.page,
-        //     limit:payload.limit
-        //   },      
-        // }
-        // {
-        //   params: {
-        //     page : payload.page,
-        //   }
-        // }
-        
-        // { params: { status: "pending"|| "success" }},
-       
-       
-        
       )
       .then((response) => {
         const data = response.data.data.order;
@@ -62,4 +38,33 @@ export const getDetailOrders = (payload) => {
         throw error;
       });
   };
+};
+
+
+export const updateOrder = (payload) => {
+  return async(dispatch) => {
+    return axios 
+    .put(
+      `https://mighty-castle-60848.herokuapp.com/orders/${payload._id}/status`,
+      {
+        status :payload.status,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${payload.token}`,
+        },
+      }
+    )
+    .then((response) => {
+      const data = response.data.data.status;
+      dispatch({
+        type: "UPDATE_ORDER",
+        payload: data,
+      });
+    })
+    .catch((error) => {
+      toast.error("Ban khong the cap nhat don hang.")
+      throw error;
+    });
+};
 };

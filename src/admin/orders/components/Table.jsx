@@ -12,8 +12,9 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import DoneIcon from "@material-ui/icons/Done";
 import React from "react";
 import { DateFormat, DateUtils } from "../../../utils";
-import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { Link, useHistory, useLocation, useParams } from "react-router-dom";
 import CancelIcon from "@mui/icons-material/Cancel";
+import OrderUpdate from "./OrderUpdate";
 
 const useStyles = makeStyles({
   table: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles({
 });
 
 const BasicTable = (props) => {
-  const { orders,page } = props;
+  const { orders, page } = props;
 
   const classes = useStyles();
 
@@ -59,27 +60,25 @@ const BasicTable = (props) => {
     }
   };
 
-  const checkPage =(index,page) => {
+  const checkPage = (index, page) => {
     switch (page) {
-      case 2 :
-      case 3 :
-      case 4 :
-      case 5 :
-      case 6 :
-       return (index +1) +(page-1)*12;
-      default :
-        return index +1;
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+        return index + 1 + (page - 1) * 12;
+      default:
+        return index + 1;
     }
   };
-  
- 
 
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-          <TableCell style={{ fontWeight: "bold" }}>#</TableCell>
+            {/* <TableCell style={{ fontWeight: "bold" }}>#</TableCell> */}
             <TableCell style={{ fontWeight: "bold" }}>Username</TableCell>
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Address
@@ -87,7 +86,9 @@ const BasicTable = (props) => {
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Drinks
             </TableCell>
-            <TableCell style={{width: '1px', whiteSpace: 'nowrap',fontWeight: "bold"}}>
+            <TableCell
+              style={{ width: "1px", whiteSpace: "nowrap", fontWeight: "bold" }}
+            >
               Total Price
             </TableCell>
             <TableCell style={{ fontWeight: "bold" }} align="center">
@@ -96,23 +97,30 @@ const BasicTable = (props) => {
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Created At
             </TableCell>
-         
-
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {orders.map((order,index) => (
-            <TableRow >
-          <TableCell key={order._id} style={{width: '1px', whiteSpace: 'nowrap'}}><Link to={`/admin/orders/${order._id}`}>{checkPage(index,page)}  </Link> </TableCell>
-              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.username}</TableCell>
-              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>{order.user.address}</TableCell>
-              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}>
+          {orders.map((order, index) => (
+            <TableRow>
+              {/* <TableCell
+                key={order._id}
+                style={{ width: "1px", whiteSpace: "nowrap" }}
+              >
+                <Link to={`/admin/orders/${order._id}`}>
+                  {checkPage(index, page)}{" "}
+                </Link>{" "}
+              </TableCell> */}
+              <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
+              <Link to={`/admin/orders/${order._id}`}>  {order.user.username}</Link> 
+              </TableCell>
+              <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
+                {order.user.address}
+              </TableCell>
+              <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
                 {order.drink.map((item) => (
                   <React.Fragment>
-                    <div >
-                      {item.name}
-                    </div>
+                    <div>{item.name}</div>
                     <br />
                     {/* <div>Price: {item.price}</div>
                     <br />
@@ -130,13 +138,15 @@ const BasicTable = (props) => {
                   icon={checkStatusIcon(order.status)}
                 />
               </TableCell>
-              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}} >
+              <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
                 {DateUtils.format(
                   order.createdAt,
                   DateFormat.YYYY_MM_DD_hh_mm_ss
                 )}
-        
-               
+              </TableCell>
+
+              <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
+                <OrderUpdate order={order} />
               </TableCell>
             </TableRow>
           ))}
