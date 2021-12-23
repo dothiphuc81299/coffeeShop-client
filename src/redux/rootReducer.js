@@ -19,6 +19,7 @@ import orderReducer from "./reducer/order";
 import inforStaffReducer from "./reducer/inforStaff";
 import eventReducer from "./reducer/event";
 import hobbyReducer from "../learn/reducers/hobby";
+import statisticAdminReducer from "../admin/statistic/reducer/statisticAdminReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -42,6 +43,7 @@ const rootReducer = combineReducers({
   inforStaff: inforStaffReducer,
   shiftAdmin: shiftAdminReducer,
   hobby :hobbyReducer,
+  statistic :statisticAdminReducer,
 });
 
 export default rootReducer;

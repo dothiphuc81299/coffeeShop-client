@@ -36,6 +36,7 @@ import AboutUsPage from "../users/pages/aboutus";
 import AboutUs from "../users/components/aboutus/aboutus";
 import DetailPage  from "../admin/orders/pages/DetailPage";
 import OrderDetailPage from "../users/pages/OrderDetailPage";
+import StatisticPage from "../admin/statistic/page/StatisticPage";
 
 const routes = () => {
   return (
@@ -63,6 +64,9 @@ const routes = () => {
       <PrivateRoute path="/admin/categories" component={CategoryPage} />
       <PrivateRoute path="/admin/feedbacks" component={FeedbackPage} />
       <PrivateRoute path="/admin/events" component={EventPage} />
+
+      <PrivateRoute path ="/admin/statistic" component={StatisticPage}/>
+
       <PrivateRoute exact path="/admin/orders" component={OrderPage} />
       <PrivateRoute path ="/admin/orders/:orderId" component={DetailPage} />
       <PrivateRoute path="/admin/roles" component={RolePage} />

@@ -80,8 +80,7 @@ function ResponsiveDrawer(props) {
           "Orders",
           "Events",
           "Users",
-          "Employees",
-        
+          "Employees",  
           "Statistic",
           "Roles"
         ].map((text) => (

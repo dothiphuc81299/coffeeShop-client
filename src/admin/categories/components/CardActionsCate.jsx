@@ -5,6 +5,9 @@ import { updateList } from "../actions";
 import CategoryUpdate from "../components/CategoryUpdate";
 import { useHistory } from "react-router";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import EditIcon from "@material-ui/icons/Edit";
+import { IconButton } from "@material-ui/core";
+import { green, red } from "@material-ui/core/colors";
 
 const CardActionsCate = (props) => {
   const { category } = props;
@@ -36,10 +39,14 @@ const CardActionsCate = (props) => {
 
   return (
     <React.Fragment>
-      <Button size="small" color="primary" onClick={handleOpenUpdate}>
+      {/* <Button size="small" color="primary" onClick={handleOpenUpdate}>
         Edit
-      </Button>
-
+      </Button> */}
+      <div size="small" color="primary" onClick={handleOpenUpdate}>
+        <IconButton>
+          <EditIcon style={{ color: green[500] }} fontSize="small" />
+        </IconButton>
+      </div>
       <CategoryUpdate
         onSubmit={handleSubmitUpdate}
         category={category}

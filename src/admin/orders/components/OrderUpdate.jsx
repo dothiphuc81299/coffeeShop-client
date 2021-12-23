@@ -8,7 +8,7 @@ import { Divider, IconButton } from "@material-ui/core";
 import { getInforByToken } from "../../../redux/action/inforStaff";
 import { updateOrder } from "../actions";
 import { getOrders } from "../actions";
-
+import { green, red } from "@material-ui/core/colors";
 import OrderUpdateDialog from "../dialogs/OrderUpdateDialog";
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -40,9 +40,9 @@ const OrderUpdate = (props) => {
       })
     );
     setOpenUpdate(false);
-    window.location.reload();
+     //window.location.reload();
   };
-  
+
   const handleOpenUpdate = () => {
     setOpenUpdate(!openUpdate);
   };
@@ -56,7 +56,7 @@ const OrderUpdate = (props) => {
     <React.Fragment>
       <div className={classes.iconUpdate} onClick={handleOpenUpdate}>
         <IconButton>
-          <EditIcon fontSize="small" />
+          <EditIcon style={{ color: red[500] }} fontSize="small" />
         </IconButton>
       </div>
 

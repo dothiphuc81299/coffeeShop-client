@@ -162,7 +162,7 @@ const EventItem = (props) => {
           {event.active ? (
             <DeleteIcon style={{ color: red[500] }} fontSize="small" />
           ) : (
-            <DeleteIcon fontSize="small" />
+            <DeleteIcon style={{ color: red[500] }} fontSize="small" />
           )}
         </IconButton>
       </div>

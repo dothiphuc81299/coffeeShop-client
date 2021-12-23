@@ -7,6 +7,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { connect,  useSelector } from "react-redux";
 import { Divider, IconButton } from "@material-ui/core";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import { green, red } from "@material-ui/core/colors";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
@@ -51,7 +52,7 @@ const CategoryDelete = (props) => {
          <div className={classes.iconDelete} onClick={handleOpenDelete}>
               <IconButton>
                
-                  <DeleteIcon fontSize="small" />
+                  <DeleteIcon style={{ color: red[500] }} fontSize="small"  />
           
               </IconButton>
             </div>
