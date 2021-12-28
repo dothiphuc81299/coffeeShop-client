@@ -6,12 +6,10 @@ import Layout from "../../../employee/PrivateLayout";
 import { makeStyles } from "@material-ui/core/styles";
 import { getStatistic } from "../action";
 import { useSelector } from "react-redux";
-import { PieChart, Pie } from "recharts";
 import { Chart } from "react-google-charts";
 import moment from "moment";
 import { DatePicker, Form } from "antd";
 import Loading from "../../../users/components/ui/Loading";
-import { ObjectUtils } from "../../../../src/utils/object.utils";
 
 import { useDispatch } from "react-redux";
 

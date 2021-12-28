@@ -1,7 +1,4 @@
 import axios from "axios";
-import { TokenUtils } from "../../../utils/token.utils";
-
-// const token = TokenUtils.TOKEN_ADMIN;
 
 export const postShift = (payload) => {
   return async (dispatch) => {

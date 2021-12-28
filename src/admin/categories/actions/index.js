@@ -36,7 +36,6 @@ export const postList = (payload) => {
         });
       })
       .catch((error) => {
-         console.log("1",error);
         throw error;
       });
   };

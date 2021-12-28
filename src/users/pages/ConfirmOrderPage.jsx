@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Card, makeStyles, Typography,  TextField } from "@material-ui/core";
+import { Card, makeStyles, Typography, TextField } from "@material-ui/core";
 import { getInforByToken } from "../../redux/action/auth";
 import { addToCart, postNewOrder } from "../../redux/action/cart";
 import OrderItem from "../components/order/OrderItem";
 import Loading from "../components/ui/Loading";
 import Map from "../components/ui/Map";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.25rem",
   },
 }));
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 const ConfirmOrderPage = () => {
   // const key = 'AIzaSyDGZOhb6qWmy1PLYJrLmtBho18Vasw0C_U';
@@ -55,10 +56,23 @@ const ConfirmOrderPage = () => {
   const infor = useSelector((state) => state.auth.infor);
   const listInCart = useSelector((state) => state.cart.listInCart);
   // const [is_point, setPoint] =  React.useState(false);
-  const [point, setPoint] = useState('');
-  const handleChange = (e) => {
+  // const [point, setPoint] = useState("");
+  // const handleChange = (e) => {
+  //   setPoint(e.target.value);
+  // };
+
+  const [checked, setChecked] = React.useState(true);
+
+  const handleCheckChange = () => {
+    setChecked(!checked);
+  };
+
+  const [point, setPoint] = React.useState(0);
+  const handlePointChange = (e) => {
     setPoint(e.target.value);
   };
+
+
 
   // const [lat, setLat] = useState(0);
   // const [lng, setLng] = useState(0);
@@ -91,7 +105,6 @@ const ConfirmOrderPage = () => {
   }, [listInCart]);
 
   const handleSubmitOrder = (payload) => {
-   
     const dataFormat = listInCart.map((item) => {
       return {
         name: item._id,
@@ -103,18 +116,14 @@ const ConfirmOrderPage = () => {
       postNewOrder({
         token,
         drink: dataFormat,
-        is_point:payload.is_point,
-        point :payload.point,
-       
+        is_point: checked,
+        point:  parseInt(point, 10) ,
       })
-      
     );
-    console.log("payload.point",payload.point)
-    console.log("drink",dataFormat)
   };
 
-  console.log("text",point)
-  
+  console.log("text", point);
+  console.log("checked", checked);
 
   return (
     <div className="">
@@ -144,28 +153,39 @@ const ConfirmOrderPage = () => {
                       Địa chỉ: {infor.address}
                     </Typography>
                   </div>
-                  <div>
-                  <Typography variant="h6" className="text-bold mb-10">
-                    Sử dụng điểm{" "}
-                    <Checkbox {...label}   />
-                  </Typography>
+                  {infor.currentPoint > 0 ? (
+                    <div>
+                      <label className="group-checkbox flex-center mb-20">
+                        <span className="fs-12 pl-4">Su dung diem </span>
+                        <input
+                          type="checkbox"
+                          name="isPoint"
+                          onChange={handleCheckChange}
+                          checked={checked}
+                          value={checked}
+                        />
+                        <span className="checkmark"></span>
+                      </label>
 
-                  <TextField
-              name="Point"
-              type="text"
-              label="Số Điểm"
-              variant="outlined"
-              fullWidth
-               value={point}
-               onChange={handleSubmitOrder}
-           
-            />
+                      {checked ? (
+                        <div className="flex-center mb-12">
+                          <input
+                            type="text"
+                            className="name"
+                            name="name"
+                            value={point}
+                            onChange={handlePointChange}
+                          />
+                        </div>
+                      ) : (
+                        <div></div>
+                      )}
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
                 </div>
-               
-             
-                </div>
-              
-               
+
                 <div className={classes.cols}>
                   <Typography variant="h6" className="text-bold">
                     Chi tiết đơn hàng
