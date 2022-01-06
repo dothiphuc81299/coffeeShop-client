@@ -61,7 +61,7 @@ const ConfirmOrderPage = () => {
   //   setPoint(e.target.value);
   // };
 
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   const handleCheckChange = () => {
     setChecked(!checked);
