@@ -3,6 +3,7 @@ const initialState = {
   status: null,
   infor: null,
   isDoneChangePasword: false,
+  email:'',
 };
 
 const authReducer = (state = initialState, action) => {
@@ -47,12 +48,14 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         status: action.payload,
+       
       }
     }
     case "RESET_STATUS": {
+      
       return {
         ...state,
-        status: null,
+        status: null,  
       }
     }
     case "CHANGED_PASSWORD": {
@@ -61,6 +64,16 @@ const authReducer = (state = initialState, action) => {
         isDoneChangePasword: true,
       }
     }
+
+
+    case "VERIFY_EMAIL":{
+      const { email,code } = action.payload;
+      return {
+        ...state,
+        status: action.payload,
+      }
+    }
+
     default: {
       return state;
     }

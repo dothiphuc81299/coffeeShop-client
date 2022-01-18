@@ -29,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
   },
+
+  checkbox :{
+    display: "flex",
+    marginleft:"100px"
+  },
   list: {
     maxHeight: 250,
     overflowY: "auto",
@@ -73,7 +78,6 @@ const ConfirmOrderPage = () => {
   };
 
 
-
   // const [lat, setLat] = useState(0);
   // const [lng, setLng] = useState(0);
   const dispatch = useDispatch();
@@ -92,6 +96,8 @@ const ConfirmOrderPage = () => {
   //     setLng(infor.position.lng);
   //   }
   // }, [infor]);
+
+ 
 
   useEffect(() => {
     if (listInCart.length === 0) {
@@ -122,8 +128,7 @@ const ConfirmOrderPage = () => {
     );
   };
 
-  console.log("text", point);
-  console.log("checked", checked);
+ 
 
   return (
     <div className="">
@@ -154,9 +159,16 @@ const ConfirmOrderPage = () => {
                     </Typography>
                   </div>
                   {infor.currentPoint > 0 ? (
-                    <div>
+                      
+                      <div>
+                          <Typography variant="body1">Note : Sử dụng điểm tích lũy như là một mã giảm : 1 điểm = 3000 VND </Typography>
+                    <div className={classes.checkbox}>
+                     
+  
+                     
                       <label className="group-checkbox flex-center mb-20">
-                        <span className="fs-12 pl-4">Su dung diem </span>
+                    
+                        <span className={classes.checkbox}>Su dung diem </span>
                         <input
                           type="checkbox"
                           name="isPoint"
@@ -174,17 +186,20 @@ const ConfirmOrderPage = () => {
                             className="name"
                             name="name"
                             value={point}
+                            placeholder={infor.currentPoint}
                             onChange={handlePointChange}
                           />
                         </div>
                       ) : (
                         <div></div>
                       )}
-                    </div>
+                    </div> </div>
                   ) : (
                     <div></div>
                   )}
                 </div>
+
+                
 
                 <div className={classes.cols}>
                   <Typography variant="h6" className="text-bold">
@@ -205,19 +220,19 @@ const ConfirmOrderPage = () => {
                         {total.toLocaleString()}đ
                       </Typography>
                     </div>
-                    {/* <div className={classes.footerItem}>
-                        <Typography variant="body1">Phí ship</Typography>
+                    <div className={classes.footerItem}>
+                        <Typography variant="body1">Tiền giảm</Typography>
                         <Typography variant="h6" className={classes.footerContent}>
-                          {shippingFee.toLocaleString()}đ
+                          {(point*3000).toLocaleString()}đ
                         </Typography>
-                      </div> */}
+                      </div>
                     <div className={classes.footerItem}>
                       <Typography variant="body1">Tổng tiền</Typography>
                       <Typography
                         variant="h6"
                         className={classes.footerContent}
                       >
-                        {total.toLocaleString()}đ
+                        {(total-point*3000).toLocaleString()}đ
                       </Typography>
                     </div>
                   </div>

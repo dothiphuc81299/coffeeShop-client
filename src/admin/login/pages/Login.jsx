@@ -13,12 +13,12 @@ export default function LoginPage() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (token) {
-      // if (isRoot) 
-        history.push("/admin/summary")
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     // if (isRoot) 
+  //       history.push("/admin/summary")
+  //   }
+  // }, [token]);
 
   // useEffect(() => {
   //   if (!isRoot && infor) {
@@ -28,6 +28,8 @@ export default function LoginPage() {
 
   const handleSubmitForm = (payload) => {
     dispatch(sendPostLogin(payload))
+    history.push("/admin/summary")
+
   }
 
   return (

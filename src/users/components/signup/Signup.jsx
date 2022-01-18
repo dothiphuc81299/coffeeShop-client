@@ -20,6 +20,9 @@ const validationSchema = yup.object().shape({
   phone: yup
     .string('Enter your phone number')
     .required('Phone number is required'),
+  email: yup
+    .string('Enter your email ')
+    .required('Email is required'),
   address: yup
     .string('Enter your address')
     .required('Address is required'),
@@ -28,9 +31,9 @@ const validationSchema = yup.object().shape({
     .oneOf([true], 'The terms and conditions must be accepted.')
 });
 
-export default function Login(props) 
+export default function Signup(props) 
 {
-  const { handleSubmitForm, status } = props;
+  const {   handleSubmitForm, status } = props;
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -43,7 +46,7 @@ export default function Login(props)
         dispatch({
           type: "RESET_STATUS"
         })
-        history.push('/login')
+        history.push('/authen')
       }
     }
   }, [status])
@@ -52,12 +55,13 @@ export default function Login(props)
       username: '',
       password: '',
       phone: '',
+      email:'',
       address: '',
       isAccept: false,
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      console.log(values)
+      // console.log(values)
       handleSubmitForm(values);
     },
   });
@@ -121,6 +125,20 @@ export default function Login(props)
                 onChange={formik.handleChange}
                 error={formik.touched.phone && Boolean(formik.errors.phone)}
                 helperText={formik.touched.phone && formik.errors.phone}
+              />
+            </div>
+
+            <div className="flex-center mb-12">
+              <TextField 
+                fullWidth 
+                variant="outlined" 
+                label="Email"
+                name="email"
+                type="text"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
             </div>
 

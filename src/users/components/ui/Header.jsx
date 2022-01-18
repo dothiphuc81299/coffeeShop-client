@@ -114,7 +114,7 @@ export default function Header() {
               <ul className="mb-0 flex-center">
                 <li><Link to="/" onClick={toggle} className={isActive === "/" ? "active" : null}>Home</Link></li>
                 <li><Link to="/menu" onClick={toggle} className={isActive === "/menu" ? "active" : null}>Menu</Link></li>
-                <li><Link to="/about-us" onClick={toggle} className={isActive === "/about-us" ? "active" : null}>About us</Link></li>
+                {/* <li><Link to="/about-us" onClick={toggle} className={isActive === "/about-us" ? "active" : null}>About us</Link></li> */}
                 { token && <li><Link to="/user/detail" onClick={toggle} className={isActive === "/user/detail" ? "active" : null}>Account</Link></li> }
               </ul>
             </div>

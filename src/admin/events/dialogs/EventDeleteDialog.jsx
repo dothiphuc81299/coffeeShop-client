@@ -28,7 +28,7 @@ const EventDeleteDialog = (props) => {
 
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to change status of this event?
+            Are you sure you want to delete this event?
           </DialogContentText>
         </DialogContent>
 

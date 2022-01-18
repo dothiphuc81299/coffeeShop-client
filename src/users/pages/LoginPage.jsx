@@ -11,17 +11,19 @@ export default function LoginPage() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (token) {
-      history.push("/")
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     history.push("/")
+  //   }
+  // }, [token]);
 
   const handleSubmitForm = (payload) => {
+
     dispatch(sendPostLogin(payload))
+    history.push("/")
   }
 
   return (
-    <Login handleSubmitForm={handleSubmitForm}/>
+    <Login handleSubmitForm={handleSubmitForm}  />
   );
 }

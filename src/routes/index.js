@@ -21,8 +21,11 @@ import ChangePasswordStaffPage from "../employee/pages/Information/changePasswor
 
 import LoginPage from "../users/pages/LoginPage";
 import SignupPage from "../users/pages/SignupPage";
+import EmailAuthenPage from "../users/pages/EmailAuthenPage";
 import HomePage from "../users/pages/HomePage";
 import MenuPage from "../users/pages/MenuPage";
+
+
 import ConfirmOrderPage from "../users/pages/ConfirmOrderPage";
 import UserDetailPage from "../users/pages/UserDetailPage";
 import UserChangePasswordPage from "../users/pages/UserChangePasswordPage";
@@ -38,6 +41,7 @@ import DetailPage  from "../admin/orders/pages/DetailPage";
 import OrderDetailPage from "../users/pages/OrderDetailPage";
 import StatisticPage from "../admin/statistic/page/StatisticPage";
 
+
 const routes = () => {
   return (
     <Switch>
@@ -45,8 +49,9 @@ const routes = () => {
       <Route exact path="/" component={HomePage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignupPage} />
+      <Route path="/authen" component={EmailAuthenPage}/> 
       <Route path="/menu" component={MenuPage} />
-      <Route path="/about-us" component={AboutUs} />
+      {/* <Route path="/about-us" component={AboutUs} /> */}
       <PrivateRoute path="/order" component={ConfirmOrderPage} />
       <PrivateRoute exact path="/user/detail" component={UserDetailPage} />
       <PrivateRoute exact path="/user/change-password" component={UserChangePasswordPage} />

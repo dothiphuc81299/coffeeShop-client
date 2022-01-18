@@ -50,8 +50,10 @@ export const logout = () => {
 export const sendPostSignup = (payload) => {
   console.log(payload)
   return async (dispatch) => {
+    const data = payload.data;
     dispatch({
-      type: "RESET_STATUS"
+      type: "RESET_STATUS",
+  
     })
     return axios.post('https://mighty-castle-60848.herokuapp.com/users/sign-up', payload)
       .then(response => {
@@ -69,6 +71,49 @@ export const sendPostSignup = (payload) => {
       });
   }
 }
+
+export const sendEmailAuthen = (payload) => {
+  console.log(payload)
+  return async (dispatch) => {
+    dispatch({
+      type: "RESET_STATUS"
+    })
+    return axios.post('https://mighty-castle-60848.herokuapp.com/users/verify-email', payload)
+
+      .then(response => {
+        dispatch({
+          type: "VERIFY_EMAIL",
+          payload: {
+            number: response.status,
+            message: response.data.message,
+          }
+        })
+      })
+      .catch(error => {
+        toast.error("Email or Code is invalid.")
+        throw (error);
+      });
+  }
+}
+
+export const verifyEmailAuthen = (payload) => {
+  return async (dispatch) => {
+    return axios.post('https://mighty-castle-60848.herokuapp.com/users/verify-email', payload)
+      .then(response => {
+        const data = response.data.data.data;
+        dispatch({
+          type: "VERIFY_EMAIL",
+          payload: data
+        })
+        toast.success("Verify success.")
+      })
+      .catch(error => {
+        toast.error("Code is invalid.")
+        throw (error);
+      });
+  };
+};
+
 
 export const sendPostUpdateInfor = (payload) => {
   return async (dispatch) => {

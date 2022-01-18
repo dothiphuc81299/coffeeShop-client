@@ -29,7 +29,7 @@ const MenuDeleteDialog = (props) => {
 
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to change status of this drink?
+            Are you sure you want to delete this drink?
           </DialogContentText>
         </DialogContent>
 

@@ -85,7 +85,7 @@ const ListOrder = (props) => {
         <TableBody>
           {data.map((order,index) => (
             <TableRow>
-                <TableCell align="center"><Link to={`/user/history-order/${order._id}`}> {index+1} </Link></TableCell>
+                <TableCell align="center"> {index+1}</TableCell>
               <TableCell align="center">{order.user.address}</TableCell>
               <TableCell align="left">
                 {order.drink.map((item, index) => (
