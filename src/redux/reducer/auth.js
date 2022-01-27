@@ -9,7 +9,7 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_LOGIN": {
-      const { _id, token, username, phone, address, avatar, password, currentPoint } = action.payload;
+      const { _id, token, username, phone, address, avatar, password, currentPoint,email } = action.payload;
       localStorage.setItem("token", token);
 
       return {
@@ -17,12 +17,12 @@ const authReducer = (state = initialState, action) => {
         token: token,
         infor: {
           userId: _id,
-          username, phone, address, avatar, password, currentPoint
+          username, phone, address, avatar, password, currentPoint,email
         }
       }
     }
     case "SET_INFOR": {
-      const { username, phone, address, avatar, password, _id, currentPoint } = action.payload;
+      const { username, phone, address, avatar, password, _id, currentPoint,email } = action.payload;
 
       return {
         ...state,
@@ -34,6 +34,7 @@ const authReducer = (state = initialState, action) => {
           avatar: avatar || (state.infor && state.infor.avatar), 
           password: password || (state.infor && state.infor.password),
           currentPoint: currentPoint,
+          email:email || (state.infor && state.infor.email)
         }
       }
     }
@@ -44,10 +45,15 @@ const authReducer = (state = initialState, action) => {
         infor: null,
       }
     }
+
     case "SET_STATUS": {
+      const { username, phone, address,  password,email } = action.payload;
+     
       return {
         ...state,
         status: action.payload,
+        email:action.payload,
+       
        
       }
     }
