@@ -62,6 +62,15 @@ export default function UserDetail(props) {
         onChange={formik.handleChange}
         className={classes.input}
       />
+        <TextField
+        label="Email"
+        variant="outlined"
+        name="Email"
+        disabled
+        value={formik.values.email}
+        onChange={formik.handleChange}
+        className={classes.input}
+      />
       <TextField
         label="Phone number"
         variant="outlined"
