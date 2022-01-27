@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
       if (name === "bartender") {
         return "#4caf50";
       }
-      return "#004d7f";
+      return "#5B9E48";
     },
     color: "white",
   },

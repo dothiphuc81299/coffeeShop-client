@@ -39,18 +39,21 @@ const EmployeePage = () => {
   const [open, setOpen] = useState(false);
   const token = useSelector((state) => state.authAdmin.token);
   const dispatch = useDispatch();
-
+  console.log(token);
   useEffect(() => {
-    dispatch(getListStaff());
-  }, [token]);
-
-  useEffect(() => {
-    dispatch(getRoles(token));
+    dispatch(getListStaff(token));
   }, [token]);
 
   useEffect(() => {
     dispatch(getInforByToken(token));
   }, [token]);
+
+
+  useEffect(() => {
+    dispatch(getRoles(token));
+  }, [token]);
+
+
 
   const handleSubmit = (payload) => {
     dispatch(
