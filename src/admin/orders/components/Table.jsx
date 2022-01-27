@@ -74,7 +74,7 @@ const BasicTable = (props) => {
   };
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer >
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -114,7 +114,7 @@ const BasicTable = (props) => {
               <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
               <Link to={`/admin/orders/${order._id}`}>  {order.user.username}</Link> 
               </TableCell>
-              <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
+              <TableCell style={{ width: "750px" }}>
                 {order.user.address}
               </TableCell>
               <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>

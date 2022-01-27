@@ -5,7 +5,7 @@ import EmployeeDeleteDialog from "../dialogs/EmployeeDeleteDialog";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
   dialog: {
     minHeight: 300,

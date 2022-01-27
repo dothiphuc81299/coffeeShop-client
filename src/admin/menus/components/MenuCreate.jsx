@@ -15,7 +15,7 @@ import MenuCreateDialog from "../dialogs/MenuCreateDialog";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
 }));
 
@@ -34,7 +34,7 @@ const MenuCreate = (props) => {
           style={{
             width: 400,
             marginBottom: 16,
-            backgroundColor: "#5FA3B7",
+            backgroundColor: "#177245",
             color: "white",
           }}
           open={open}

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
   content: {
     flexGrow: 1,
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
      marginTop: theme.spacing(3),
     marginLeft: theme.spacing(20),
     // marginBottom: theme.spacing(7),
-    color: "#5fa3b7",
+    color: "#177245",
   },
   labelFormat: {
     // display: "flex",

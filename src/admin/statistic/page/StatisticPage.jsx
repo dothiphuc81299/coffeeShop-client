@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
   content: {
     display: "flex",
@@ -48,12 +48,14 @@ const StatisticPage = () => {
     dispatch(
       getStatistic({
         token,
-        startAt: startDate.format(),
-        endAt: endDate.format(),
+        startAt: moment(startDate).startOf('isoWeek').toISOString(),
+        endAt: moment(endDate).startOf('isoWeek').toISOString(),
       })
     );
   }, [startDate, endDate]);
 
+  console.log(startDate.format());
+  console.log( moment(startDate).startOf('isoWeek').toISOString())
   const result = useSelector((state) => state.statistic.result);
   let temp = [];
   let tempSale =[];

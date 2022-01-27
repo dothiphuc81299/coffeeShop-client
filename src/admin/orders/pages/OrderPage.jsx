@@ -21,7 +21,7 @@ import Select from "@mui/material/Select";
 import { getQuery } from "../../../helpers/search";
 import Layout from '../../../employee/PrivateLayout';
 
-const drawerWidth = 240;
+const drawerWidth = 100;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,16 +33,17 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
     height: 750,
-  },
+  },  
   table: {
     display: "flex",
-    marginLeft: drawerWidth,
+    marginLeft: "125px",
+    marginRight:"-15px"
   },
   input: {
     display: "flex",
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(10),
     "& .MuiPaginationItem-page.Mui-selected": {
-      backgroundColor: "#5fa3b7",
+      backgroundColor: "#177245",
       color: "#fff",
     },
   },
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-start",
     marginRight: theme.spacing(10),
-    color: "#5fa3b7",
+    color: "#177245",
   },
 }));
 
@@ -96,6 +97,7 @@ const OrderPage = () => {
         page,
       })
     );
+    
   }, [page, status]);
 
   const orders = useSelector((state) => state.orderAdmin.orders);
