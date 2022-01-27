@@ -41,8 +41,8 @@ const RolePage = () => {
   }, [token]);
 
   useEffect(() => {
-    dispatch(getRoles());
-  }, []);
+    dispatch(getRoles(token));
+  }, [token]);
 
   useEffect(() => {
     dispatch(getPermissions());

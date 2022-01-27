@@ -6,7 +6,11 @@ export const getListStaff = (payload) => {
     return axios
       .get(
         "https://mighty-castle-60848.herokuapp.com/staff",
-  
+        {
+          headers: {
+               Authorization: `Bearer ${payload}`,
+             },
+        }
         
       )
       .then((response) => {

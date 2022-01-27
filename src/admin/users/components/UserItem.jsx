@@ -34,31 +34,34 @@ const TableUser = (props) => {
   const { users } = props;
   const classes = useStyles();
   return (
-    <TableContainer component={Paper}>
+    <TableContainer >
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell style={{ fontWeight: "bold" }} align="right">
+            <TableCell style={{ fontWeight: "bold" }} >
               Username   
             </TableCell>
-            <TableCell style={{ fontWeight: "bold" }} align="center">
+            <TableCell style={{ fontWeight: "bold" }} >
+              Email   
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold" }} >
               Phone    
             </TableCell>
-            <TableCell style={{ fontWeight: "bold" }} align="center">
+            <TableCell style={{ fontWeight: "bold" }} >
               Address    
             </TableCell>
-            <TableCell  align="center" style={{width: '1px', whiteSpace: 'nowrap',fontWeight: "bold"}}>
-              CurrentPoint
+            <TableCell   style={{width: '1px', whiteSpace: 'nowrap',fontWeight: "bold"}}>
+              Point
             </TableCell>
-            <TableCell style={{ fontWeight: "bold" }} align="center">
+            <TableCell style={{ fontWeight: "bold" }} >
               Status
             </TableCell>
-            <TableCell style={{ fontWeight: "bold" }} align="center">
+            {/* <TableCell style={{ fontWeight: "bold" }} >
               Created At
-            </TableCell>
+            </TableCell> */}
             <TableCell
               style={{ fontWeight: "bold" }}
-              align="center"
+              
             ></TableCell>
           </TableRow>
         </TableHead>
@@ -67,23 +70,24 @@ const TableUser = (props) => {
           {users.map((user) => (
             <TableRow>
               <TableCell  style={{width: '1px', whiteSpace: 'nowrap'}}>{user.username}</TableCell>
-              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}} align="center">{user.phone}</TableCell>
-              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}}align="center">{user.address} </TableCell>
-              <TableCell align="center">{user.currentPoint}</TableCell>
-              <TableCell align="center">
+              <TableCell  style={{width: '1px', whiteSpace: 'nowrap'}}>{user.email}</TableCell>
+              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}} >{user.phone}</TableCell>
+              <TableCell style={{width: '500px'}}>{user.address} </TableCell>
+              <TableCell >{user.currentPoint}</TableCell>
+              <TableCell >
                 <Chip
                   size="small"
                   label={user.active ? "active" : "deactive"}
                   color={user.active ? "primary" : "secondary"}
                 />
               </TableCell>
-              <TableCell style={{width: '1px', whiteSpace: 'nowrap'}} align="right">
+              {/* <TableCell style={{width: '1px', whiteSpace: 'nowrap'}} align="right">
                 {DateUtils.format(
                   user.createdAt,
                   DateFormat.YYYY_MM_DD_hh_mm_ss
                 )}
-              </TableCell>
-              <TableCell align="center">
+              </TableCell> */}
+              <TableCell >
                 <UserDelete user={user} />
               </TableCell>
             </TableRow>

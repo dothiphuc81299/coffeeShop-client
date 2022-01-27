@@ -4,7 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ResponsiveDrawer from "../../components/ResponsiveDrawer";
 import { getUsers } from "../actions";
@@ -17,7 +17,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from "react-router";
-import Layout from '../../../employee/PrivateLayout';
+import Layout from "../../../employee/PrivateLayout";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -36,11 +36,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     height: 750,
   },
+
   table: {
-     display: "flex",
-    marginRight: theme.spacing(5),
-    marginLeft:theme.spacing(20),
+    display: "flex",
+    marginLeft: "125px",
+    marginRight: "-15px",
   },
+
   input: {
     display: "flex",
     justifyContent: "flex-end",
@@ -56,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
       color: "#fff",
     },
   },
-  textTypo:{
+  textTypo: {
     display: "flex",
     justifyContent: "flex-start",
     marginRight: theme.spacing(20),
@@ -75,7 +77,7 @@ const UserPage = () => {
   };
 
   const token = useSelector((state) => state.authAdmin.token);
-  console.log(token)
+  console.log(token);
 
   const handleChangeSearch = (e) => {
     setSearchForm(e.target.value);
@@ -86,41 +88,40 @@ const UserPage = () => {
 
   useEffect(() => {
     const params = getQuery(search);
-    dispatch(getUsers(token,{
-      ...params,
-      limit :12,
-      page,
-    }));
-  }, [token,search,page]);
+    const { keyword } = params;
+    dispatch(getUsers(token, keyword, page, 12));
+  }, [token, search, page]);
 
   const users = useSelector((state) => state.userAdmin.users);
-  
+
   const classes = useStyles();
 
   return (
     <Layout>
-    <div className="container">
-    <div className={classes.root}>
-      <CssBaseline />
+      <div className="container">
+        <div className={classes.root}>
+          <CssBaseline />
 
-      <AppBar position="fixed" className={classes.appBar}>
-        {/* <Toolbar>
+          <AppBar position="fixed" className={classes.appBar}>
+            {/* <Toolbar>
           <Typography variant="h6" noWrap>
             User Managements
           </Typography>
         </Toolbar> */}
-      </AppBar>
+          </AppBar>
 
-      <ResponsiveDrawer />
+          <ResponsiveDrawer />
 
-      {/* <main className={classes.content}>
+          {/* <main className={classes.content}>
         <Grid container spacing={3}>
          
         </Grid>
       </main> */}
-      </div>
-      <div className={classes.input}>
-      <Typography variant="h5" noWrap className={classes.textTypo}>User Management</Typography>
+        </div>
+        <div className={classes.input}>
+          <Typography variant="h5" noWrap className={classes.textTypo}>
+            User Management
+          </Typography>
           <InputBase
             placeholder="Finding user..."
             value={searchForm}
@@ -136,21 +137,19 @@ const UserPage = () => {
           </IconButton>
         </div>
 
-      <div className={classes.table}>
-      <TableUser users={users} />
-      </div>
-        
+        <div className={classes.table}>
+          <TableUser users={users} />
+        </div>
 
-
-      <div className={classes.pagination}>
-        <Pagination
-          size="large"
-          count={6}
-          page={page}
-          onChange={handleChange}
-        />
+        <div className={classes.pagination}>
+          <Pagination
+            size="large"
+            count={6}
+            page={page}
+            onChange={handleChange}
+          />
+        </div>
       </div>
-    </div>
     </Layout>
   );
 };
