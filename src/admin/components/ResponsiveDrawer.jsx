@@ -11,7 +11,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../src/assets/images/commons/logo.png";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   drawer: {

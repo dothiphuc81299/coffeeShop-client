@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
 
   content: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(10),
     "& .MuiPaginationItem-page.Mui-selected": {
-      backgroundColor: "#5fa3b7",
+      backgroundColor: "#177245",
       color: "#fff",
     },
   },

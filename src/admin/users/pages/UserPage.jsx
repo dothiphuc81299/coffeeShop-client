@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
   content: {
     flexGrow: 1,
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(10),
     "& .MuiPaginationItem-page.Mui-selected": {
-      backgroundColor: "#5fa3b7",
+      backgroundColor: "#177245",
       color: "#fff",
     },
   },
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-start",
     marginRight: theme.spacing(20),
-    color: "#5fa3b7",
+    color: "#177245",
   },
 }));
 
@@ -74,6 +74,9 @@ const UserPage = () => {
     setPage(value);
   };
 
+  const token = useSelector((state) => state.authAdmin.token);
+  console.log(token)
+
   const handleChangeSearch = (e) => {
     setSearchForm(e.target.value);
   };
@@ -83,12 +86,12 @@ const UserPage = () => {
 
   useEffect(() => {
     const params = getQuery(search);
-    dispatch(getUsers({
+    dispatch(getUsers(token,{
       ...params,
       limit :12,
       page,
     }));
-  }, [search,page]);
+  }, [token,search,page]);
 
   const users = useSelector((state) => state.userAdmin.users);
   

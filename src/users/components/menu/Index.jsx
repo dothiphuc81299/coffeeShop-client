@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: "center",
     fontWeight: "bold",
-    color: "#5fa3b7",
+    color: "#177245",
     fontSize: 36,
     marginTop: theme.spacing(2)
   },
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(10),
     "& .MuiPaginationItem-page.Mui-selected": {
-      backgroundColor: "#5fa3b7",
+      backgroundColor: "#177245",
       color: "#fff",
     },
   },

@@ -39,7 +39,7 @@ const CategoryCreateDialog = (props) => {
             width: 120,
             margin: "auto",
             marginLeft: 16,
-            backgroundColor: "#5FA3B7",
+            backgroundColor: "#177245",
           }}
         >
           Submit

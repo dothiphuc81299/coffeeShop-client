@@ -6,8 +6,12 @@ export const getRoles = (payload) => {
   return async (dispatch) => {
     return axios
       .get(
-        "https://mighty-castle-60848.herokuapp.com/staffRole"
-      )
+        "https://mighty-castle-60848.herokuapp.com/staffRole",
+        {
+          headers: {
+            'Authorization': `Bearer ${payload}`
+          }
+        })
       .then((response) => {
         const data = response.data.data.staffRoles;
         dispatch({

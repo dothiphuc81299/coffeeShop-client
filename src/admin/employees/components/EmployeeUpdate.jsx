@@ -13,7 +13,7 @@ import EmployeeUpdateDialog from "../dialogs/EmployeeUpdateDialog";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
-    backgroundColor: "#5FA3B7",
+    backgroundColor: "#177245",
   },
 }));
 

@@ -57,7 +57,7 @@ const EventUpdateDialog = (props) => {
             margin: "auto",
             marginLeft: 16,
             marginBottom: 16,
-            backgroundColor: "#5FA3B7",
+            backgroundColor: "#177245",
           }}
         >
           Submit
