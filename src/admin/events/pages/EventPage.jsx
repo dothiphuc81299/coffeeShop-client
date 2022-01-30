@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
 
 const EventPage = () => {
   const [open, setOpen] = useState(false);
+  
+ 
 
   const dispatch = useDispatch();
   const token = useSelector((state) => state.authAdmin.token);
@@ -44,10 +46,18 @@ const EventPage = () => {
   }, [token]);
 
   useEffect(() => {
+    
     dispatch(getEvents());
-  }, []);
+  }, []
+
+  );
 
   const events = useSelector((state) => state.eventAdmin.events);
+
+  
+ 
+  // console.log(events);
+  // console.log(checkChangeEvent);
 
   const handleSubmit = (payload) => {
     dispatch(postEvent({

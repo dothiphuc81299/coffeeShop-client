@@ -9,6 +9,7 @@ export default function SignupPage() {
 
   const handleSubmitForm = (payload) => {
     dispatch(sendPostSignup(payload))
+    localStorage.setItem("email",payload.email)
   }
 
   return <Signup handleSubmitForm={handleSubmitForm} status={status}/>;

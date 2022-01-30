@@ -13,7 +13,7 @@ const validationSchema = yup.object().shape({
 });
 
 export default function VerifyEmail(props) {
-  const { handleSubmitForm,status,email } = props;
+  const { handleSubmitForm,status } = props;
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -27,13 +27,17 @@ export default function VerifyEmail(props) {
           type: "RESET_STATUS"
         })
         history.push('/login')
+        localStorage.removeItem("email");
       }
     }
   }, [status])
+
+  const email =localStorage.getItem("email") ;
+
   const formik = useFormik({
     initialValues: {
       code: '',
-      email:'',
+      email:email,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -54,27 +58,19 @@ export default function VerifyEmail(props) {
         <div className="box">
           <div className="pt-10 pb-10">
             <h2 className="text-center">Verify your Email</h2>
-            {/* <h2 className="text-center">A cup for new day</h2> */}
+            <h4 className="text-center">We have just sent a verification code to  {email} . </h4>
+           <h4 className="text-center"> To 
+            verify that is your email address, enter it below. 
+             </h4>
           </div>
-
+        
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex-center mb-12">
-            <TextField 
-                fullWidth 
-                variant="outlined"
-                label="Your email" 
-                type="text" 
-                name="email" 
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-              />
-            </div>
+          
 
             <div className="flex-center mb-12">
             <TextField 
                 fullWidth 
+            
                 variant="outlined"
                 label="your code" 
                 type="text" 

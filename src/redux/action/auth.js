@@ -51,6 +51,7 @@ export const sendPostSignup = (payload) => {
   console.log(payload)
   return async (dispatch) => {
     const data = payload.data;
+    console.log(data)
     dispatch({
       type: "RESET_STATUS",
   
@@ -62,8 +63,11 @@ export const sendPostSignup = (payload) => {
           payload: {
             number: response.status,
             message: response.data.message,
+            
           }
         })
+        console.log(data)
+        
       })
       .catch(error => {
         toast.error("Username or phone already exists.")

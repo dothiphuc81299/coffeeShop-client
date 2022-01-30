@@ -95,5 +95,36 @@ export const deleteEvent = (payload) => {
       .catch((error) => {
         throw error;
       });
+     
+  };
+};
+
+
+export const changeStatusEvent = (payload) => {
+  return async (dispatch) => {
+    return axios
+      .patch(
+        `https://mighty-castle-60848.herokuapp.com/event/${payload._id}/status`,
+        {
+          _id: payload._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${payload.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        const data = response.data.data.data;
+        dispatch({
+          type: "CHANGE_EVENT",
+          payload: data,
+        });
+       
+      })
+      .catch((error) => {
+        throw error;
+      });
+     
   };
 };

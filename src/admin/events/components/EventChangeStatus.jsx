@@ -1,24 +1,19 @@
-import {
-  AppBar,
-  Dialog,
-  IconButton,
-  makeStyles,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
+import { Dialog, makeStyles } from "@material-ui/core";
 import React from "react";
-import RoleDeleteDialog from "../dialogs/RoleDeleteDialog";
+import EventChangeStatusDialog from "../dialogs/EventChangeStatusDialog";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
     backgroundColor: "#177245",
   },
+  dialog: {
+    minHeight: 300,
+  },
 }));
 
-const RoleDelete = (props) => {
-  const { open, role } = props;
+const EventChangeStatus = (props) => {
+  const { open, event } = props;
   const { onSubmit, onClose } = props;
 
   const classes = useStyles();
@@ -33,13 +28,15 @@ const RoleDelete = (props) => {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
-          <RoleDeleteDialog
-           onSubmit={onSubmit} role={role}
-           onClose={onClose}
-           />
+          <EventChangeStatusDialog
+            className={classes.dialog}
+            onSubmit={onSubmit}
+            event={event}
+            onClose={onClose}
+          />
         </Dialog>
       )}
     </React.Fragment>
   );
 };
-export default RoleDelete;
+export default EventChangeStatus;

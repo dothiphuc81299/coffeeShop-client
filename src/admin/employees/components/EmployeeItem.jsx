@@ -87,7 +87,10 @@ const EmployeeItem = (props) => {
       })
     );
     setOpenDelete(false);
-    window.location.reload();
+
+    setTimeout(function() {
+      window.location.reload();
+      }, 1000);
   };
 
   const handleOpenDelete = () => {

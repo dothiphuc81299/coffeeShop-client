@@ -114,7 +114,7 @@ const BasicTable = (props) => {
               <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
               <Link to={`/admin/orders/${order._id}`}>  {order.user.username}</Link> 
               </TableCell>
-              <TableCell style={{ width: "750px" }}>
+              <TableCell style={{ width: "500px" }}>
                 {order.user.address}
               </TableCell>
               <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>

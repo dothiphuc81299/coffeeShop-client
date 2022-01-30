@@ -19,10 +19,10 @@ import FormLabel from "@mui/material/FormLabel";
 const OrderUpdateDialog = (props) => {
   const { open, order } = props;
   const { onSubmit, onClose } = props;
-
+ 
   const formik = useFormik({
     initialValues: {
-        status: "cancel" || "success" || "",
+      status: "cancel" || "success" || "",
     },
     onSubmit: (values) => {
       onSubmit({
@@ -32,7 +32,7 @@ const OrderUpdateDialog = (props) => {
     },
   });
 
-  console.log("status",formik.values.status)
+  
   return (
     <React.Fragment>
       {open && (
@@ -46,26 +46,32 @@ const OrderUpdateDialog = (props) => {
           <form onSubmit={formik.handleSubmit}>
             <DialogTitle>{"Update Status Of Order"}</DialogTitle>
 
-            <FormControl component="fieldset">
+            <FormControl >
+            <React.Fragment>
               <RadioGroup
                 row
                 aria-label="status"
                 name="status"
                 value={formik.values.status}
+                aria-labelledby="demo-radio-buttons-group-label"
                 onChange={formik.handleChange}
+              
               >
                 <FormControlLabel
-                  name="cancel"
+                  // name="cancel"
                   value="cancel"
                   control={<Radio />}
                   label="Cancel"
                 />
+                
                 <FormControlLabel
+                  // name="success"
                   value="success"
                   control={<Radio />}
                   label="Success"
                 />
               </RadioGroup>
+              </React.Fragment>
             </FormControl>
 
             <DialogActions>

@@ -47,7 +47,7 @@ const EmployeeCreateDialog = (props) => {
           <Grid item xs={12} style={{ marginBottom: 16 }}>
             <TextField
               name="password"
-              type="text"
+              type="password"
               label="Password"
               variant="outlined"
               fullWidth
