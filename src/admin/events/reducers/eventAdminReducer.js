@@ -1,13 +1,16 @@
 const initialState = {
   events: [],
+  
 };
 
 const eventAdminReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_EVENTS": {
+      
       return {
         ...state,
         events: action.payload,
+       
       };
     }
     case "POST_EVENT": {
@@ -31,11 +34,21 @@ const eventAdminReducer = (state = initialState, action) => {
         events: eventData,
       };
     }
+
+    case "CHANGE_EVENT":{
+      let eventData = [...state.events];
+      return {
+        ...state,
+         events: eventData,
+    
+      };
+    }
     case "DELETE_EVENT": {
       let eventData = [...state.events];
       return {
         ...state,
-        events: eventData,
+         events: eventData,
+    
       };
     }
     default: {

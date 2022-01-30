@@ -90,7 +90,10 @@ const RoleItem = (props) => {
       _id : payload._id
     }));
     setOpenDelete(false);
-     window.location.reload();
+     
+     setTimeout(function() {
+      window.location.reload();
+      }, 1000);
   };
 
   const handleOpenDelete = () => {

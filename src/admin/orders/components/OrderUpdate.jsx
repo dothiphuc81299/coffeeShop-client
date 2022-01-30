@@ -41,19 +41,24 @@ const OrderUpdate = (props) => {
     );
     setOpenUpdate(false);
      //window.location.reload();
+
+     setTimeout(function() {
+      window.location.reload();
+      }, 1000);
   };
 
   const handleOpenUpdate = () => {
     setOpenUpdate(!openUpdate);
   };
 
-  const handleCloseDelete = () => {
-    setOpenUpdate(false);
-  };
+    const handleCloseUpdate = () => {
+      setOpenUpdate(false);
+    };
   const classes = useStyles();
 
   return (
     <React.Fragment>
+      
       <div className={classes.iconUpdate} onClick={handleOpenUpdate}>
         <IconButton>
           <EditIcon style={{ color: red[500] }} fontSize="small" />
@@ -66,7 +71,7 @@ const OrderUpdate = (props) => {
         onSubmit={handleSubmitUpdate}
         open={openUpdate}
         onOpen={handleOpenUpdate}
-        onClose={handleCloseDelete}
+        onClose={handleCloseUpdate}
       />
     </React.Fragment>
   );

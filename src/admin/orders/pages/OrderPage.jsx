@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   textTypo:{
     display: "flex",
     justifyContent: "flex-start",
-    marginRight: theme.spacing(10),
+    marginRight: theme.spacing(24),
     color: "#177245",
   },
 }));

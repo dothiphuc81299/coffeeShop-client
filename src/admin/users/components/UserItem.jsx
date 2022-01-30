@@ -72,7 +72,7 @@ const TableUser = (props) => {
               <TableCell  style={{width: '1px', whiteSpace: 'nowrap'}}>{user.username}</TableCell>
               <TableCell  style={{width: '1px', whiteSpace: 'nowrap'}}>{user.email}</TableCell>
               <TableCell style={{width: '1px', whiteSpace: 'nowrap'}} >{user.phone}</TableCell>
-              <TableCell style={{width: '500px'}}>{user.address} </TableCell>
+              <TableCell style={{width: '300px'}}>{user.address} </TableCell>
               <TableCell >{user.currentPoint}</TableCell>
               <TableCell >
                 <Chip

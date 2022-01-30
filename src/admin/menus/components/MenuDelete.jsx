@@ -59,7 +59,7 @@ const MenuDelete = (props) => {
         >
        
           <MenuDeleteDialog
-          onSubmit={onSubmit} drink={drink} 
+          onSubmit={onSubmit} drink={drink} onClose={onClose}
           />
        </Dialog>
       )}

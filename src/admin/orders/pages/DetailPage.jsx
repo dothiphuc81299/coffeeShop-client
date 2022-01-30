@@ -13,6 +13,16 @@ import Loading from "../../../employee/containers/ui/Loading";
 import { DateFormat, DateUtils } from "../../../utils";
 import { useLocation, Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import CancelIcon from "@mui/icons-material/Cancel";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import DoneIcon from "@material-ui/icons/Done";
+import Chip from "@material-ui/core/Chip";
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,15 +42,16 @@ const useStyles = makeStyles((theme) => ({
     height: 750,
   },
   table: {
-    display: "flex",
-    marginLeft: drawerWidth,
+    // display: "flex",
+    marginLeft: 450,
+    marginTop: 40,
   },
   textTypo: {
     display: "flex",
     justifyContent: "center",
-     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(20),
-    // marginBottom: theme.spacing(7),
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(10),
+    marginBottom: theme.spacing(7),
     color: "#177245",
   },
   labelFormat: {
@@ -64,8 +75,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-start",
     marginLeft: theme.spacing(37),
-    marginBottom:theme.spacing(5),
-    
+    marginBottom: theme.spacing(5),
   },
 }));
 
@@ -83,6 +93,38 @@ const DetailPage = (props) => {
   }, [orderId]);
 
   const order = useSelector((state) => state.orderAdmin.detailOrder);
+  const checkStatusLabel = (param) => {
+    switch (param) {
+      case "success":
+        return "SUCCESS";
+      case "cancel":
+        return "CANCEL";
+      default:
+        return "PENDING";
+    }
+  };
+
+  const checkStatusColor = (param) => {
+    switch (param) {
+      case "success":
+        return "primary";
+      case "cancel":
+        return "secondary";
+      default:
+        return "secondary";
+    }
+  };
+
+  // const checkStatusIcon = (param) => {
+  //   switch (param) {
+  //     case "success":
+  //       return <DoneIcon />;
+  //     case "cancel":
+  //       return <CancelIcon />;
+  //     default:
+  //       return <AccessTimeIcon />;
+  //   }
+  // };
 
   console.log("order", order);
   //   console.log("user", order.user.address);
@@ -104,15 +146,14 @@ const DetailPage = (props) => {
                 <Button>Back</Button>
               </Link>
 
-              <h1 className={classes.textTypo} style={{ fontWeight: 600 }}>
+              {/* <h1 className={classes.textTypo} style={{ fontWeight: 600 }}>
              ORDER DETAIL
-              </h1>
+              </h1> */}
             </div>
 
-            {/* <Typography variant="h4" noWrap className={classes.textTypo}>
-              Order Detail{" "}
-            </Typography> */}
-
+            <Typography variant="h4" noWrap className={classes.textTypo}>
+              Order Detail
+            </Typography>
             <label className={classes.labelFormat} style={{ fontWeight: 600 }}>
               Address :
             </label>
@@ -159,7 +200,13 @@ const DetailPage = (props) => {
             <label className={classes.labelFormat} style={{ fontWeight: 600 }}>
               Status :
             </label>
-            <span className={classes.labelStatus}> {order.status}</span>
+            <span className={classes.labelStatus}>
+              <Chip
+                size="small"
+                label={checkStatusLabel(order.status)}
+                color={checkStatusColor(order.status)}
+              />
+            </span>
             <br></br>
             <label className={classes.labelFormat} style={{ fontWeight: 600 }}>
               CreatedAt :

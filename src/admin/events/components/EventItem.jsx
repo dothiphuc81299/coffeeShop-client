@@ -13,9 +13,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { DateFormat, DateUtils } from "../../../utils";
 import EventUpdate from "./EventUpdate";
 import EventDelete from "./EventDelete";
-import { deleteEvent, updateEvent } from "../actions";
+import { changeStatusEvent, deleteEvent, updateEvent } from "../actions";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { getInforByToken } from "../../../redux/action/inforStaff";
+import { getEvents } from "../actions";
+import EventChangeStatus from "./EventChangeStatus";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -53,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     marginTop: 36,
   },
+  iconActive: {
+    position: "absolute",
+    right: 80,
+    marginTop: 36,
+  },
 }));
 
 const EventItem = (props) => {
@@ -61,6 +68,7 @@ const EventItem = (props) => {
   const [openUpdate, setOpenUpdate] = useState(false);
 
   const [openDelete, setOpenDelete] = useState(false);
+  const [openChangeStatus,setOpenChangeStatus] =useState(false);
   const token = useSelector((state) => state.authAdmin.token);
   const classes = useStyles();
 
@@ -97,7 +105,10 @@ const EventItem = (props) => {
       })
     );
     setOpenDelete(false);
-    window.location.reload();
+
+    setTimeout(function () {
+      window.location.reload();
+    }, 1000);
   };
 
   const handleOpenDelete = () => {
@@ -107,6 +118,32 @@ const EventItem = (props) => {
   const handleCloseDelete = () => {
     setOpenDelete(false);
   };
+
+  const handleSubmitChangeStatus = (payload) => {
+    dispatch(
+      changeStatusEvent({
+        token,
+        _id: payload._id,
+      })
+    );
+
+    console.log(token)
+    setOpenChangeStatus(false);
+
+    setTimeout(function () {
+      window.location.reload();
+    }, 10000);
+  };
+
+  const handleOpenChangeStatus = () => {
+    setOpenChangeStatus(!openChangeStatus);
+  };
+
+  const handleCloseChangeStatus = () => {
+    setOpenChangeStatus(false);
+  };
+
+
 
   return (
     <Card className={classes.root}>
@@ -132,7 +169,6 @@ const EventItem = (props) => {
             color="secondary"
             className={classes.chip}
           />
-
           <Typography
             variant="subtitle1"
             color="textSecondary"
@@ -143,11 +179,33 @@ const EventItem = (props) => {
         </CardContent>
       </div>
 
+      <div className={classes.iconActive} onClick={handleOpenChangeStatus}>
+      {event.active ? (
+          <Chip color="primary" label="ACTIVE" />
+        ) : (
+          <Chip color="secondary" label="INACTIVE" />
+        )}
+      
+      </div>
+
       <div className={classes.iconEdit} onClick={handleOpenUpdate}>
+        {/* {event.active ? (
+          <Chip color="primary" label="ACTIVE" />
+        ) : (
+          <Chip color="secondary" label="INACTIVE" />
+        )} */}
         <IconButton>
           <EditIcon style={{ color: green[500] }} fontSize="small" />
         </IconButton>
       </div>
+
+      <EventChangeStatus
+        onSubmit={handleSubmitChangeStatus}
+        open={openChangeStatus}
+        onOpen={handleOpenChangeStatus}
+        onClose={handleCloseChangeStatus}
+        event={event}
+      />
 
       <EventUpdate
         onSubmit={handleSubmitUpdate}
@@ -158,12 +216,16 @@ const EventItem = (props) => {
       />
 
       <div className={classes.iconDelete} onClick={handleOpenDelete}>
-        <IconButton>
+        {/* <IconButton>
           {event.active ? (
             <DeleteIcon style={{ color: red[500] }} fontSize="small" />
           ) : (
             <DeleteIcon style={{ color: red[500] }} fontSize="small" />
           )}
+        </IconButton> */}
+
+        <IconButton>
+          <DeleteIcon style={{ color: red[500] }} fontSize="small" />
         </IconButton>
       </div>
 
