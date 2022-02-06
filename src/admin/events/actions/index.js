@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { TokenUtils } from "../../../utils/token.utils";
 
 // const token = TokenUtils.TOKEN_ADMIN;
@@ -69,6 +70,7 @@ export const updateEvent = (payload) => {
         });
       })
       .catch((error) => {
+        toast.error("An Error Occurred .Please Try Again Later")
         throw error;
       });
   };
@@ -120,9 +122,41 @@ export const changeStatusEvent = (payload) => {
           type: "CHANGE_EVENT",
           payload: data,
         });
+        toast.success(" Success")
+      })
+      .catch((error) => {
+        toast.error("An Error Occurred .Please Try Again Later")
+        throw error;
+      });
+     
+  };
+};
+
+export const sendEmailEvent = (payload) => {
+  return async (dispatch) => {
+    return axios
+      .put(
+        `https://mighty-castle-60848.herokuapp.com/event/${payload._id}/send-email`,
+        {
+          _id: payload._id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${payload.token}`,
+          },
+        }
+      )
+      .then((response) => {
+        const data = response.data.data.data;
+        dispatch({
+          type: "SEND_EVENT",
+          payload: data,
+        });
+        toast.success(" success.")
        
       })
       .catch((error) => {
+        toast.error("An Error Occurred .Please Try Again Later")
         throw error;
       });
      

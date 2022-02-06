@@ -48,7 +48,7 @@ export const postNewOrder = (payload) => {
         })
       })
       .catch(error => {
-        toast.error("Đã xảy ra lỗi. Vui lòng thử lại!")
+        toast.error("An Error Occurred .Please Try Again Later")
         throw(error)
       });
   };

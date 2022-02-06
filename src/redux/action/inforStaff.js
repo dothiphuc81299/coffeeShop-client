@@ -36,7 +36,7 @@ export const sendPostUpdateInforStaff = (payload) => {
         toast.success(response.data.message)
       })
       .catch(error => {
-        toast.error("Đã xảy ra lỗi. Vui lòng thử lại!")
+        toast.error("An Error Occurred .Please Try Again Later!")
       });
   }
 }
@@ -53,10 +53,10 @@ export const sendPostUpdatePasswordStaff = (payload) => {
       }
     })
       .then(response => {
-        toast.success("Đổi mật khẩu thành công!")
+        toast.success("Change password successfully")
       })
       .catch(error => {
-        toast.error("Đã xảy ra lỗi. Vui lòng thử lại!")
+        toast.error("An Error Occurred .Please Try Again Later")
       });
   }
 }

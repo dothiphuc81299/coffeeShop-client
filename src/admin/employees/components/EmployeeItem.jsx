@@ -69,6 +69,9 @@ const EmployeeItem = (props) => {
       })
     );
     setOpenUpdate(false);
+    setTimeout(function() {
+      window.location.reload();
+      }, 1000);
   };
 
   const handleOpenUpdate = () => {

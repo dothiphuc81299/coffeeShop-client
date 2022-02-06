@@ -63,7 +63,7 @@ export const updateOrder = (payload) => {
       });
     })
     .catch((error) => {
-      toast.error("Ban khong the cap nhat don hang.")
+      toast.error("An Error Occurred .Please Try Again Later")
       throw error;
     });
 };

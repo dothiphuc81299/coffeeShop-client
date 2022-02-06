@@ -8,7 +8,7 @@ import {
   import { useFormik } from "formik";
   import React from "react";
   
-  const EventChangeStatusDialog = (props) => {
+  const EventSendEmailDialog = (props) => {
     const { event } = props;
     const { onSubmit, onClose } = props;
   
@@ -24,12 +24,14 @@ import {
     return (
       <React.Fragment>
         <form onSubmit={formik.handleSubmit}>
-          <DialogTitle>{"Change Status Of Event Confirmation"}</DialogTitle>
+          <DialogTitle>{  "   Send Email Of This Event Confirmation"}</DialogTitle>
   
           <DialogContent>
             <DialogContentText>
-              Are you sure to change status of this event ?
+              Are you sure to send email
+               of this event for user ?
             </DialogContentText>
+            
           </DialogContent>
   
           <DialogActions>
@@ -44,5 +46,5 @@ import {
       </React.Fragment>
     );
   };
-  export default EventChangeStatusDialog;
+  export default EventSendEmailDialog;
   

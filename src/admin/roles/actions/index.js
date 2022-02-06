@@ -47,7 +47,7 @@ export const postRole = (payload) => {
         });
       })
       .catch((error) => {
-        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
+        toast.error("An Error Occurred .Please Try Again Later.")
         throw error;
       });
   };
@@ -101,7 +101,7 @@ export const updateRole = (payload) => {
         });
       })
       .catch((error) => {
-        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
+        toast.error("An Error Occurred .Please Try Again Later.")
         throw error;
       });
   };
@@ -129,7 +129,7 @@ export const deleteRole = (payload) => {
         });
       })
       .catch((error) => {
-        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
+        toast.error("An Error Occurred .Please Try Again Later.")
         throw error;
       });
   };

@@ -139,7 +139,7 @@ export const sendPostUpdateInfor = (payload) => {
         toast.success(response.data.message)
       })
       .catch(error => {
-        toast.error("Đã xảy ra lỗi. Vui lòng thử lại!")
+        toast.error("An Error Occurred .Please Try Again Later!")
       });
   }
 }
@@ -156,7 +156,7 @@ export const sendPostUpdatePassword = (payload) => {
       }
     })
       .then(response => {
-        toast.success("Đổi mật khẩu thành công!")
+        toast.success("Change password successfully!")
         dispatch({
           type: "SET_INFOR",
           payload: {
@@ -168,7 +168,7 @@ export const sendPostUpdatePassword = (payload) => {
         })
       })
       .catch(error => {
-        toast.error("Đã xảy ra lỗi. Vui lòng thử lại!")
+        toast.error("!")
       });
   }
 }

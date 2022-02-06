@@ -28,7 +28,7 @@ import {
   
           <DialogContent>
             <DialogContentText>
-              Are you sure you want to change status of this staff?
+              Are you sure to change status of this staff?
             </DialogContentText>
           </DialogContent>
   

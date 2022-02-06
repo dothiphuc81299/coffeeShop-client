@@ -13,11 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { DateFormat, DateUtils } from "../../../utils";
 import EventUpdate from "./EventUpdate";
 import EventDelete from "./EventDelete";
-import { changeStatusEvent, deleteEvent, updateEvent } from "../actions";
+import { changeStatusEvent, deleteEvent, updateEvent ,sendEmailEvent} from "../actions";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { getInforByToken } from "../../../redux/action/inforStaff";
 import { getEvents } from "../actions";
 import EventChangeStatus from "./EventChangeStatus";
+import EventSendEmail from "./EventSendEmail";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -47,17 +48,22 @@ const useStyles = makeStyles((theme) => ({
   },
   iconEdit: {
     position: "absolute",
-    right: 40,
+    right: 230,
     marginTop: 36,
   },
   iconDelete: {
     position: "absolute",
-    right: 0,
+    right: 200,
     marginTop: 36,
   },
   iconActive: {
     position: "absolute",
-    right: 80,
+    right: 120,
+    marginTop: 36,
+  },
+  iconSendEmail: {
+    position: "absolute",
+    right: 0,
     marginTop: 36,
   },
 }));
@@ -68,7 +74,9 @@ const EventItem = (props) => {
   const [openUpdate, setOpenUpdate] = useState(false);
 
   const [openDelete, setOpenDelete] = useState(false);
-  const [openChangeStatus,setOpenChangeStatus] =useState(false);
+  const [openChangeStatus, setOpenChangeStatus] = useState(false);
+
+  const [openSendEmail, setOpenSendEmail] = useState(false);
   const token = useSelector((state) => state.authAdmin.token);
   const classes = useStyles();
 
@@ -127,12 +135,12 @@ const EventItem = (props) => {
       })
     );
 
-    console.log(token)
+    console.log(token);
     setOpenChangeStatus(false);
 
     setTimeout(function () {
       window.location.reload();
-    }, 10000);
+    }, 1000);
   };
 
   const handleOpenChangeStatus = () => {
@@ -143,6 +151,30 @@ const EventItem = (props) => {
     setOpenChangeStatus(false);
   };
 
+
+  // send email 
+  const handleSubmitSendEmail = (payload) => {
+    dispatch(
+      sendEmailEvent({
+        token,
+        _id: payload._id,
+      })
+    );
+
+    setOpenSendEmail(false);
+
+    // setTimeout(function () {
+    //   window.location.reload();
+    // }, 1000);
+  };
+
+  const handleOpenSendEmail = () => {
+    setOpenSendEmail(!openSendEmail);
+  };
+
+  const handleCloseSendEmail = () => {
+    setOpenSendEmail(false);
+  };
 
 
   return (
@@ -179,15 +211,6 @@ const EventItem = (props) => {
         </CardContent>
       </div>
 
-      <div className={classes.iconActive} onClick={handleOpenChangeStatus}>
-      {event.active ? (
-          <Chip color="primary" label="ACTIVE" />
-        ) : (
-          <Chip color="secondary" label="INACTIVE" />
-        )}
-      
-      </div>
-
       <div className={classes.iconEdit} onClick={handleOpenUpdate}>
         {/* {event.active ? (
           <Chip color="primary" label="ACTIVE" />
@@ -198,14 +221,6 @@ const EventItem = (props) => {
           <EditIcon style={{ color: green[500] }} fontSize="small" />
         </IconButton>
       </div>
-
-      <EventChangeStatus
-        onSubmit={handleSubmitChangeStatus}
-        open={openChangeStatus}
-        onOpen={handleOpenChangeStatus}
-        onClose={handleCloseChangeStatus}
-        event={event}
-      />
 
       <EventUpdate
         onSubmit={handleSubmitUpdate}
@@ -236,6 +251,38 @@ const EventItem = (props) => {
         onClose={handleCloseDelete}
         event={event}
       />
+
+      <div className={classes.iconActive} onClick={handleOpenChangeStatus}>
+        {event.active ? (
+          <Chip color="primary" label="ACTIVE" />
+        ) : (
+          <Chip color="secondary" label="INACTIVE" />
+        )}
+      </div>
+      <EventChangeStatus
+        onSubmit={handleSubmitChangeStatus}
+        open={openChangeStatus}
+        onOpen={handleOpenChangeStatus}
+        onClose={handleCloseChangeStatus}
+        event={event}
+      />
+
+      <div className={classes.iconSendEmail} onClick={handleOpenSendEmail}>
+        {event.active ? (
+          <Chip color="secondary" label="SEND EMAIL" />
+        ) : (
+          <Chip />
+        )}
+      </div>
+
+      <EventSendEmail
+        onSubmit={handleSubmitSendEmail}
+        open={openSendEmail}
+        onOpen={handleOpenSendEmail}
+        onClose={handleCloseSendEmail}
+        event={event}
+      />
+
     </Card>
   );
 };

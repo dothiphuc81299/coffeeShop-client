@@ -50,7 +50,7 @@ export const postStaff = (payload) => {
         });
       })
       .catch((error) => {
-        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
+        toast.error("An Error Occurred .Please Try Again Later.")
         throw error;
       });
   };
@@ -80,9 +80,10 @@ export const updateStaff = (payload) => {
           type: "UPDATE_STAFF",
           payload: data,
         });
+        toast.success("Thanh cong")
       })
       .catch((error) => {
-        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
+        toast.error("An Error Occurred .Please Try Again Later.")
         throw error;
       });
   };
@@ -108,7 +109,7 @@ export const deleteStaff = (payload) => {
         });
       })
       .catch((error) => {
-        toast.error("Ban khong co quyen de thuc hien hanh dong nay.")
+        toast.error("An Error Occurred .Please Try Again Later.")
         throw error;
       });
   };

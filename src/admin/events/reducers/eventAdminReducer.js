@@ -43,6 +43,15 @@ const eventAdminReducer = (state = initialState, action) => {
     
       };
     }
+
+    case "SEND_EVENT":{
+      let eventData = [...state.events];
+      return {
+        ...state,
+         events: eventData,
+    
+      };
+    }
     case "DELETE_EVENT": {
       let eventData = [...state.events];
       return {

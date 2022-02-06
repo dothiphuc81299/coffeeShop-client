@@ -30,7 +30,7 @@ import {
 
             <DialogContent>
               <DialogContentText>
-                Are you sure you want to delete role ?
+                Are you sure to delete role ?
               </DialogContentText>
             </DialogContent>
 

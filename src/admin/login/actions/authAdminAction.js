@@ -18,7 +18,7 @@ export const sendPostLogin = (payload) => {
           // }
         });
         // dispatch(getInforByToken(data.token))
-        toast.success("Đăng nhập thành công! Chào mừng bạn đã trở lại.")
+        toast.success("Login Success.Welcome back.")
       })
       .catch(error => {
         toast.error("Username or password is not correct.")

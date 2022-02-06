@@ -3,3 +3,5 @@ export * from "./EventUpdateDialog";
 export * from "./EventDeleteDialog";
 
 export * from "./EventChangeStatusDialog";
+
+export *from "./EventSendEmailDialog";
