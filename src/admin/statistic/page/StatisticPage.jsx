@@ -7,11 +7,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import { getStatistic } from "../action";
 import { useSelector } from "react-redux";
 import { Chart } from "react-google-charts";
-import moment from "moment";
+import moment, { months } from "moment";
 import { DatePicker, Form } from "antd";
 import Loading from "../../../users/components/ui/Loading";
 
 import { useDispatch } from "react-redux";
+import { monthsShort } from "moment";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -42,8 +43,10 @@ const StatisticPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.authAdmin.token);
-  const [startDate, setStartDate] = useState(moment());
-  const [endDate, setEndDate] = useState(moment());
+//  const [startDate, setStartDate] = useState(moment());
+  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] =useState(null);
+
   useEffect(() => {
     dispatch(
       getStatistic({
@@ -52,9 +55,9 @@ const StatisticPage = () => {
         endAt: moment(endDate).startOf('isoWeek').toISOString(),
       })
     );
-  }, [startDate, endDate]);
+  }, [moment(startDate).startOf('isoWeek').toISOString(),moment(endDate).startOf('isoWeek').toISOString()]);
 
-  console.log(startDate.format());
+ 
   console.log( moment(startDate).startOf('isoWeek').toISOString())
   const result = useSelector((state) => state.statistic.result);
   let temp = [];
@@ -99,6 +102,7 @@ const StatisticPage = () => {
             >
               <DatePicker
                 label="startAt"
+  
                 placeholder="Select date"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
