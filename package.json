@@ -17,6 +17,7 @@
     "add": "^2.0.6",
     "antd": "^4.15.5",
     "axios": "^0.21.4",
+    "create-app-react": "^1.0.6",
     "formik": "^2.2.6",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
