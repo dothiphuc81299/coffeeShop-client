@@ -21,7 +21,7 @@ export default function NotFound() {
           Never existed in the first place?
           <p>
             Let's go 
-            <Link to={isUser ? "/" : "/admin/summary"}> home </Link>
+            <Link to={isUser ? "/" : "/admin/statistic"}> home </Link>
             and try from there.
           </p>
         </div>

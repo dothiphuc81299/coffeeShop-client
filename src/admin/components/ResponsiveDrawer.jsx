@@ -57,7 +57,7 @@ function ResponsiveDrawer(props) {
     if (text === "Statistic"){
       return "/admin/statistic";
     }
-    return "/admin/summary";
+    return "/admin/statistic";
   };
 
   const drawer = (

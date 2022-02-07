@@ -59,8 +59,8 @@ const routes = () => {
       {/* <PrivateRoute  path="/user/history-order/:orderId" component={OrderDetailPage} /> */}
       
       <Route path="/admin/login" component={AdminLoginPage} />
-      <Redirect exact from="/admin" to="/admin/summary" />
-      <PrivateRoute path="/admin/summary" component={Admin} />
+      <Redirect exact from="/admin" to="/admin/statistic" />
+      <PrivateRoute path="/admin/statistic" component={StatisticPage} />
       <PrivateRoute path="/admin/menu" component={AdminMenuPage} />
       <PrivateRoute path="/admin/employees" component={EmployeePage} />
       <PrivateRoute path="/admin/users" component={UserPage} />
@@ -70,7 +70,7 @@ const routes = () => {
       <PrivateRoute path="/admin/feedbacks" component={FeedbackPage} />
       <PrivateRoute path="/admin/events" component={EventPage} />
 
-      <PrivateRoute path ="/admin/statistic" component={StatisticPage}/>
+      {/* <PrivateRoute path ="/admin/statistic" component={StatisticPage}/> */}
 
       <PrivateRoute exact path="/admin/orders" component={OrderPage} />
       <PrivateRoute path ="/admin/orders/:orderId" component={DetailPage} />

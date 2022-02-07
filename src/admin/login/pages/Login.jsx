@@ -16,7 +16,7 @@ export default function LoginPage() {
   useEffect(() => {
     if (token) {
       // if (isRoot) 
-        history.push("/admin/summary")
+        history.push("/admin/statistic")
     }
   }, [token]);
 
@@ -28,7 +28,7 @@ export default function LoginPage() {
 
   const handleSubmitForm = (payload) => {
     dispatch(sendPostLogin(payload))
-    history.push("/admin/summary")
+    history.push("/admin/statistic")
 
   }
 
