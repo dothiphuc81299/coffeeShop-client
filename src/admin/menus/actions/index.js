@@ -29,7 +29,7 @@ export const postDrink = (payload) => {
         {
           name: payload.name,
           price: payload.price,
-          category:payload.category,
+          // category:payload.category,
           image:payload.image,
         },
         {
@@ -60,7 +60,7 @@ export const updateDrink = (payload) => {
           name: payload.name,
           price: payload.price,
           image: payload.image,
-          category: payload.category,
+          // category: payload.category,
         },
         {
           headers: {

@@ -32,9 +32,9 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
 
   const handleTo = (text) => {
-    if (text === "Categories") {
-      return "/admin/categories";
-    }
+    // if (text === "Categories") {
+    //   return "/admin/categories";
+    // }
     if (text === "Bevarages") {
       return "/admin/menu";
     }
@@ -75,7 +75,7 @@ function ResponsiveDrawer(props) {
 
       <List>
         {[
-          "Categories",
+          // "Categories",
           "Bevarages",
           "Orders",
           "Events",

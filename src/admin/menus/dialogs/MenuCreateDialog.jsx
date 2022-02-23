@@ -15,7 +15,7 @@ const MenuCreateDialog = (props) => {
     initialValues: {
       name: "",
       price: null,
-      category: "",
+    
       image: "",
     },
     onSubmit: (values) => {
@@ -63,7 +63,7 @@ const MenuCreateDialog = (props) => {
             />
           </Grid>
 
-          <FormControl component="fieldset">
+          {/* <FormControl component="fieldset">
             <FormLabel component="legend">Category</FormLabel>
             <Grid item xs={12}>
               {list.map((item) => (
@@ -83,7 +83,7 @@ const MenuCreateDialog = (props) => {
                 </React.Fragment>
               ))}
             </Grid>
-          </FormControl>
+          </FormControl> */}
         </Grid>
 
         <Button

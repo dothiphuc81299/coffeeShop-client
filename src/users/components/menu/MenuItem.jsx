@@ -111,14 +111,14 @@ export default function MenuItem(props) {
           <Typography variant="subtitle1" color="textSecondary">
             {price.toLocaleString()}đ
           </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
+          {/* <Typography variant="subtitle1" color="textSecondary">
             Category:{category.name}
-          </Typography>
+          </Typography> */}
         </CardContent>
         <div className={classes.controls}>
           { !isInCart 
             ? 
-              <button className={classes.btn} onClick={() => handleClickAddToCart({ image, name, price, _id })}>Add to card</button>
+              <button className={classes.btn} onClick={() => handleClickAddToCart({ image, name, price, _id })}>Add to cart</button>
             :
               <div className="cart-item__count">
                 <button 

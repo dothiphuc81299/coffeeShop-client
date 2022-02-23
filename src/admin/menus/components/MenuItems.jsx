@@ -72,7 +72,7 @@ const MenuItems = (props) => {
         name: payload.name,
         price: payload.price,
         image: payload.image,
-        category: payload.category,
+        // category: payload.category,
       })
     );
     setOpenUpdate(false);
@@ -123,9 +123,9 @@ const MenuItems = (props) => {
             Price: {drink.price}
           </Typography>
 
-          <Typography variant="subtitle1" color="textSecondary">
+          {/* <Typography variant="subtitle1" color="textSecondary">
             Category: {category.name}
-          </Typography>
+          </Typography> */}
         </CardContent>
       </div>
 

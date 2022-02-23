@@ -128,7 +128,6 @@ const MenuPage = () => {
         name: payload.name,
         price: payload.price,
         image: payload.image,
-        category: payload.category,
       })
     );
     setOpenCreate(false);
