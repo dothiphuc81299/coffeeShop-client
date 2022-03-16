@@ -5,7 +5,8 @@ import { getEvent } from '../../redux/action/event';
 import Home from '../components/home/Home'
 
 export default function HomePage() {
-  const token = useSelector((state) => state.auth.token);
+  // const token = useSelector((state) => state.auth.token);
+  const token =localStorage.getItem("token");
   const infor = useSelector((state) => state.auth.infor);
   const dispatch = useDispatch();
 

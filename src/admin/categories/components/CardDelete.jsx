@@ -23,7 +23,7 @@ const CategoryDelete = (props) => {
   const dispatch = useDispatch();
   const [openDelete, setOpenDelete] = useState(false);
   const { onSubmit, onClose } = props;
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
 
   useEffect(() => {
     dispatch(getInforByToken(token));

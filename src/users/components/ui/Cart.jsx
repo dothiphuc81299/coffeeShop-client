@@ -47,10 +47,11 @@ const Cart = (props) => {
   const dispatch = useDispatch();
   const { isCartOpened, toggleDrawer } = props;
   const listInCart = useSelector((state) => state.cart.listInCart);
+  
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    sessionStorage.setItem("cart", JSON.stringify(listInCart));
+     sessionStorage.setItem("cart", JSON.stringify(listInCart));
     const totalInCart = listInCart.reduce((sum, item) => { 
       return sum + item.quantity*item.price
     }, 0);

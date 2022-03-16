@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const CartItem = (props) => {
-  const { image, name, price, quantity, _id } = props.item;
+  const { image, name, price, quantity } = props.item || {};
   const { handleChangeQuantity } = props;
   const quantityInput = useRef(null);
 
@@ -20,18 +20,18 @@ const CartItem = (props) => {
           onClick={() => {
             quantityInput.current.value = quantity - 1;
             handleChangeQuantity({
-              _id,
+              ...props.item,
               quantity: quantity - 1
             })
           }}
         >-</button>
         <input 
           className="px-0"
-          defaultValue={quantity} 
+          value={quantity} 
           onBlur={(e) => { 
             const quantity = e.target.value;
             handleChangeQuantity({
-              _id, quantity
+              ...props.item, quantity
             }) 
           }} 
           ref={quantityInput}
@@ -41,7 +41,7 @@ const CartItem = (props) => {
           type="button" 
           onClick={() => {
             handleChangeQuantity({
-              _id,
+              ...props.item,
               quantity: quantity + 1
             })
             quantityInput.current.value = quantity + 1;

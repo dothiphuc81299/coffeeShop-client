@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 export default function UserDetailPage() {
   const classes = useStyles();
   let history = useHistory();
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   const infor = useSelector((state) => state.inforStaff.infor);
   const [ isEdit, setIsEdit ] = useState(false);
   const dispatch = useDispatch();

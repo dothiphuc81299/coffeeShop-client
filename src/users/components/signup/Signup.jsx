@@ -61,7 +61,7 @@ export default function Signup(props)
     },
     validationSchema: validationSchema,
     onSubmit: values => {
-      // console.log(values)
+      
       handleSubmitForm(values);
     },
   });

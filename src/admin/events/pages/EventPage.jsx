@@ -38,11 +38,11 @@ const EventPage = () => {
  
 
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
 
   const classes = useStyles();
   useEffect(() => {
-    dispatch(getInforByToken(token));
+    dispatch(getInforByToken(token)); 
   }, [token]);
 
   useEffect(() => {

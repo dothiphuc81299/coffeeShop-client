@@ -7,18 +7,18 @@ import logo from "../../../assets/images/commons/logo.png";
 
 export default function LoginPage() {
   let history = useHistory();
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   // const isRoot = useSelector((state) => state.authAdmin.isRoot);
   const infor = useSelector((state) => state.inforStaff.infor);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (token) {
-      // if (isRoot) 
-        history.push("/admin/statistic")
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     // if (isRoot) 
+  //       history.push("/admin/statistic")
+  //   }
+  // }, [token]);
 
   // useEffect(() => {
   //   if (!isRoot && infor) {
@@ -27,8 +27,9 @@ export default function LoginPage() {
   // }, [infor])
 
   const handleSubmitForm = (payload) => {
-    dispatch(sendPostLogin(payload))
-    history.push("/admin/statistic")
+    dispatch(sendPostLogin({payload, callback: () => {
+      history.push("/admin/statistic")
+    }}))
 
   }
 

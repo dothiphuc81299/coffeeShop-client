@@ -76,7 +76,7 @@ const UserPage = () => {
     setPage(value);
   };
 
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   console.log(token);
 
   const handleChangeSearch = (e) => {

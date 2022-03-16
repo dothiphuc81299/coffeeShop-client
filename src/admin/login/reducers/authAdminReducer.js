@@ -1,5 +1,5 @@
 const initialState = {
-  token: localStorage.getItem("token") || null,
+  token: localStorage.getItem("tokenAdmin") || null,
   infor: null,
   // isRoot: null,
 };
@@ -9,7 +9,7 @@ const authReducer = (state = initialState, action) => {
     case "SET_ADMIN_LOGIN": {
      // const { token, isRoot } = action.payload;
       const {_id,token,username,phone,address,password} =action.payload
-      localStorage.setItem("token", token);
+      localStorage.setItem("tokenAdmin", token);
       return {
         ...state,
        token: token,
@@ -31,7 +31,7 @@ const authReducer = (state = initialState, action) => {
 //       }
 //     }
     case "DELETE_ADMIN_AUTH": {
-      localStorage.removeItem("token")
+      localStorage.removeItem("tokenAdmin")
       return {
         token: null,
         isRoot: null,

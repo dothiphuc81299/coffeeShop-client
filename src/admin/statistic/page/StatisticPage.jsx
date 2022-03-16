@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const StatisticPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
 //  const [startDate, setStartDate] = useState(moment());
   const [endDate, setEndDate] = useState(null);
   const [startDate, setStartDate] =useState(null);
@@ -65,17 +65,21 @@ const StatisticPage = () => {
   if (!result) {
     <Loading />;
   } else {
+      if (!result.statistic) {
+      <Loading />;
+    } else {
     temp.push(["Product", "Total Quantity"]);
     tempSale.push(["Product","Total totalSale"]);
-    let statistic = result.statistic;
-    statistic.forEach((item) => temp.push([item.name, item.totalQuantity]));
-    statistic.forEach((item) => tempSale.push([item.name, item.totalSale]));
+    let top = result.statistic.top;
+    let topSale =result.statistic.topSale;
+    top.forEach((item) => temp.push([item.name, item.totalQuantity]));
+    topSale.forEach((item) => tempSale.push([item.name, item.totalSale]));
     
-    const otherQuantity = result.statistic.reduce((sum, item) => {
+    const otherQuantity = top.reduce((sum, item) => {
       return sum + item.totalQuantity;
     }, 0);
 
-    const otherSale = result.statistic.reduce((sum, item) => {
+    const otherSale = topSale.reduce((sum, item) => {
       return sum + item.totalSale;
     }, 0);
 
@@ -84,6 +88,7 @@ const StatisticPage = () => {
     temp.push(["other", otherTotalQuantity]);
     tempSale.push(["other", otherTotalSale]);
   }
+}
 
   return (
     <Layout>

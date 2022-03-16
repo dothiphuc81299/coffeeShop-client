@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ChangePasswordStaffPage() {
   const classes = useStyles();
   let history = useHistory();
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   const dispatch = useDispatch();
 
   useEffect(() => {

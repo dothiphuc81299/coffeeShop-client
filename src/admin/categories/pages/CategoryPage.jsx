@@ -69,7 +69,7 @@ const CategoryPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [page, setPage] = React.useState(1);
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   const [searchForm, setSearchForm] = useState("");
   useEffect(() => {
     setIsActive(pathname);

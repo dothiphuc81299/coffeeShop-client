@@ -25,7 +25,7 @@ const OrderUpdate = (props) => {
   const dispatch = useDispatch();
   const [openUpdate, setOpenUpdate] = useState(false);
   const { onSubmit, onClose } = props;
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
 
   useEffect(() => {
     dispatch(getInforByToken(token));

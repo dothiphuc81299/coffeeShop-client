@@ -52,7 +52,7 @@ const Calendar = () => {
   const currentWeekData = useSelector((state) => state.shift.currentWeekData);
   const nextWeekData = useSelector((state) => state.shift.nextWeekData);
   const t2 = moment(date).startOf('isoWeek').add(1, 'days').startOf('date').toISOString();
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   const info = useSelector((state) => state.inforStaff.infor);
   console.log('test', t2)
   const columns = [

@@ -34,6 +34,7 @@ import UserHistoryOrder from "../users/pages/UserHistoryOrder";
 import NotFound from "../components/NotFound";
 
 import { PrivateRoute } from "./PrivateRoute";
+import { UserPrivateRoute } from "./PrivateRoute";
 import RolePage from "../admin/roles/pages/RolePage";
 import AboutUsPage from "../users/pages/aboutus";
 import AboutUs from "../users/components/aboutus/aboutus";
@@ -52,10 +53,10 @@ const routes = () => {
       <Route path="/authen" component={EmailAuthenPage}/> 
       <Route path="/menu" component={MenuPage} />
       {/* <Route path="/about-us" component={AboutUs} /> */}
-      <PrivateRoute path="/order" component={ConfirmOrderPage} />
-      <PrivateRoute exact path="/user/detail" component={UserDetailPage} />
-      <PrivateRoute exact path="/user/change-password" component={UserChangePasswordPage} />
-      <PrivateRoute exact path="/user/history-order" component={UserHistoryOrder} />
+      <UserPrivateRoute path="/order" component={ConfirmOrderPage} />
+      <UserPrivateRoute exact path="/user/detail" component={UserDetailPage} />
+      <UserPrivateRoute exact path="/user/change-password" component={UserChangePasswordPage} />
+      <UserPrivateRoute exact path="/user/history-order" component={UserHistoryOrder} />
       {/* <PrivateRoute  path="/user/history-order/:orderId" component={OrderDetailPage} /> */}
       
       <Route path="/admin/login" component={AdminLoginPage} />

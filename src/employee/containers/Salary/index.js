@@ -11,7 +11,7 @@ const Salary = () => {
   let month = newDate.getMonth() + 1;
   const [currentMonth, setCurrentMonth] = useState(month - 1);
   const currentSalary = useSelector((state) => state.salary.currentSalary);
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
 
   const handleClickLastMonth = () => {
     if (currentMonth !== 1) {

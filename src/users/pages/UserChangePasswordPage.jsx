@@ -23,7 +23,8 @@ const useStyles = makeStyles({
 export default function UserChangePasswordPage() {
   const classes = useStyles();
   let history = useHistory();
-  const token = useSelector((state) => state.auth.token);
+  //const token = useSelector((state) => state.auth.token);
+  const token =localStorage.getItem("token");
   const infor = useSelector((state) => state.auth.infor);
   const isDoneChangePasword = useSelector((state) => state.auth.isDoneChangePasword);
   const dispatch = useDispatch();

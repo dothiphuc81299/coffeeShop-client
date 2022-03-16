@@ -73,7 +73,8 @@ const OrderPage = () => {
   const [page, setPage] = React.useState(1);
   let history = useHistory();
 
-  const token = useSelector((state) => state.orderAdmin.authAdmin);
+ // const token = useSelector((state) => state.orderAdmin.authAdmin);
+  const token =localStorage.getItem("tokenAdmin");
   const handleChange = (event, value) => {
     setPage(value);
   };

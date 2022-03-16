@@ -57,7 +57,8 @@ const ConfirmOrderPage = () => {
   const classes = useStyles();
   const [total, setTotal] = useState(0);
   // const shippingFee = 15000;
-  const token = useSelector((state) => state.auth.token);
+  //const token = useSelector((state) => state.auth.token);
+  const token =localStorage.getItem("token");
   const infor = useSelector((state) => state.auth.infor);
   const listInCart = useSelector((state) => state.cart.listInCart);
   // const [is_point, setPoint] =  React.useState(false);

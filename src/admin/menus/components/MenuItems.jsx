@@ -47,7 +47,7 @@ const MenuItems = (props) => {
   const [openDelete, setOpenDelete] = useState(false);
 
   const list = useSelector((state) => state.listAdmin.list);
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   const category = ObjectUtils.get(drink, "category", {});
 
   const classes = useStyles();

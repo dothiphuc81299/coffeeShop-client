@@ -77,7 +77,7 @@ const EventItem = (props) => {
   const [openChangeStatus, setOpenChangeStatus] = useState(false);
 
   const [openSendEmail, setOpenSendEmail] = useState(false);
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   const classes = useStyles();
 
   const dispatch = useDispatch();
@@ -181,7 +181,7 @@ const EventItem = (props) => {
     <Card className={classes.root}>
       <CardMedia>
         <img
-          src="https://image.flaticon.com/icons/png/512/2558/2558944.png"
+          src="https://theexoticbean.com/wp-content/uploads/2020/02/coffee-events-in-2020.jpg"
           className={classes.icon}
         />
       </CardMedia>

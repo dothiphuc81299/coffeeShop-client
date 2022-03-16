@@ -86,6 +86,9 @@ const BasicTable = (props) => {
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Drinks
             </TableCell>
+            <TableCell style={{ fontWeight: "bold", whiteSpace: "nowrap" }} align="center">
+              UsePoint
+            </TableCell>
             <TableCell
               style={{ width: "1px", whiteSpace: "nowrap", fontWeight: "bold" }}
             >
@@ -120,7 +123,7 @@ const BasicTable = (props) => {
               <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
                 {order.drink.map((item) => (
                   <React.Fragment>
-                    <div>{item.name}</div>
+                    <div> {item.quantity} {item.name}</div>
                     <br />
                     {/* <div>Price: {item.price}</div>
                     <br />
@@ -129,6 +132,8 @@ const BasicTable = (props) => {
                   </React.Fragment>
                 ))}
               </TableCell>
+              {order.is_point ? <TableCell align="center">{order.point}</TableCell> :   <TableCell align="center">0</TableCell> }
+
               <TableCell align="center">{order.totalPrice}</TableCell>
               <TableCell align="center">
                 <Chip
@@ -141,7 +146,7 @@ const BasicTable = (props) => {
               <TableCell style={{ width: "1px", whiteSpace: "nowrap" }}>
                 {DateUtils.format(
                   order.createdAt,
-                  DateFormat.YYYY_MM_DD_hh_mm_ss
+                  DateFormat.YYYY_MM_DD
                 )}
               </TableCell>
 

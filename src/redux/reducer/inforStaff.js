@@ -6,7 +6,7 @@ const inforStaffReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_ADMIN_INFOR": {
       const { _id, username, phone, address, avatar, permissions,token } = action.payload;
-      // localStorage.setItem("token", token);
+       localStorage.setItem("tokenAdmin", token);
       return {
         ...state,
         // token: token,
@@ -32,7 +32,7 @@ const inforStaffReducer = (state = initialState, action) => {
 //       }
 //     }
     case "DELETE_STAFF_INFOR": {
-      localStorage.removeItem("token")
+      localStorage.removeItem("tokenAdmin")
       return {
         token: null,
         infor: null,

@@ -63,10 +63,11 @@ const RoleItem = (props) => {
   const { role, permissions } = props;
 
   const [openUpdate, setOpenUpdate] = useState(false);
-  const token = useSelector((state) => state.authAdmin.token);
+  // const token = useSelector((state) => state.authAdmin.token);
+  const token =localStorage.getItem("tokenAdmin");
   const classes = useStyles({ role });
   const [openDelete, setOpenDelete] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   useEffect(() => {
     dispatch(getInforByToken(token));

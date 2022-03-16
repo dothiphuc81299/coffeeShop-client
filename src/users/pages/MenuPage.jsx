@@ -8,7 +8,8 @@ export default function MenuPage() {
   const dispatch = useDispatch();
   const listDrink = useSelector((state) => state.drink.listDrink);
   const totalDrink = useSelector((state) => state.drink.totalDrink);
-  const token = useSelector((state) => state.auth.token);
+  //const token = useSelector((state) => state.auth.token);
+  const token =localStorage.getItem("token");
   const history = useHistory();
 
   const handleClickAddToCart = (payload) => {

@@ -23,16 +23,19 @@ const useStyles = makeStyles({
 export default function UserDetailPage() {
   const classes = useStyles();
   let history = useHistory();
-  const token = useSelector((state) => state.auth.token);
+  // const token = useSelector((state) => state.auth.token);
+  const token =localStorage.getItem("token");
   const infor = useSelector((state) => state.auth.infor);
   const dispatch = useDispatch();
 
+  console.log("phuc",token)
   useEffect(() => {
+    console.log("ttttttt")
     dispatch(getInforByToken(token))
     if (!token) {
-      history.push("/")
+     history.push("/")
     }
-  }, [token]);
+  }, []);
 
   const handleSubmitFormDetail = (payload) => {
     dispatch(sendPostUpdateInfor(payload))

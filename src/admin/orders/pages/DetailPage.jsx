@@ -63,6 +63,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "flex-start",
     marginLeft: theme.spacing(38),
   },
+
+  labelUsePoint : {
+    justifyContent: "flex-start",
+    marginLeft: theme.spacing(42),
+  },
+
   labelDrinks: {
     justifyContent: "flex-start",
     marginLeft: theme.spacing(88),
@@ -188,6 +194,17 @@ const DetailPage = (props) => {
               ))}
             </span>
             <br></br>
+
+            <label className={classes.labelFormat} style={{ fontWeight: 600 }}>
+             UsePoint :
+            </label>
+            <span className={classes.labelUsePoint}>
+              {"     "} 
+              {order.is_point ? order.point:  0 }
+            </span>
+
+            <br></br>
+
             <label className={classes.labelFormat} style={{ fontWeight: 600 }}>
               Total Price :
             </label>

@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuItem(props) {
   const classes = useStyles();
-  const { _id, image, name, price } = props.item;
+  const { _id, image, name, price } = props.item || {};
   const { handleClickAddToCart } = props;
   const listInCart = useSelector((state) => state.cart.listInCart);
   const imageNotFound = "https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg";
@@ -85,18 +85,19 @@ export default function MenuItem(props) {
   const dispatch = useDispatch();
 
   const handleChangeQuantity = (payload) => {
-    dispatch(addToCart(payload))
+    dispatch(changeQuantityItem(payload))
   }
 
   const category = ObjectUtils.get(props.item, "category", {});
 
   useEffect(() => {
-    const item = listInCart.find((item) => item._id === _id);
-    if (item) {
+    const itemInCart = listInCart.find((item) => item._id === _id);
+    if (itemInCart) {
       setIsInCart(true);
-      setQuantity(item.quantity)
+      setQuantity(itemInCart.quantity)
     } else {
       setIsInCart(false);
+      setQuantity(null)
     }
   }, [listInCart])
 
@@ -126,18 +127,19 @@ export default function MenuItem(props) {
                   onClick={() => {
                     quantityInput.current.value = quantity - 1;
                     handleChangeQuantity({
-                      _id,
+                      ...props?.item,
                       quantity: quantity - 1
                     })
                   }}
                 >-</button>
                 <input 
                   className="px-0"
-                  defaultValue={quantity} 
+                  defaultValue={props.item.quantity}
+                  value={quantity}
                   onBlur={(e) => { 
                     const quantity = e.target.value;
                     handleChangeQuantity({
-                      _id, quantity
+                      ...props?.item, quantity
                     }) 
                   }} 
                   ref={quantityInput}
@@ -147,7 +149,7 @@ export default function MenuItem(props) {
                   type="button" 
                   onClick={() => {
                     handleChangeQuantity({
-                      _id,
+                      ...props?.item,
                       quantity: quantity + 1
                     })
                     quantityInput.current.value = quantity + 1;

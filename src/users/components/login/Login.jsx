@@ -12,9 +12,9 @@ import logo from "../../../assets/images/commons/logo.png";
 // import "react-toastify/dist/ReactToastify.css";
 
 const validationSchema = yup.object({
-  username: yup
-    .string('Enter your username')
-    .required('Username is required'),
+  email: yup
+    .string('Enter your email')
+    .required('Email is required'),
   password: yup
     .string('Enter your password')
     // .min(6, 'Password should be of minimum 6 characters length')
@@ -26,7 +26,7 @@ export default function Login(props) {
 
   const formik = useFormik({
     initialValues: {
-      username: '',
+      email: '',
       password: '',
       isRemember: false,
     },
@@ -57,13 +57,13 @@ export default function Login(props) {
               <TextField 
                 fullWidth 
                 variant="outlined" 
-                label="Username"
-                name="username"
+                label="Email"
+                name="email"
                 type="text"
-                value={formik.values.username}
+                value={formik.values.email}
                 onChange={formik.handleChange}
-                error={formik.touched.username && Boolean(formik.errors.username)}
-                helperText={formik.touched.username && formik.errors.username}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
             </div>
             <div className="mb-12">

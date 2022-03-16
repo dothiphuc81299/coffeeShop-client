@@ -38,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
 export default function HistoryOrder() {
   const classes = useStyles();
   let history = useHistory();
-  const token = useSelector((state) => state.auth.token);
+ // const token = useSelector((state) => state.auth.token);
+ const token =localStorage.getItem("token");
   const listOrder = useSelector((state) => state.order.listOrder);
   const dispatch = useDispatch();
 

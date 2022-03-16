@@ -20,10 +20,11 @@ const PrivateLayout = ({ children }) => {
   const history = useHistory();
   let { pathname } = useLocation();
   const [isActive, setIsActive] = useState(pathname);
-  const token = useSelector((state) => state.authAdmin.token);
+const token =localStorage.getItem("tokenAdmin");
   const info = useSelector((state) => state.inforStaff.infor);
 
   let { employeeId } = useParams();
+
 
   useEffect(() => {
     if (!info) {

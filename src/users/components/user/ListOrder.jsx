@@ -61,14 +61,17 @@ const ListOrder = (props) => {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-          <TableCell style={{ fontWeight: "bold" }} align="center">
+          {/* <TableCell style={{ fontWeight: "bold" }} align="center">
             #
-            </TableCell>
+            </TableCell> */}
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Address
             </TableCell>
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Drinks
+            </TableCell>
+            <TableCell style={{ fontWeight: "bold" }} align="center">
+              UsePoint
             </TableCell>
             <TableCell style={{ fontWeight: "bold" }} align="center">
               Total Price
@@ -85,22 +88,23 @@ const ListOrder = (props) => {
         <TableBody>
           {data.map((order,index) => (
             <TableRow>
-                <TableCell align="center"> {index+1}</TableCell>
+                {/* <TableCell align="center"> {index+1}</TableCell> */}
               <TableCell align="center">{order.user.address}</TableCell>
               <TableCell align="left">
                 {order.drink.map((item, index) => (
                   <React.Fragment>
-                    <div style={{ fontWeight: 600 }}>
-                      {index + 1}. {item.name}
+                    <div style={{ }}>
+                    {item.quantity} {item.name}
                     </div>
                     {/* <br />
                     <div>Price: {item.price.toLocaleString()}đ</div>
                     <br /> */}
-                    <div>Quantity: {item.quantity}</div>
+                    {/* <div>Quantity: </div> */}
                     <br />
                   </React.Fragment>
                 ))}
               </TableCell>
+              {order.is_point ? <TableCell align="center">{order.point}</TableCell> :   <TableCell align="center">0</TableCell> }
               <TableCell align="center">{order.totalPrice.toLocaleString()}đ</TableCell>
               <TableCell align="center">
               <Chip
@@ -113,7 +117,7 @@ const ListOrder = (props) => {
               <TableCell align="center">
                 {DateUtils.format(
                   order.createdAt,
-                  DateFormat.YYYY_MM_DD_hh_mm_ss
+                  DateFormat.YYYY_MM_DD
                 )}
                
               </TableCell>

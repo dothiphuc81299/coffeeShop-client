@@ -45,7 +45,8 @@ export default function Header() {
   const [avatar, setAvatar] = useState(null);
   const [searchForm, setSearchForm] = useState('');
   const listInCart = useSelector((state) => state.cart.listInCart);
-  const token = useSelector((state) => state.auth.token);
+  // const token = useSelector((state) => state.auth.token);
+  const token =localStorage.getItem("token");
   const infor = useSelector((state) => state.auth.infor);
   const isUser = (pathname.indexOf("admin") === -1 ? true : false);
 
@@ -73,6 +74,7 @@ export default function Header() {
     setIsAuthenticated(token);
   }, [token]);
 
+  // console.log("tooej",token)
   const toggle = () => {
     setIsActive(pathname);
   };

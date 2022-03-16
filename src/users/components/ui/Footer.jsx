@@ -23,7 +23,17 @@ export default function Footer() {
                         <h6 className="text-white typography-h6 mb-0">Logo</h6>
                     </div>
                     <div className="footer__title-text">
-                        <p>The Coffee® được sinh ra từ niềm đam mê bất tận với hạt cà phê Việt Nam. Qua một chặng đường dài, chúng tôi đã không ngừng mang đến những sản phẩm cà phê thơm ngon, sánh đượm trong không gian thoải mái và lịch sự với mức giá hợp lý. Những ly cà phê của chúng tôi không chỉ đơn thuần là thức uống quen thuộc mà còn mang trên mình một sứ mệnh văn hóa phản ánh một phần nếp sống hiện đại của người Việt Nam </p>
+                    <p >
+                    The Coffee® được sinh ra từ niềm đam mê bất tận với hạt cà phê Việt Nam.  <br></br>
+                    Qua một chặng đường dài, chúng tôi đã không ngừng mang đến những sản <br></br>
+                     phẩm 
+                    cà phê thơm ngon, sánh đượm trong không gian thoải mái và lịch sự <br></br> với 
+                     mức
+                    giá hợp lý. Những ly cà phê của chúng tôi không chỉ đơn thuần là <br></br> 
+                    thức uống quen thuộc mà còn mang trên mình một sứ mệnh văn hóa phản  <br></br> 
+                    ánh một phần nếp sống hiện đại của người Việt Nam
+                    </p>
+
                     </div>
                 </div>
                 <div className="footer__infor">

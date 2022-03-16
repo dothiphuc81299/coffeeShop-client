@@ -7,8 +7,9 @@ import Login from '../components/login/Login.jsx'
 
 export default function LoginPage() {
   let history = useHistory();
-  const token = useSelector((state) => state.auth.token);
+  //const token = useSelector((state) => state.auth.token);
 
+  const token =localStorage.getItem("token");
   const dispatch = useDispatch();
 
   // useEffect(() => {
